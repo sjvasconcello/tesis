@@ -1,0 +1,43 @@
+%!TEX root = ../memoria.tex
+
+Plantilla \LaTeX{} para las Memorias y Tesis del Departamento de Industrias, UTFSM.
+
+Se incluyen también algunos ejemplos de cómo incorporar tablas y gráficos en distintas presentaciones respetando las Normas de Biblioteca para Memorias y Tesis de la UTFSM.
+
+\vspace{10mm}
+
+\paragraph{Palabras Clave.}
+\LaTeX{}, Plantilla para Memoria, Departamento de Industrias, UTFSM.
+
+\vspace*{1cm}
+\subsection*{¡Importante! [LEAME]}
+
+\subsubsection*{Impresión por un solo lado.}
+A partir del año 2016, el Departamento de Industrias sólo requiere la entrega digital de los archivos de memorias y tesis. Por este motivo, este documento está preparado para ser impreso por un solo lado de una hoja (\emph{``oneside''}), y facilitar así su lectura en pantallas. Esta configuración es parte de archivo de clase \inlinecode{thesis_utfsm.cls}.
+
+\subsubsection*{Codificación de caracteres.}
+
+Todos los archivos \inlinecode{*.tex} de esta plantilla han sido preparados ocupando la codificación de caracteres por defecto \emph{unicode} (UTF-8). Windows (y algunas versiones de OSX) ocupan otro tipo de codificación (ej. \emph{Windows-1252} o \emph{Mac Roman}).
+
+Si deseas ocupar esta plantilla y encuentras problemas con los caracteres acentuados, entonces puedes optar por una de estas tres alternativas:
+\begin{enumerate}[i)]
+    \item cambiar tu editor (TexMaker, TexStudio, TexShop, etc.) para que ocupe UTF-8 como codificación de caracteres por defecto; o
+    
+    \item cambiar la codificación de cada documento \inlinecode{*.tex} para que ocupe la codificación nativa de tu sistema operativo; y, modificar el archivo \inlinecode{config.tex} la línea que dice:
+    
+    OSX, Linux: \inlinecode{\\usepackage[utf8x]\{inputenc\}}
+
+    Windows:    \inlinecode{\\usepackage[latin1]\{inputenc\}}
+    
+    Overleaf:   \inlinecode{\\usepackage[utf8]\{inputenc\}} \url{https://overleaf.com}
+    
+    \item escribir todo ocupando caracteres pre-acentuados (ej. \inlinecode{\\'a} en lugar de á).
+\end{enumerate}
+
+\vspace{10mm}
+\begin{framed}
+    \noindent\textbf{Recuerde:} 
+    
+    \noindent Mezclar documentos de distintas codificaciones puede generar muchos problemas al momento de compilar.  
+\end{framed}
+

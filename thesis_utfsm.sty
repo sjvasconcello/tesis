@@ -1,0 +1,108 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	Plantilla para Memorias y Tesis, UTFSM, Chile
+%	=============================================
+%
+% Autor:
+%       Jaime C. Rubin-de-Celis <jaime@rubin-de-celis.com>
+%
+% Fecha:
+%       $Date: 2023-01-11 01:05:21 -0300$
+%
+% Versión:
+%       2.0
+%
+% Licencia:
+%       Copyright (c) 2012-2023, Jaime C. Rubin-de-Celis
+%       The MIT License
+%
+% Nota:
+%       Las imágenes son propiedad intelectual de la UTFSM.
+%
+% Uso:
+%       Ver archivo adjunto README.md.
+%       Si todo lo demás falla, recuerde "RTFM".
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ProvidesPackage{thesis_utfsm}[10/10/2022 UTFSM Thesis Style Sheet]
+\typeout{UTFSM Thesis Style}
+
+% Márgenes (UTFSM)
+\RequirePackage{geometry}
+\geometry{verbose,tmargin=25mm,bmargin=25mm,lmargin=25mm,rmargin=25mm,nomarginpar}
+
+% Numeración de las notas al pie según capítulo
+% \RequirePackage{chngcntr}
+\counterwithout{footnote}{chapter}
+
+% Custom Colors
+\RequirePackage{xcolor}
+\definecolor{gray20}{gray}{0.20}
+\definecolor{gray50}{gray}{0.50}
+\definecolor{gray80}{gray}{0.80}
+
+
+%---------------------------------------------------------------------------
+%%% CAPTIONS
+\RequirePackage[font=small,labelfont=bf,justification=centering]{caption}
+%---------------------------------------------------------------------------
+
+
+%---------------------------------------------------------------------------
+%%% HEADERS AND FOOTERS
+\fancyhf{}
+\fancypagestyle{plain}{%
+	\fancyhf{} % clear all header and footer fields
+	\fancyhead[L]{\scriptsize \leftmark}
+	\fancyhead[R]{\scriptsize \rightmark}
+	\fancyfoot[R]{\bfseries \thepage} % except the center
+    \fancyfoot[L]{\makebox[6mm][c]{\includegraphics[height=2.5mm]{figures/escudo-utfsm.png}}\makebox[0pt][l]{\footnotesize Universidad T\'ecnica Federico Santa Mar\'ia, Departamento de Industrias}}
+	\renewcommand{\headrulewidth}{0.1pt}
+	\renewcommand{\footrulewidth}{0.1pt}
+}
+%---------------------------------------------------------------------------
+
+
+%---------------------------------------------------------------------------
+%%% FONTS
+%	Tipo de Letra (Times New Roman).
+\RequirePackage{txfonts}
+% En Línux, es posible que sea necesario reconstruir el mapa de fuentes.
+% Como administrador, puede ejecutar el siguiente comando:
+% # updmap-sys --enable Map=txfonts.map
+%
+% El tipo de letra debe ser ocupado después de las librerías matemáticas
+% pues contienen macros que son incompatibles con amsmath y amssymb.
+%
+% Alternativas:
+%\RequirePackage{times} 	% No recomendado (Deprecated!)
+% Forzar Times New Roman en fórmulas matemáticas (No recomendado!):
+%\RequirePackage{mathptmx}
+% Las siguientes lineas cambiarán el documento a Arial (La UTFSM no lo aprueba!).
+%\renewcommand{\rmdefault}{phv}		% Convert to Arial
+%\renewcommand{\sfdefault}{phv}		% Convert to Arial
+%---------------------------------------------------------------------------
+
+
+%---------------------------------------------------------------------------
+%%% CHAPTER HEADINGS
+\titleformat{\chapter}[hang]
+{\Huge\bfseries}
+{\thechapter\hsp\textcolor{gray80}{|}\hsp}{0pt}
+{\Huge\bfseries}
+
+\makeatletter		% IMPORTANT! (Do not delete or move!)
+
+
+%---------------------------------------------------------------------------
+
+
+%---------------------------------------------------------------------------
+% Cambiar los Títulos (sólo en español (Chile))
+\addto{\captionsspanish}{\renewcommand{\contentsname}   {\'Indice de Contenidos}}
+\addto{\captionsspanish}{\renewcommand{\listfigurename} {\'Indice de Figuras}}
+\addto{\captionsspanish}{\renewcommand{\listtablename}	{\'Indice de Tablas}}
+\addto{\captionsspanish}{\renewcommand{\tablename}      {Tabla}}
+\addto{\captionsspanish}{\renewcommand{\appendixname}   {Anexo}}
+\addto{\captionsspanish}{\renewcommand{\appendixautorefname}   {Anexo}}
+%---------------------------------------------------------------------------

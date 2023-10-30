@@ -1,0 +1,215 @@
+%!TEX root = ../memoria.tex
+
+\chapter{¿Cómo usar esta Plantilla?}
+
+\section{Obtener el código fuente \LaTeX}
+
+Primero, obtener la plantilla y los archivos de apoyo. Puede hacerlo desde GitHub (\hyperref[https://github.com]{https://github.com}):
+
+\inlinecode{git clone https://github.com/jaimercz/utfsm-thesis}
+
+También existe un formato para presentaciones, basado en \inlinecode{beamer} y en cumplimiento con las disposiciones de la UTFSM para el uso de su imagen corporativa, que puede obtener desde:
+
+\inlinecode{git clone https://github.com/jaimercz/utfsm-beamer}
+
+%%%%%
+\section{Configuración}
+
+La configuración básica (nombre del autor, comisión evaluadora, fecha, grado y título de la memoria o tesis) se encuentra en el archivo \inlinecode{config.tex}.
+
+Modifique en este archivo los parámetros básicos de este documento (que afectan la portada y los meta-datos PDF).
+
+\section{Modificación de contenidos}
+
+Abrir el documento maestro (\inlinecode{memoria.tex}) con un editor de texto o editor de \LaTeX{} de su preferencia, y modificar o incluir los documentos que componen su memoria.
+
+Por ejemplo, para incorporar un nuevo capítulo, simplemente puede agregarlo incorporando la siguiente línea en el documento maestro:
+
+\inlinecode{\\input\{includes/capitulo04\}}
+
+\begin{Verbatim}[frame=lines, label=\inlinecode{memoria.tex} (extracto)
+				, fontsize=\footnotesize
+				, baselinestretch=1
+				, formatcom=\color{gray}]
+% ... 
+% \input{includes/capitulo04}
+% \input{includes/capitulo05}
+% ... 
+\end{Verbatim}
+
+\section{Compilación}
+
+Compilar como todo documento \LaTeX{}.
+
+\begin{Verbatim}[frame=lines, label=Consola (Shell) o Línea de comandos
+, fontsize=\footnotesize
+, baselinestretch=1
+, formatcom=\color{gray}]
+    $ pdflatex memoria.tex
+    $ biber memoria
+    $ pdflatex memoria.tex
+    $ pdflatex memoria.tex
+\end{Verbatim}
+
+Si hay errores, lo más probable es que le falte alguno de las paquetes necesarios que ocupa esta plantilla\footnote{Más adelante se incluyen los paquetes necesarios; o puedo revirsarlos en \inlinecode{thesis_utfsm.cls} y/o en \inlinecode{thesis_utfsm.sty}.}.
+
+\subsection{Bibliografía}
+
+Esta versión hace uso de \inlinecode{biber} en lugar de \inlinecode{natbib / bibtex}. Natbib es del año 1988, y el manejo de documentos digitales modernos no estaba contemplado entonces.
+
+Puede revisar más sobre \inlinecode{biber} en:
+\hyperref[https://ctan.org/pkg/biber]{https://ctan.org/pkg/biber}.
+
+En el archivo maestro puede cambiar/agregar bibligrafía (archivo \inlinecode{bibliography.bib}).
+
+\subsection{Codificación de caracteres}
+
+Todos los archivos \inlinecode{*.tex} de esta plantilla han sido preparados ocupando la codificación de caracteres por defecto \emph{unicode} (UTF-8). Windows (y algunas versiones de OSX) ocupan otro tipo de codificación (ej. \emph{Windows-1252} o \emph{Mac Roman}).
+
+Si deseas ocupar esta plantilla y encuentras problemas con los caracteres acentuados, entonces puedes optar por una de estas tres alternativas:
+\begin{enumerate}[(i)]
+    \item cambiar tu editor (TexMaker, TexStudio, TexShop, etc.) para que ocupe UTF-8 como codificación de caracteres por defecto; o
+    \item cambiar la codificación de cada documento \inlinecode{*.tex} para que ocupe la codificación nativa de tu sistema operativo; y, modifica la configuración (\inlinecode{config.tex}) dice:
+    
+    OSX, *nix: \inlinecode{\\usepackage[utf8x]\{inputenc\}}
+
+    Windows: \inlinecode{\\usepackage[latin1]\{inputenc\}}
+
+    Overleaf: \inlinecode{\\usepackage[utf8]\{inputenc\}} (\url{https://overleaf.com})
+
+    \item escribir todo ocupando caracteres pre-acentuados (ej. \inlinecode{\\'a} en lugar de á).
+\end{enumerate}
+
+\vspace{10mm}
+\begin{framed}
+    \textbf{Recuerde:} Mezclar documentos de distintas codificaciones puede generarte muchos problemas al momento de compilar.  
+\end{framed}
+
+\subsection{Requisitos (Paquetes)}
+Los paquetes que se ocupan y son indispensables para la generación este documento están contenidos en el documento de clase \inlinecode{thesis_utfsm.cls}.
+
+Para que funcione correctamente se requiere tener instaladas (como mínimo) las siguientes extensiones \LaTeX{}:
+\begin{Verbatim}[frame=lines, label=Paquetes requeridos por \inlinecode{thesis_utfsm.sty}
+				, fontsize=\footnotesize
+				, baselinestretch=1
+				, formatcom=\color{gray}]
+array       % Matrices
+asmmath     % Notación ciéntifica / matemática
+asmsymb     % Símbolos matemáticos y letras griegas
+babel       % Español
+biblatex    % Bibliografía
+booktabs    % Tablas
+caption     % Mejores leyendas para figuras y tablas
+chngcntr    % Formatos de Pie de Página
+endnotes    % Notas finales del documento
+eso-pic     % Marcas de agua
+fancybox    % Marcos 'Fancy'
+fancyhdr    % Encabezados 'Fancy'
+fancyvrb    % Código Fuente 'Fancy'
+float       % Imágenes Flotantes
+fontenc     % Codificación de Caracteres
+framed      % Marcos
+geometry    % Márgenes y tamaño de páginas
+graphix     % Mejor inclusión de figuras
+hyperref    % Referencias Web
+inputenc    % Métodos de entrada (acentos)
+listings    % Mejores Listados
+microtype   % Mejoras subliminales en el uso de fuentes
+multirow    % Tablas con multi-columnas / multi-filas
+paralist    % Mejores Listados
+parskip     % Separación entre párrafos
+rotating    % Rotación de Tablas
+setspace    % Interlineado
+subcaption  % Figuras con múltiples leyendas
+tabularx    % Tablas
+textcomp    % Símbolos de uso común
+tikz        % Diagramas vectoriales
+tocbibind   % Bibliografía en la Tabla de Contenidos
+txfonts     % Times New Roman (para sistemas distintos de Windows)
+type1cm     % Marcas de agua
+verbatim    % Código Fuente
+wrapfig     % Figuras flotantes
+xcolor      % Colores personalizados
+\end{Verbatim}
+
+La mayoría de las distribuciones \LaTeX{} traen estos paquetes por defecto, sin embargo, en Windows es posible que deba instalar algunos de ellos si ha instalado el archivo básico de MikTeX.
+
+
+%%%%%
+\subsection{Diagramación}
+Este documento fue realizado usando \LaTeX{} (\citet{latex:whatis}), aunque puede fácilmente ser exportado a LyX (\citeauthor{lyx})\footnote{Para ver como transformarlo a Lyx, puede revisar el Wiki (\citeauthor{wikilyx}).}.
+También puede ser ocupado en Overleaf (\hyperref[https://overleaf.com]{https://overleaf.com}).
+
+Usted necesitará un compilador de \LaTeX. Los más comúnmente ocupados son \citeauthor{miktex} (Windows) y \citeauthor{mactex} (Apple); Sistemas *nix (incluyendo linux) traen \TeX{} por defecto.
+
+Para una referencia completa sobre \LaTeX{}, recomendamos el libro de \cite{Lamport94}; aunque para solucionar problemas específicos, su mejor aliado es Internet.
+
+También puede revisar \citet{Roberts05}, \citet{Oetiker06}, y \citet{Mittelbach04}\footnote{El administrador de bibliografía ha cambiado, por favor, revisar documentos maestros.}.
+
+En el \autoref{annex:code} encontrará la formade inclusión de figuras y tablas en este documento.
+
+\subsubsection{Figuras}
+La siguiente es una figura basada en el archivo \inlinecode{figures/logoind.png}. En este caso, la descripción de la figura va en la parte inferior (ver \autoref{fig:logoind}).
+
+% Inclusión de Figuras
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=.3\textwidth]{figures/logoind.png}
+\caption[Logotipo Departamento de Industrias]{Logotipo Departamento de Industrias\\
+{\scriptsize (Fuente: Departamento de Industrias)}}
+\label{fig:logoind}
+\end{figure}
+
+
+\subsubsection{Figuras Flotantes}
+
+Otra forma de incorporar figuras es mediante un \emph{float}. En este caso, la figura es incorporada como una imagen ``flotante'' a un costado del texto  (ver \autoref{fig:emblem-float}).
+
+\begin{wrapfigure}{o}{.4\textwidth}
+    \vspace{-20pt}
+    \begin{spacing}{1}
+        \begin{center}
+            \includegraphics[width=.35\columnwidth]{figures/escudo-utfsm.png}
+            \vspace{-10pt}
+            \caption{Escudo UTFSM (Flotante)}
+            \label{fig:emblem-float}
+        \end{center}
+    \end{spacing}
+    \vspace{-10pt}
+\end{wrapfigure}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae sollicitudin diam. Nunc feugiat ipsum mauris, in congue massa consequat eu. Aliquam fringilla, elit vel euismod bibendum, purus sapien convallis eros, eu porta enim massa vitae turpis. Fusce sagittis mollis pretium. Suspendisse volutpat sem non urna molestie, sit amet dignissim libero tincidunt. Integer vitae diam eget ipsum ornare gravida. Cras porta arcu odio, quis faucibus purus hendrerit eu.
+
+Aenean non sapien fermentum, tristique enim eget, cursus felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nunc libero enim, egestas ut laoreet sed, consequat tincidunt ex. Integer mattis turpis a lacus consectetur ultricies. Nam viverra imperdiet arcu, non eleifend ligula sollicitudin sit amet. Suspendisse ac sollicitudin ante, at ornare lacus. Donec placerat turpis ac quam molestie, eget lacinia justo tempor. Duis porttitor congue justo, sodales laoreet erat fringilla id. Duis erat velit, lacinia at nibh ac, volutpat semper arcu. Vivamus vitae lacus ut tellus ultrices elementum.
+
+Praesent at ornare risus, sit amet finibus dolor. Aliquam vulputate tempor magna vitae varius. Vivamus vitae metus eget leo condimentum accumsan. Fusce commodo quis ipsum tincidunt hendrerit. Quisque et purus eu lectus auctor malesuada. Curabitur tincidunt finibus turpis, quis luctus erat rhoncus id. In ac bibendum tellus, et rhoncus velit. Donec vestibulum elementum augue, quis finibus ante finibus elementum. In enim enim, eleifend nec rutrum in, molestie non lacus. Ut venenatis euismod maximus. Mauris quis elementum dui. Ut massa libero, volutpat in elementum a, blandit nec ipsum.
+
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras lobortis ante erat. Pellentesque a condimentum dui. Ut placerat ipsum eu orci tempus placerat. In tincidunt a dolor non euismod. Vestibulum lacinia mattis lacinia. Aenean sapien enim, facilisis eget lacus volutpat, eleifend mollis odio. Sed condimentum convallis erat ac venenatis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum dapibus egestas consequat. Pellentesque eu purus non massa maximus laoreet. Praesent fermentum nibh id convallis sagittis. Sed feugiat congue nunc, quis luctus justo blandit sit amet. Ut tempor semper metus sit amet luctus.
+
+Nunc dui quam, fringilla non commodo vitae, ultrices nec nibh. Pellentesque vulputate ipsum leo, a egestas velit porttitor eget. Quisque lacinia mi id mi aliquam, vel iaculis est viverra. Nam commodo felis et nibh finibus malesuada. Mauris commodo consectetur varius. Donec posuere porta lectus a ullamcorper. Mauris nec dolor quis felis congue fringilla id sed tortor. Nunc quis semper mi. Suspendisse ut varius dolor, quis consequat nisi. Etiam sit amet feugiat risus. Curabitur tincidunt turpis eget consectetur tempus. Donec tincidunt lorem non massa egestas molestie. Nullam viverra sodales tempor. Sed convallis sed est non semper. Donec vitae aliquam eros. 
+
+
+\subsubsection{Tablas}
+
+La siguiente es una tabla o cuadro básica (ver \autoref{tbl:temperaturas}). Notar las referencias cruzadas y el título de la tabla en la parte superior.
+
+\begin{table}[h!]
+    \caption[Ejemplo: Tabla de Temperaturas]{Tabla de Temperaturas}
+    \label{tbl:temperaturas}
+    \begin{tabularx}{\linewidth}{@{} l  c  c  X @{}}
+        \toprule
+        \textbf{\textsc{Day}} &  \textbf{\textsc{Min Temp}} 
+        		& \textbf{\textsc{Max Temp}} & \textbf{\textsc{Summary}}\\
+    	  \hline\hline
+        Monday & 11C & 22C & A clear day with lots of sunshine.
+        However, the strong breeze will bring down the temperatures. \\ \hline
+        Tuesday & 9C & 19C & Cloudy with rain, across many northern regions. Clear spells
+        across most of Scotland and Northern Ireland,
+        but rain reaching the far northwest. \\ \hline
+        Wednesday & 10C & 21C & Rain will still linger for the morning.
+        Conditions will improve by early afternoon and continue
+        throughout the evening. \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
