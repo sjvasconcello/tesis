@@ -39,7 +39,7 @@
 % Using biber/biblatex instead of (old) natbib/bibtex.
 \RequirePackage[
     backend=biber,
-    style=authoryear-icomp,
+    %style=authoryear-icomp,
     sortlocale=es_ES,       % Spanish
     natbib=true,            % Natbib backward compatibility
     url=true,               % Allow URLs
