@@ -171,3 +171,67 @@ consultas realizadas por los usuarios.
 
 \section{Chatbot}
 
+
+
+    
+La estructura del chatbot se desarrolló en su totalidad utilizando el lenguaje de programación Python. Esta elección se debió a la 
+experiencia del equipo en Python, lo que facilitó tanto la creación del frontend como del backend de la aplicación.
+
+Para la parte de la interacción del usuario (frontend), se empleó Python junto con el framework Flask para la presentación 
+de contenido en pantalla, incluyendo tanto la estructura de HTML como las hojas de estilo CSS. Además, se aprovechó la potencia del 
+framework Bootstrap para agilizar el proceso de maquetación.
+
+En cuanto al backend, se implementó una API con el objetivo de facilitar la interacción entre el frontend y el backend. Para este 
+propósito, se utilizó FastAPI, un framework que permite la creación rápida de APIs y que ofrece la ventaja de contar con Swagger 
+para la prueba y generación automática de documentación.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=.8\textwidth]{figures/finalhuemul.png}
+    \caption[Diagrama de funcionamiento del Chatbot]{Diagrama de funcionamiento del Chatbot\\
+    {\scriptsize (Fuente: Elavoración propia)}}
+    \label{fig:chatbot1}
+\end{figure}
+
+El funcionamiento interno de la aplicación se basa en el framework Langchain para la interacción con el Modelo de Lenguaje Grande (LLM). 
+LangChain es un framework poderoso que simplifica el desarrollo de aplicaciones utilizando modelos de lenguaje grandes (LLM). Proporciona 
+una interfaz única y personalizable capaz de gestionar diferentes LLM, incluida la gestión rápida, el procesamiento, el aumento de datos, 
+la orquestación de agentes, el almacenamiento y la evaluación. Este marco versátil permite a los desarrolladores integrar perfectamente 
+los LLM con sus flujos de trabajo del mundo real y datos con el mínimo esfuerzo \cite{langchain1}.
+
+Para la base de datos se utilizó ChromaDB. ChromaDB es una base de datos vectorial sin esquemas diseñada específicamente para 
+su uso en aplicaciones de inteligencia artificial. Es liviano y muy potente, lo que permite el almacenamiento, la recuperación 
+y la gestión eficiente de datos vectoriales (Embeddings), lo cual es esencial para las aplicaciones de chat de documentos 
+basadas en LangChain y OpenAI \cite{langchain1}. Para que finalmente estas trabajaran en conjunto con los modelos de OpenAI, 
+específicamente el modelo gpt-4 que actualmente es el más potente del mercado.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=.4\textwidth]{figures/huemul6.png}
+    \caption[]{\\
+    {\scriptsize (Fuente: Elavoración propia)}}
+    \label{fig:chatbot1}
+\end{figure}
+
+
+La función principal del chatbot es generar respuestas utilizando la técnica "Retriever-Augmented Generation" (RAG), 
+que implica proporcionar contexto adicional en el prompt enviado a OpenAI. Mientras que una generación simple suele 
+constar de instrucciones y una consulta, en RAG se agrega contexto dentro del prompt con el propósito de reducir la 
+probabilidad de alucinaciones y mejorar la calidad de las respuestas. 
+
+
+En cambio, mediante "Retriever-Augmented Generation" 
+consiste al igual que el proceso anterior se entregan las instrucciones y una consulta, pero junto ello se agrega un contexto 
+de este, cosa de que el modelo largo de lenguaje tenga menor capacidad de alucinar y generar una mejor respuesta. Podemos decir
+que "Retriever-Augmented Generation" (RAG) se refiere a un modelo de generación de lenguaje que se mejora con la capacidad 
+de recuperar información de una memoria no paramétrica, como un índice de vectores del buscador ambiental, además de la 
+memoria paramétrica que ya posee. Este enfoque se utiliza para mejorar la generación de respuestas en tareas de procesamiento 
+de lenguaje natural (NLP) que requieren conocimiento intensivo \cite{raq}.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=.4\textwidth]{figures/huemul5.png}
+    \caption[]{\\
+    {\scriptsize (Fuente: Elavoración propia)}}
+    \label{fig:chatbot1}
+\end{figure}
