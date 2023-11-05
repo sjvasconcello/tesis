@@ -46,6 +46,15 @@
 \subsection{Entrega de contexto adecuado}
 
 
+
+Los LLM a menudo presentan alucinaciones, por lo que es esencial reducir la frecuencia de este fenómeno. Para lograrlo, la provisión de contexto dentro del prompt no es simplemente precisa, sino que resulta absolutamente indispensable. De hecho, la entrega de contexto adecuado dentro del prompt ha demostrado ser una medida altamente efectiva para reducir las alucinaciones, logrando una disminución de hasta un 99.88 porciento. \cite{riego1}
+
+Por consiguiente, la correcta entrega de contexto dentro del prompt desempeña un papel fundamental en la generación de respuestas precisas a las consultas. Esto se debe a que, ya sea que el contexto proporcionado sea correcto, incorrecto o incluso irrelevante, el modelo de lenguaje lo utilizará como base para generar sus respuestas.
+
+En el contexto del proyecto, la generación de respuestas se basa por completo en la entrega de contexto dentro del prompt, lo que a veces puede dar lugar a la transmisión de más información de la necesaria debido al funcionamiento del framework de Langchain. Esto puede llevar a situaciones en las que el modelo, influenciado por la información incorrecta o adicional proporcionada, genere respuestas que no reflejan un output con una respuesta en su totalidad correcta.
+
+
+
 % Proximidad de los vectores
 
 % Alusionaciones
