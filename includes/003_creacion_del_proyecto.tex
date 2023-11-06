@@ -99,13 +99,23 @@ a la API, el último paso consistió en generar nuevas solicitudes con el objeti
 de las entradas. Estos archivos ahora están descargados y listos para la próxima etapa del proyecto, que implica la transformación 
 de los datos con el fin de obtener la información necesaria para construir la base de datos a partir de los documentos.
 
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figures/extract_diagram.png}
+    \caption[]{\\
+    {\scriptsize (Fuente: Elavoración propia)}}
+    \label{fig:chatbot1}
+\end{figure}
+
+
 
 \subsection{Transform}
 
-\par En la continuación del proceso de ETL (Extracción, Transformación y Carga), los PDFs que previamente han sido descargados 
+% CHAGO: Ojo lo de semejanza semantica
+\par En la continuación en el proceso de ETL (Extracción, Transformación y Carga), los PDFs que previamente han sido descargados 
 requieren ser sometidos a modificaciones con el objetivo de convertir la información que inicialmente se presenta en un 
-estado "sucio" en datos "limpios" que puedan ser adecuadamente utilizados en el proyecto. Este proceso se denomina 
-"transformación," o "transform," en inglés.
+estado ``sucio'' en datos ``limpios'' que puedan ser adecuadamente utilizados en el proyecto. Este proceso se denomina 
+``transformación'', o ``transform,'' en inglés.
 
 \par Entre los datos descargados, nos encontramos con un extenso número de PDFs que presentan dificultades significativas para su 
 manipulación. Esto se debe a que el Tribunal Ambiental no sigue un formato estándar en la estructura de las reclamaciones 
@@ -124,56 +134,109 @@ al formato TXT (texto plano). Esta etapa se lleva a cabo considerando la conveni
 texto en comparación con los archivos en formato PDF puro, dado que el próximo método de transformación, que implica el uso de
  map-reduce en Langchain, requiere que los datos estén en formato de texto.
 
- \par Dentro del contexto del uso de Langchain, el proceso de map-reduce implica, en primer lugar, la aplicación de una cadena de 
-LLM (Modelo de Lenguaje de Gran Tamaño) a cada documento individual {docs[i]}, considerándolos de manera independiente 
-(la fase de "Map"). Esto implica tratar la salida de la cadena como un nuevo documento, resumido. Posteriormente, todos los 
-nuevos documentos resumidos se envían a una cadena de combinación de documentos para obtener una única salida por archivo 
-(la fase de "Reduce"). En este contexto, la implementación de map-reduce en los archivos de texto (TXT) conlleva la aplicación 
-de la cadena de LLM a cada documento de manera individual, generando así una nueva representación del mismo.
+ \begin{figure}[ht!]
+    \centering
+    \includegraphics[width=.5\textwidth]{figures/huemulFOLDERS.png}
+    \caption[]{\\
+    {\scriptsize (Fuente: Elavoración propia)}}
+    \label{fig:chatbot1}
+\end{figure}
+
+\subsubsection{Map-Reduce}
+
+
+\par El proceso de Map-Reduce es un modelo de programación diseñado para procesar grandes cantidades de datos de manera eficiente, 
+escalable y distribuida a través de clústeres de servidores. En el contexto de un archivo PDF muy grande, por ejemplo, si se quisiera resumir 
+el contenido o analizar la frecuencia de ciertas palabras, Map-Reduce podría ser utilizado para dividir la tarea en partes más pequeñas y manejables. 
+Primero, la función de map tomaría el texto del PDF y lo dividiría en elementos más pequeños, como párrafos o líneas, 
+asignando a cada uno un resumen intermedio \cite{mapreduce}. Luego, la función de reduce recogería todos los resumenes intermedios asociados con el documento 
+y los combinaría para producir un resultado agregado, con un resumen de todo el documento. 
+
+% \par Dentro del contexto del uso de Langchain, el proceso de map-reduce implica, en primer lugar, la aplicación de una separación en chunks y genera un resumen 
+%a cada chunk del documento de manera individual, considerándolos de manera independiente 
+%(la fase de "Map"). Posteriormente, todos los 
+%nuevos documentos resumidos se combinan en un documento (la fase de "Reduce"). 
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=.4\textwidth]{figures/huemul_mapreduce.jpg}
+    \caption[]{\\
+    {\scriptsize (Fuente: Elavoración propia)}}
+    \label{fig:chatbot1}
+\end{figure}
 
 \par Sin embargo, es importante destacar que un archivo .txt puede contener un número de tokens demasiado elevado como para ser 
 reducido de manera inmediata. En situaciones de este tipo, es necesario recurrir a un proceso de subdivisión que fragmente los 
-textos en segmentos con un número de tokens inferior al límite impuesto por la API de OpenAI. Cada archivo .txt puede ser dividido, 
+textos en segmentos con un número de tokens inferior al límite impuesto por la API de OpenAI.
+Cada archivo .txt puede ser dividido, 
 resumido y exportado a un nuevo archivo .txt una vez que ha sido fragmentado previamente en segmentos.
 
-\par Los documentos procesados son combinados utilizando otra cadena de procesamiento para obtener un resultado final consolidado. 
+\par Los documentos procesados son combinados utilizando otro proceso de Langchain para obtener un resultado final consolidado. 
 Para concluir el proceso de transformación, los resúmenes generados después de haber pasado por el procedimiento de map-reduce 
 se someten a un último paso antes de ser incorporados en la base de datos. Este paso implica la fusión de los resúmenes con la 
-información obtenida a través de las solicitudes a la API del Tribunal Ambiental, presentada en formato de texto. Este proceso 
-resulta en la creación de un único documento que engloba toda la información, al cual nos referiremos como "documentos finales". 
-Con esto, se concluye la fase de transformación y se procede al último procedimiento, conocido como "carga" (Load), que consiste 
-en cargar estos documentos finales en la base de datos.
+información obtenida a través de la información Extraida por Selenium previamente, presentada en formato de texto. Este proceso 
+resulta en la creación de un único documento que engloba toda la información, al cual nos referiremos como ``documentos finales''. 
+Con esto, se concluye la fase de transformación y se procede al último procedimiento, conocido como ``carga'' (Load), que consiste 
+en el almacenamiento estos documentos finales en la base de datos.
 
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figures/transfrom_diagram.png}
+    \caption[]{\\
+    {\scriptsize (Fuente: Elavoración propia)}}
+    \label{fig:chatbot1}
+\end{figure}
 
 \subsection{Load}
 
 \par Al culminar el proceso de Extracción, Transformación y Carga (ETL), resulta fundamental llevar a cabo la fase de carga, 
-también conocida como "load" en inglés, en la cual se incorporan todos los descriptores previamente descargados y transformados 
+también conocida como ``load'' en inglés, en la cual se incorporan todos los documentos previamente descargados y transformados 
 en una base de datos. Para este proyecto, en el cual se utiliza LangChain, resulta de vital importancia fragmentar los documentos 
-en secciones más pequeñas.
+en secciones más pequeñas, por lo que se deben dividir en chunks todos los documentos.
 
-\par Esta necesidad surge debido a que los documentos deben ser sometidos a un proceso de incrustación (embedding) antes de ser 
-introducidos en la base de datos. Esto se debe principalmente a que las funciones de incrustación tienen un límite en la extensión 
-de grupos de caracteres, conocidos como "tokens," que pueden ser procesados. En el contexto del modelo de incrustación 
-"text-embedding-ada-002," este límite se establece en 8191 tokens [1], lo que constituye la longitud máxima de los fragmentos.
+\par Esta necesidad surge debido a que los documentos deben ser sometidos a un proceso de Embeddings antes de ser 
+introducidos en la base de datos. Esto se debe principalmente a que las funciones de Embeddings tienen un límite en la extensión 
+de grupos de caracteres, conocidos como ``tokens'', que pueden ser procesados. En el contexto del modelo de Embeddings 
+``text-embedding-ada-002'', este límite se establece en 8191 tokens \cite{openai1}, lo que constituye la longitud máxima de los fragmentos.
+
+\subsubsection{Embeddings}
+
+
 
 \par Por lo tanto, cuando se trabaja con documentos extensos, es imperativo dividirlos en fragmentos más pequeños antes de proceder 
-con su incorporación. Según la información proporcionada en el Blog de OpenAI, los embeddings son "representaciones numéricas 
+con su incorporación. Según la información proporcionada en el Blog de OpenAI, los embeddings son ``representaciones numéricas 
 de conceptos convertidos en secuencias numéricas, lo que facilita que las computadoras comprendan las relaciones entre los 
-conceptos." En términos sencillos, los embeddings son representaciones vectoriales de texto que permiten su comprensión por 
-parte del Modelo de Lenguaje de Gran Tamaño (LLM). Dado que los LLM son redes neuronales, el proceso de incrustación resulta 
-esencial para traducir el texto en números, que es el formato comprensible para esta red neuronal basada en Transformers.
+conceptos''\cite{openai1}. En términos sencillos, los embeddings son representaciones vectoriales de texto que permiten su comprensión por 
+parte del Modelo de Lenguaje de Gran Tamaño (LLM). Dado que los LLM son redes neuronales, el proceso de Embedding resulta 
+esencial para traducir el texto en números, que es el formato comprensible para esta red neuronal.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=.5\textwidth]{figures/huemul4.png}
+    \caption[]{\\
+    {\scriptsize (Fuente: Elavoración propia)}}
+    \label{fig:chatbot1}
+\end{figure}
 
 \par Los embeddings resultantes se almacenan posteriormente en una base de datos vectorial denominada ChromaDB. Esta base de 
 datos ha sido diseñada para ser compacta, escalable y eficiente, con el propósito de almacenar y recuperar vectores de manera 
 efectiva. ChromaDB genera índices que permiten una recuperación rápida y eficiente de los embeddings en función de las 
-consultas realizadas por los usuarios.
+consultas realizadas por los usuarios\cite{langchain1}.
 
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/load_diagram.png}
+    \caption[]{\\
+    {\scriptsize (Fuente: Elavoración propia)}}
+    \label{fig:chatbot1}
+\end{figure}
+
+\newpage
 \section{Chatbot}
 
-
-
-    
+   
 La estructura del chatbot se desarrolló en su totalidad utilizando el lenguaje de programación Python. Esta elección se debió a la 
 experiencia del equipo en Python, lo que facilitó tanto la creación del frontend como del backend de la aplicación.
 
