@@ -3,9 +3,36 @@
 
 \section{Creación del Proyecto}
 
+\subsection{Sesgos} %sesgo2
+
+Los Modelos de Lenguaje Grande (LLM), al ser entrenados con una masiva cantidad de datos, pueden manifestar sesgos debido a 
+la procedencia de los datos utilizados en su entrenamiento. Estos sesgos pueden dar lugar a desafíos cuando se aplican en 
+contextos distintos, ya que las respuestas generadas por el modelo pueden no ser adecuadas ni ajustarse a la realidad de 
+esos nuevos escenarios.
+
+Los modelos preentrenados con corupus generados por humanos contien sesgos sociales hacia ciertos grupos demograficos, estos
+sesgos son preocupantes, debido a que pueden ser propagados o incluso amplificados en las tareas que estos modelos realizan \cite{sesgo2}.
+
+Como ejemplo podemos citar el dicho por Bill Gates en su entrevista ``Can AI Save the World? Expert Insights with Bill Gates''  en donde menciono que: 
+``Los sesgos en los modelos de IA pueden llevar a diagnósticos incorrectos, como se vio en el ejemplo donde Chat GPT diagnosticó erróneamente la 
+tuberculosis como gripe debido a las bajas tasas de tuberculosis en los EE. UU.'' \cite{billgates1}. Con lo que podemos dimensional el efecto real de estos sesgos 
+en lo correcto que puede llegar a ser una respuesta por parte de estos modelos.
+
+\subsection{Elección correcta del modelo}
+Actualmente la oferta de grandes modelos de lenguaje es muy amplia, desde los privados como: ChatGPT, PaLM, Bloom, etc. 
+Como también modelos de código abierto como: Llama 2, OpenLLaMA, Falcon, Dolly, etc. \cite{modelo2} Con sus respectivas variantes, debido a que existen 
+variables del modelo como por ejemplo Llama 2 que se puede encontrar en versión de 7, 13 y 70 billones de parámetros \cite{modelos3}. 
+
+Elegir un modelo para trabajar es sumamente importante debido a que: la diversidad y calidad de los datos de preentrenamiento influyen 
+sustancialmente en la capacidad del modelo de lenguaje para comprender y proporcionar respuestas precisas, que el tamaño puede tener una 
+gran influencia en el rendimiento, que el soporte lingüistico podría ser crucial dependiendo la necesidad \cite{modelos1}.
+
+
+
+
+
 % Elección de equipos componentes
 
-% Sesgo (Raciales)
 
 % No realizar un analisis previo
 
@@ -31,6 +58,20 @@
 
 % Elección de la base de datos
 
+\subsection{Volatilidad del Mercado}
+
+Hasta la fecha actual, el 06 de noviembre de 2023, la creación de Chatbots utilizando el método RAG se perfilaba como 
+una de las tendencias más destacadas en el mercado, siendo posiblemente una de las aplicaciones más prometedoras de los LLM. 
+No obstante, en este mismo día, durante la OpenAI DevDay Keynote, se anunciaron novedades significativas, como la entrada en 
+escena de los GPTs, que permite personalizar versiones de ChatGPT con instrucciones, conocimiento extra y cualquier otra combinación 
+de habilidades \cite{openai2}. Además, se introdujeron otros modelos como gpt-4 turbo, un playground de desarrollo para la herramienta, 
+text-to-speech (TTS), entre otros \cite{openai3}.
+
+En este contexto, comprometerse con cualquier tecnología conlleva riesgos, especialmente en este período caracterizado por una 
+volatilidad extrema y una inversión extremadamente agresiva en inteligencia artificial. La Inteligencia Artificial Generativa 
+continúa evolucionando de manera acelerada, lo que la hace cada vez más disruptiva y más eficiente. Por lo tanto, la investigación 
+y la implementación de soluciones de inteligencia artificial centradas en asistentes o chatbots representan un compromiso de alto 
+riesgo en este entorno en constante cambio.
 
 \section{Uso de la Aplicación}
 
@@ -53,20 +94,14 @@ debido al funcionamiento del framework de Langchain. Esto puede llevar a situaci
 influenciado por la información incorrecta o adicional proporcionada, genere respuestas que no reflejan 
 un output con una respuesta en su totalidad correcta.
 
-\subsection{Volatilidad del Mercado}
+\subsection{Aprendizaje por Refuerzo con Retroalimentación Humana (RLHF)}
 
-Hasta la fecha actual, el 06 de noviembre de 2023, la creación de Chatbots utilizando el método RAG se perfilaba como 
-una de las tendencias más destacadas en el mercado, siendo posiblemente una de las aplicaciones más prometedoras de los LLM. 
-No obstante, en este mismo día, durante la OpenAI DevDay Keynote, se anunciaron novedades significativas, como la entrada en 
-escena de los GPTs, que permite personalizar versiones de ChatGPT con instrucciones, conocimiento extra y cualquier otra combinación 
-de habilidades \cite{openai2}. Además, se introdujeron otros modelos como gpt-4 turbo, un playground de desarrollo para la herramienta, 
-text-to-speech (TTS), entre otros \cite{openai3}.
-
-En este contexto, comprometerse con cualquier tecnología conlleva riesgos, especialmente en este período caracterizado por una 
-volatilidad extrema y una inversión extremadamente agresiva en inteligencia artificial. La Inteligencia Artificial Generativa 
-continúa evolucionando de manera acelerada, lo que la hace cada vez más disruptiva y más eficiente. Por lo tanto, la investigación 
-y la implementación de soluciones de inteligencia artificial centradas en asistentes o chatbots representan un compromiso de alto 
-riesgo en este entorno en constante cambio.
+Los modelos grandes de lenguaje suelen dar respuestas que a veces tanto política como moralmente no son correctas, por lo que 
+las empresas tienen por objetivo alinear los valores humanos con los sistemas de aprendizaje automático y dirigir los algoritmos 
+de aprendizaje hacia los objetivos e intereses de los humanos \cite{RLHF}. A esto se le llama Aprendizaje por Refuerzo con 
+Retroalimentación Humana (RLHF), esto puede llegar a ser un problema si es que se busca realizar una aplicación en un usuario con una 
+cultura diferente al proveedor del modelo o que si el usuario al no expresarse bien el modelo se confunda y no entregue una respuesta 
+satisfactoria.
 
 
 % Bloqueos de respuesta

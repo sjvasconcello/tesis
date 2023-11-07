@@ -157,3 +157,62 @@
    title = {New models and developer products announced at DevDay},
    url = {https://openai.com/blog/new-models-and-developer-products-announced-at-devday},
 }
+
+@misc{billgates1,
+   author = {Mrwhosetheboss},
+   title = {Can AI really save the World? ft. Bill Gates - YouTube},
+   url = {https://www.youtube.com/watch?v=l9m3IKG8i88&t=16s},
+}
+
+@inproceedings{sesgo2,
+    title = "Auto-Debias: Debiasing Masked Language Models with Automated Biased Prompts",
+    author = "Guo, Yue  and
+      Yang, Yi  and
+      Abbasi, Ahmed",
+    editor = "Muresan, Smaranda  and
+      Nakov, Preslav  and
+      Villavicencio, Aline",
+    booktitle = "Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)",
+    month = may,
+    year = "2022",
+    address = "Dublin, Ireland",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2022.acl-long.72",
+    doi = "10.18653/v1/2022.acl-long.72",
+    pages = "1012--1023",
+    abstract = "Human-like biases and undesired social stereotypes exist in large pretrained language models. Given the wide adoption of these models in real-world applications, mitigating such biases has become an emerging and important task. In this paper, we propose an automatic method to mitigate the biases in pretrained language models. Different from previous debiasing work that uses external corpora to fine-tune the pretrained models, we instead directly probe the biases encoded in pretrained models through prompts. Specifically, we propose a variant of the beam search method to automatically search for \textit{biased prompts} such that the cloze-style completions are the most different with respect to different demographic groups. Given the identified biased prompts, we then propose a distribution alignment loss to mitigate the biases. Experiment results on standard datasets and metrics show that our proposed \textbf{Auto-Debias} approach can significantly reduce biases, including gender and racial bias, in pretrained language models such as BERT, RoBERTa and ALBERT. Moreover, the improvement in fairness does not decrease the language models{'} understanding abilities, as shown using the GLUE benchmark.",
+}
+
+@article{modelos1,
+   abstract = {As organizations strive to integrate these models into their systems, the pivotal challenge they face is selecting the most appropriate alternative. The task of selecting an appropriate LLM for organizational integration remains complex. This paper presents a comprehensive analysis of factors that should be considered when choosing a LLM, aiming to align the selected model with specific organizational goals. The comparison involves five prominent LLMs: ChatGPT, Bard, Lamma, Hugging Face, and GitHub Copilot. The findings highlight the significance of certain factors in LLM selection. Pre-training data diversity, as observed in ChatGPT and Bard, enhances language coverage and response accuracy. Larger models, like ChatGPT and Bard, exhibit superior comprehension and logical responses due to their extensive parameter count. Training time considerations are crucial, with models such as Bard and Lamma requiring months for training, while Hugging Face and GitHub Copilot offer faster training periods. Language support emerges as a key determinant based on organizational needs. Models like Lamma focus on scientific language, while ChatGPT and Bard emphasize broad language coverage. Enterprise readiness, user data control, and real-time research capabilities are pivotal in decision-making. The study also reveals distinctions in model purposes, API capabilities, user feedback mechanisms, and cloud provider support.},
+   author = {Shreekant Mandvikar},
+   issue = {3},
+   journal = {International Journal of Intelligent Automation and Computing},
+   keywords = {Enterprise Readiness,Language Model Selection,Large Language Models,Natural Language Processing},
+   month = {8},
+   pages = {37-40},
+   title = {Factors to Consider When Selecting a Large Language Model: A Comparative Analysis},
+   volume = {6},
+   url = {https://research.tensorgate.org/index.php/IJIAC/article/view/53},
+   year = {2023},
+}
+@misc{modelos2,
+   author = {Meta},
+   title = {Llama 2 - Meta AI},
+   url = {https://ai.meta.com/llama/},
+}
+@misc{modelos3,
+   author = {Lakera},
+   title = {The List of 11 Most Popular Open Source LLMs of 2023 | Lakera – Protecting AI teams that disrupt the world.},
+   url = {https://www.lakera.ai/blog/open-source-llms},
+}
+
+@article{RLHF,
+   abstract = {We provide a theoretical framework for Reinforcement Learning with Human Feedback (RLHF). Our analysis shows that when the true reward function is linear, the widely used maximum likelihood estimator (MLE) converges under both the Bradley-Terry-Luce (BTL) model and the Plackett-Luce (PL) model. However, we show that when training a policy based on the learned reward model, MLE fails while a pessimistic MLE provides policies with improved performance under certain coverage assumptions. Additionally, we demonstrate that under the PL model, the true MLE and an alternative MLE that splits the $K$-wise comparison into pairwise comparisons both converge. Moreover, the true MLE is asymptotically more efficient. Our results validate the empirical success of existing RLHF algorithms in InstructGPT and provide new insights for algorithm design. Furthermore, our results unify the problem of RLHF and max-entropy Inverse Reinforcement Learning (IRL), and provide the first sample complexity bound for max-entropy IRL.},
+   author = {Banghua Zhu and Jiantao Jiao and Michael I. Jordan},
+   issn = {26403498},
+   month = {1},
+   title = {Principled Reinforcement Learning with Human Feedback from Pairwise or $K$-wise Comparisons},
+   url = {https://arxiv.org/abs/2301.11270v4},
+   year = {2023},
+}
