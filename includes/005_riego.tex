@@ -81,7 +81,7 @@ Los LLM a menudo presentan alucinaciones, por lo que es esencial reducir la frec
 Para lograrlo, la provisión de contexto dentro del prompt no es simplemente precisa, sino que resulta 
 absolutamente indispensable. De hecho, la entrega de contexto adecuado dentro del prompt ha demostrado 
 ser una medida altamente efectiva para reducir las alucinaciones, logrando una disminución de hasta un 
-99.88 porciento. \cite{riego1}
+99.88 porciento \cite{riego1}.
 
 Por consiguiente, la correcta entrega de contexto dentro del prompt desempeña un papel fundamental en 
 la generación de respuestas precisas a las consultas. Esto se debe a que, ya sea que el contexto 
@@ -93,6 +93,31 @@ dentro del prompt, lo que a veces puede dar lugar a la transmisión de más info
 debido al funcionamiento del framework de Langchain. Esto puede llevar a situaciones en las que el modelo, 
 influenciado por la información incorrecta o adicional proporcionada, genere respuestas que no reflejan 
 un output con una respuesta en su totalidad correcta.
+
+\subsection{Limitaciones de la similitud de cosenos}
+
+La similitud del coseno, siendo este método más usado en modelos RAG para la extracción de contexto en la base de datos, 
+como medida de similitud semántica en los embeddings, particularmente para palabras de alta frecuencia en tareas de 
+procesamiento de lenguaje natural (NLP) como preguntas y respuestas (QA), recuperación de información (IR) y traducción 
+automática (MT) presenta limitaciones en su uso, esto principalmente sucede debido a que la frecuencia de las palabras en los 
+datos de entrenamiento afecta la geometría representacional de los embeddings contextualizados, siendo las palabras de baja 
+frecuencia más concentradas geométricamente \cite{coseno}.
+
+Por lo tanto, este problema se extrapola a que, en el momento de querer recuperar contexto pertinente de la base de datos, 
+cuando se realiza el proceso de semejanza semántica entre el prompt y los vectores de la base de datos, este pueda recibir 
+información no relacionada con el prompt, por lo que se enviar como contexto y puede dar oportunidad a alucinaciones.
+
+
+\subsection{Alucinaciones}
+
+El termino alucinación se refiere a la generación de textos o respuestas que exhiben corrección gramatical, fluidez y autenticidad,
+pero se desvían de las entradas de fuente proporcionadas (fidelidad) o no se alinean con la precisión factual (factualidad) \cite{alucionacion1}.
+Siendo en palabras más simples la entrega de información invetada por el modelo.
+
+Dicho lo anterior, podemos decir que este es un gran factor de riesgo para el uso de una aplicación, porque a pesar de estar usando un 
+sistema RAG, que dificulta la posibilidad de generar alucinaciones, sigue estando la posibilidad de que estas sucedan lo que puede 
+entregar un output con información errónea y si es que no se revisa con criterio, se podría a llevar a cometer graves errores debido 
+al uso de información que es directamente falsa.
 
 \subsection{Aprendizaje por Refuerzo con Retroalimentación Humana (RLHF)}
 
