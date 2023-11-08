@@ -27,6 +27,28 @@ Elegir un modelo para trabajar es sumamente importante debido a que: la diversid
 sustancialmente en la capacidad del modelo de lenguaje para comprender y proporcionar respuestas precisas, que el tamaño puede tener una 
 gran influencia en el rendimiento, que el soporte lingüistico podría ser crucial dependiendo la necesidad \cite{modelos1}.
 
+\subsection{Funciones de Embedding}
+
+Las funciones de Embedding son específicas para cada modelo de lenguaje y no son intercambiables entre modelos. Esto se debe a que los embeddings son 
+representaciones de alto nivel provenientes de los pesos y parámetros de cada modelo, por lo que están diseñadas para captar y almacenar las relaciones 
+semánticas específicas de cada modelo \cite{microsoft1}. Por lo que si quieres usar un modelo es necesario contar con su función de Embedding adema de la capacidad de contar con la posibilidad de usar dicha función. 
+
+
+\subsection{Uso de información privada}
+
+Actualmente las empresas que entregan servicios de LLM son muy herméticos con la manera en que entrenan sus modelos, por lo tanto, no sabemos 
+con qué información han sido entrenados la cual no necesariamente es solamente publica, además toda la información que preguntamos por ejemplo a 
+OpenAI va a los servidores y sirve para reentrenar a los modelos.
+
+Se ha probado que los ataques de reconstrucción de datos son posibles, se ha propuesto un ataque de reconstrucción dirigido de caja negra donde el 
+adversario conoce parte de un ejemplo de entrenamiento (es decir, un indicio de texto) e infiere el resto (por ejemplo, un número de tarjeta de crédito), 
+con lo que la posibilidad de extraer datos de entrenamiento de los modelos puede representar un riesgo serio para la privacidad \cite{privacidad1}. 
+
+Actualmente OpenAI esta siendo demandada tanto por violar los derechos de autor \cite{privacidad3} como por robo sistemático \cite{privacidad2}, debido a que quienes 
+demandas alegan que sus obras han sido usadas para entrenar a sus modelos de LLM, por lo que hasta que no tengamos total transparencia del proceso, 
+a pesar de que existen servicios donde tus inputs supuestamente no son usados para reentrenar el modelo \cite{openai4}, es preferible ser cautelosos con la 
+información que se manda a los LLM si estos no están corriendo de manera local.
+
 
 
 
