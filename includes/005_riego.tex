@@ -3,6 +3,18 @@
 
 \section{Creación del Proyecto}
 
+\subsection{Calidad de los datos}
+
+Para cualquier tipo de trabajo, aplicación o estudio la calidad de los datos es en extremo importante esto debido a que, la calidad de los datos 
+es crítica para un sistema de Machine Learning, porque los datos deficientes podrían causar problemas graves como predicciones erróneas o baja 
+precisión de clasificación \cite{calidad1}. Ahora si hablamos de LLM que entra en el terreno del Deep learning, simplificamos los atributos de calidad de datos 
+en los tres más importantes para el Deep Learning: la fidelidad, la variedad y la veracidad de un conjunto de datos \cite{calidad1}.
+
+Como ejemplo dentro usando el proyecto que acompaña a este análisis de riesgo, se tuvo problemas en ciertas reclamaciones tratadas en el proceso 
+de ETL, debido principalmente a que no existe un estándar para subir las reclamaciones en el buscador ambiental, existían pdf que eran legibles y otros 
+que eran solo fotocopias, lo que imposibilitaba la extracción de información. Incluso dentro de la calidad de los datos, se puede extrapolar a la 
+calidad de la metadata que era anexa en la base de datos.
+
 \subsection{Sesgos} %sesgo2
 
 Los Modelos de Lenguaje Grande (LLM), al ser entrenados con una masiva cantidad de datos, pueden manifestar sesgos debido a 
@@ -29,15 +41,18 @@ gran influencia en el rendimiento, que el soporte lingüistico podría ser cruci
 
 
 \subsection{Costos Monetarios}
-Los costos relacionados con la creación o el uso de un modelo LLM pueden aumentar de manera exponencial. Por lo tanto, es fundamental tener en cuenta los costos asociados al utilizar un servidor externo, así como el costo de operar un servidor local, incluyendo el consumo de energía eléctrica.
-Por ejemplo, hay estudios en donde realizando un ajuste al modelo, fine tunning, es consumo de energía es comparable al de pequeñas ciudades y el dióxido de carbono emitido es equivalente a 500 veces la de un vuelo de ida y vuelta entre Nueva York y San Francisco \cite{ft1}. 
+Los costos relacionados con la creación o el uso de un modelo LLM pueden aumentar de manera exponencial. Por lo tanto, es fundamental tener en 
+cuenta los costos asociados al utilizar un servidor externo, así como el costo de operar un servidor local, incluyendo el consumo de energía eléctrica.
+Por ejemplo, hay estudios en donde realizando un ajuste al modelo, fine tunning, es consumo de energía es comparable al de pequeñas ciudades y el dióxido 
+de carbono emitido es equivalente a 500 veces la de un vuelo de ida y vuelta entre Nueva York y San Francisco \cite{ft1}. 
 
 
 \subsection{Funciones de Embedding}
 
 Las funciones de Embedding son específicas para cada modelo de lenguaje y no son intercambiables entre modelos. Esto se debe a que los embeddings son 
 representaciones de alto nivel provenientes de los pesos y parámetros de cada modelo, por lo que están diseñadas para captar y almacenar las relaciones 
-semánticas específicas de cada modelo \cite{microsoft1}. Por lo que si quieres usar un modelo es necesario contar con su función de Embedding adema de la capacidad de contar con la posibilidad de usar dicha función. 
+semánticas específicas de cada modelo \cite{microsoft1}. Por lo que si quieres usar un modelo es necesario contar con su función de Embedding adema de la 
+apacidad de contar con la posibilidad de usar dicha función. 
 
 
 \subsection{Uso de información privada}
@@ -54,37 +69,6 @@ Actualmente OpenAI esta siendo demandada tanto por violar los derechos de autor 
 demandas alegan que sus obras han sido usadas para entrenar a sus modelos de LLM, por lo que hasta que no tengamos total transparencia del proceso, 
 a pesar de que existen servicios donde tus inputs supuestamente no son usados para reentrenar el modelo \cite{openai4}, es preferible ser cautelosos con la 
 información que se manda a los LLM si estos no están corriendo de manera local.
-
-
-
-
-
-% Elección de equipos componentes
-
-
-% No realizar un analisis previo
-
-% Licencias LLM
-
-% Datos Actualizados
-
-% Costos
-
-% Lesgislacion de datos
-
-% robots.txt
-
-% Pureza de los datos
-
-% Tratamiento de los datos
-
-% Embbeding
-
-% Chunks
-
-% Medatada
-
-% Elección de la base de datos
 
 \subsection{Volatilidad del Mercado}
 
@@ -155,12 +139,3 @@ de aprendizaje hacia los objetivos e intereses de los humanos \cite{RLHF}. A est
 Retroalimentación Humana (RLHF), esto puede llegar a ser un problema si es que se busca realizar una aplicación en un usuario con una 
 cultura diferente al proveedor del modelo o que si el usuario al no expresarse bien el modelo se confunda y no entregue una respuesta 
 satisfactoria.
-
-
-% Bloqueos de respuesta
-
-% Proximidad de los vectores
-
-% Alusionaciones
-
-% Conocimiento del funcionamiento de herramientas
