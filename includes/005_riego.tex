@@ -55,20 +55,16 @@ semánticas específicas de cada modelo \cite{microsoft1}. Por lo que si quieres
 apacidad de contar con la posibilidad de usar dicha función. 
 
 
-\subsection{Uso de información privada}
+\subsection{Conocimiento de Framework}
+Cuando se desarrolla una aplicación, es esencial comprender el funcionamiento interno de los frameworks o herramientas que se están utilizando. 
+Esta comprensión no solo es valiosa para comprender el proceso en su conjunto, sino que también es necesaria para tener un control los costos asociados al 
+proyecto en caso de llevarse a producción. 	
 
-Actualmente las empresas que entregan servicios de LLM son muy herméticos con la manera en que entrenan sus modelos, por lo tanto, no sabemos 
-con qué información han sido entrenados la cual no necesariamente es solamente publica, además toda la información que preguntamos por ejemplo a 
-OpenAI va a los servidores y sirve para reentrenar a los modelos.
+Por ejemplo, en el contexto del proyecto, es importante saber que Langchain realiza múltiples llamadas a los modelos \cite{framework1}. Si no se cuantifican de manera adecuada 
+la cantidad de llamadas y la extensión de ellos, esto puede dar lugar a problemas de cuantificación de costos. Por lo tanto, la capacidad de comprender y 
+medir con precisión el uso de recursos, como las llamadas a los modelos, es esencial para gestionar eficazmente los costos y asegurar el éxito del proyecto 
+si es que quise ser llevado a producción.
 
-Se ha probado que los ataques de reconstrucción de datos son posibles, se ha propuesto un ataque de reconstrucción dirigido de caja negra donde el 
-adversario conoce parte de un ejemplo de entrenamiento (es decir, un indicio de texto) e infiere el resto (por ejemplo, un número de tarjeta de crédito), 
-con lo que la posibilidad de extraer datos de entrenamiento de los modelos puede representar un riesgo serio para la privacidad \cite{privacidad1}. 
-
-Actualmente OpenAI esta siendo demandada tanto por violar los derechos de autor \cite{privacidad3} como por robo sistemático \cite{privacidad2}, debido a que quienes 
-demandas alegan que sus obras han sido usadas para entrenar a sus modelos de LLM, por lo que hasta que no tengamos total transparencia del proceso, 
-a pesar de que existen servicios donde tus inputs supuestamente no son usados para reentrenar el modelo \cite{openai4}, es preferible ser cautelosos con la 
-información que se manda a los LLM si estos no están corriendo de manera local.
 
 \subsection{Volatilidad del Mercado}
 
@@ -118,6 +114,22 @@ frecuencia más concentradas geométricamente \cite{coseno}.
 Por lo tanto, este problema se extrapola a que, en el momento de querer recuperar contexto pertinente de la base de datos, 
 cuando se realiza el proceso de semejanza semántica entre el prompt y los vectores de la base de datos, este pueda recibir 
 información no relacionada con el prompt, por lo que se enviar como contexto y puede dar oportunidad a alucinaciones.
+
+
+\subsection{Uso de información privada}
+
+Actualmente las empresas que entregan servicios de LLM son muy herméticos con la manera en que entrenan sus modelos, por lo tanto, no sabemos 
+con qué información han sido entrenados la cual no necesariamente es solamente publica, además toda la información que preguntamos por ejemplo a 
+OpenAI va a los servidores y sirve para reentrenar a los modelos.
+
+Se ha probado que los ataques de reconstrucción de datos son posibles, se ha propuesto un ataque de reconstrucción dirigido de caja negra donde el 
+adversario conoce parte de un ejemplo de entrenamiento (es decir, un indicio de texto) e infiere el resto (por ejemplo, un número de tarjeta de crédito), 
+con lo que la posibilidad de extraer datos de entrenamiento de los modelos puede representar un riesgo serio para la privacidad \cite{privacidad1}. 
+
+Actualmente OpenAI esta siendo demandada tanto por violar los derechos de autor \cite{privacidad3} como por robo sistemático \cite{privacidad2}, debido a que quienes 
+demandas alegan que sus obras han sido usadas para entrenar a sus modelos de LLM, por lo que hasta que no tengamos total transparencia del proceso, 
+a pesar de que existen servicios donde tus inputs supuestamente no son usados para reentrenar el modelo \cite{openai4}, es preferible ser cautelosos con la 
+información que se manda a los LLM si estos no están corriendo de manera local.
 
 
 \subsection{Alucinaciones}
