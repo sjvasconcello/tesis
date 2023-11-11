@@ -11,7 +11,7 @@ de jurisprudencia que puede ser encontrada en su portal de consulta llamado busc
 
 El proyecto consiste en la generación de un chatbot en donde se pueda preguntar sobre 
 la jurisprudencia de estos tribunales, aunque por razones de capacidad el chatbot se 
-vea acotado solamente a las reclamaciones recibidas por el tribunal.
+vea acotado solamente a las reclamaciones recibidas por el tribunal, con una estructura representada a \autoref{fig:estructura}.
 
 Por lo que, este proyecto consiste en un proceso de extracción de datos 
 desde el buscador ambiental, transformación de estos datos para su utilización, generación 
@@ -25,7 +25,7 @@ esa información a el LLM, siendo en este caso gpt-4 perteneciente a OpenAI.
     \includegraphics[width=.5\textwidth]{figures/huemul1.png}
     \caption[Estructura basica de la aplicación]{Estructura basica de la aplicación\\
     {\scriptsize (Fuente: Elaboración propia)}}
-    \label{fig:logoind}
+    \label{fig:estructura}
 \end{figure}
     
 
@@ -40,12 +40,12 @@ Para realizar el proyecto fue necesario realizar un proceso de ETL. El término 
 Transformación y Carga" (Extract, Transform, Load), que constituyen un proceso clave para los datos necesarios para el proyecto. 
 Este proceso implica la extracción de datos de fuentes heterogéneas, su transformación para ajustarse a las necesidades del 
 negocio y su posterior carga en un destino que, por lo general, es un almacén de datos diseñado para el análisis y la generación 
-de informes\cite{ETL1}.
+de informes\cite{ETL1}. Siendo en este proyecto un estrutura como la \autoref{fig:etl1}.
 
 % Inclusión de Figuras
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=.5\textwidth]{figures/huemulETL.png}
+    \includegraphics[width=.7\textwidth]{figures/huemulETL.png}
     \caption[Estructura del proceso de ETL para el Buscador Ambiental]{Estructura del proceso de ETL para el Buscador Ambiental\\
     {\scriptsize (Fuente: Elaboración propia)}}
     \label{fig:etl1}
@@ -283,10 +283,10 @@ constar de instrucciones y una consulta, en RAG se agrega contexto dentro del pr
 probabilidad de alucinaciones y mejorar la calidad de las respuestas. 
 
 
-En cambio, mediante "Retriever-Augmented Generation" 
+En cambio, mediante ``Retriever-Augmented Generation" 
 consiste al igual que el proceso anterior se entregan las instrucciones y una consulta, pero junto ello se agrega un contexto 
 de este, cosa de que el modelo largo de lenguaje tenga menor capacidad de alucinar y generar una mejor respuesta. Podemos decir
-que "Retriever-Augmented Generation" (RAG) se refiere a un modelo de generación de lenguaje que se mejora con la capacidad 
+que ``Retriever-Augmented Generatio'' (RAG) se refiere a un modelo de generación de lenguaje que se mejora con la capacidad 
 de recuperar información de una memoria no paramétrica, como un índice de vectores del buscador ambiental, además de la 
 memoria paramétrica que ya posee. Este enfoque se utiliza para mejorar la generación de respuestas en tareas de procesamiento 
 de lenguaje natural (NLP) que requieren conocimiento intensivo \cite{raq}.
