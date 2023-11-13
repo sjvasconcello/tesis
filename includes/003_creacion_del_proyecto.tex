@@ -183,7 +183,7 @@ en el almacenamiento estos documentos finales en la base de datos.
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=0.6\textwidth]{figures/transfrom_diagram.png}
-    \caption[]{\\
+    \caption[Diagrama de secuencia para el proceso de transformación (Trasform) de datos]{Diagrama de secuencia para el proceso de transformación (Trasform) de datos\\
     {\scriptsize (Fuente: Elavoración propia)}}
     \label{fig:chatbot1}
 \end{figure}
@@ -283,12 +283,12 @@ constar de instrucciones y una consulta, en RAG se agrega contexto dentro del pr
 probabilidad de alucinaciones y mejorar la calidad de las respuestas. 
 
 
-En cambio, mediante ``Retriever-Augmented Generation" 
-consiste al igual que el proceso anterior se entregan las instrucciones y una consulta, pero junto ello se agrega un contexto 
+En cambio, mediante ``Retriever-Augmented Generation'' 
+consiste al igual que el proceso anterior en entregar las instrucciones y una consulta, pero junto ello se agrega un contexto 
 de este, cosa de que el modelo largo de lenguaje tenga menor capacidad de alucinar y generar una mejor respuesta. Podemos decir
-que ``Retriever-Augmented Generatio'' (RAG) se refiere a un modelo de generación de lenguaje que se mejora con la capacidad 
-de recuperar información de una memoria no paramétrica, como un índice de vectores del buscador ambiental, además de la 
-memoria paramétrica que ya posee. Este enfoque se utiliza para mejorar la generación de respuestas en tareas de procesamiento 
+que ``Retriever-Augmented Generatio'' (RAG) se refiere a un modelo de generación de lenguaje que se mejora por la capacidad 
+de recuperar información de una base de datos, como un índice de vectores que representan los documentos del buscador ambiental, 
+además de la memoria que ya posee. Este enfoque se utiliza para mejorar la generación de respuestas en tareas de procesamiento 
 de lenguaje natural (NLP) que requieren conocimiento intensivo \cite{raq}.
 
 \begin{figure}[ht!]
@@ -298,3 +298,8 @@ de lenguaje natural (NLP) que requieren conocimiento intensivo \cite{raq}.
     {\scriptsize (Fuente: Elavoración propia)}}
     \label{fig:chatbot1}
 \end{figure}
+
+Finalmente, este chatbot envía el prompt con las instrucciones y el contexto obtenido mediante el RAG realizado con 
+Langchain a el LLM, siendo en este caso gpt-4 de OpenAI, luego de pasar por una función de Embedding, cosa de que 
+pueda ser leído por el modelo. Por lo que se realiza un request con la información a la API de OpenAI, para que se 
+obtenga el output con la respuesta.
