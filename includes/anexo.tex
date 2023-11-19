@@ -1,96 +1,505 @@
 %!TEX root = memoria.tex
-\chapter{LICENCIA}\label{appx:licencia}
+\chapter{Contexto enviado por el Chatbot}\label{appx:output}
 
-{\footnotesize
-\verbatiminput{LICENSE} 
-}
-
-\chapter{Código fuente de figuras y tablas}
-\label{annex:code}
-
-\section{Tablas}
-
-\subsection{Tabla Normal}
-
-\begin{Verbatim}[frame=lines, label=\autoref{tbl:temperaturas} Ejemplo Tabla
+\begin{Verbatim}[frame=lines, label=Elavoración propia -  Ejemplo de Contexto enviado por el Chatbot a OpenAI
 				, fontsize=\footnotesize, numbers=left
-				, baselinestretch=1
+				, baselinestretch=0.4
 				, formatcom=\color{gray}]
-\begin{table}[ht]
-    \caption[Ejemplo: Tabla de Temperaturas]{Tabla de Temperaturas}
-    \label{tbl:annex-table}
-    \begin{tabularx}{\linewidth}{@{} l  c  c  X @{}}
-        \toprule
-        \textbf{\textsc{Day}} &  \textbf{\textsc{Min Temp}} 
-        		& \textbf{\textsc{Max Temp}} & \textbf{\textsc{Summary}}\\
-    	  \hline\hline
-        Monday & 11C & 22C & A clear day with lots of sunshine.
-        However, the strong breeze will bring down the temperatures. \\ \hline
-        Tuesday & 9C & 19C & Cloudy with rain, across many northern regions. Clear spells
-        across most of Scotland and Northern Ireland,
-        but rain reaching the far northwest. \\ \hline
-        Wednesday & 10C & 21C & Rain will still linger for the morning.
-        Conditions will improve by early afternoon and continue
-        throughout the evening. \\
-        \bottomrule
-    \end{tabularx}
+{
+    'query': 'Dame un resumen del caso Dominga',
+    'result': 'El caso Dominga se refiere a una reclamación presentada por Andes Iron SpA
+contra la Resolución Exenta N° 1146/2017 del Servicio de Evaluación Ambiental y el Comité de
+Ministros. El reclamo se basa en el rechazo del Estudio de Impacto Ambiental del proyecto
+Dominga y la acogida parcial de los recursos de reclamación presentados en el marco de la
+participación ciudadana. El Primer Tribunal Ambiental de la República de Chile admitió la
+reclamación y convocó a una audiencia de percepción documental. Además, se presentaron
+informes de Amicus Curiae y se aceptó la participación de terceros coadyuvantes e
+independientes. El proceso judicial continúa y se espera una sentencia definitiva. En una
+sentencia anterior, el tribunal había anulado varias resoluciones relacionadas con el proyecto
+y ordenado retrotraer el procedimiento de evaluación ambiental a una etapa posterior al
+Informe Consolidado de Evaluación. Sin embargo, esta sentencia fue anulada por la Corte
+Suprema y el caso fue remitido nuevamente al Primer Tribunal Ambiental para que se pronuncie
+sobre el fondo del asunto.',
+    'source_documents': [
+        Document(
+            page_content='El caso Dominga\n\nRol: "R-1-2017", Rol: "R-1-2017",Rol: "R-1-2017",
+fecha 16-04-2021 de Andes Iron SpA con SEA cuyo proyecto corresponde a Dominga. Este caso
+tiene como principal materia Evaluación Ambiental y su coponente ambiental es Agua\n\nThe
+integration ministers are: \n1. Juan Opazo Lagos\n2. Jasna Pavlich Núñez\n3. Fabrizio Queirolo
+Pellerano\n\nSiendo sus descriptores: Evaluación ambiental, término anticipado, suficiencia de
+información, medidas de compensación, valor compartido, facultades del Comité de Ministros,
+suficiencia de la información, línea base de medio marino, medida voluntaria, riesgos
+ambientales, observación ciudadana, PAC, fauna marina, impacto de ruidos, rutas de navegación,
+efectos sinérgicos, áreas de exclusión, trato desigual, biodiversidad marina, pingüino
+Humboldt, barreras eólicas, amicus curiae. \n\nEl First Environmental Court Acoge la causa en
+esta ocacion. Los hechos controvertidos son: Del supuesto carácter completo de los
+antecedentes del proyecto y evaluación del mismo. En cuanto al término anticipado del
+procedimiento de evaluación ambiental. En cuanto al criterio del propio Comité de Ministros
+respecto de los aspectos relacionados con la actividad de transporte marítimo. De la supuesta
+información para evaluar las rutas de navegación que habría cumplido con creces el estándar
+fijado por el Comité de Ministros. En relación a la propuesta de la casa del Mar, luego
+denominada centro de estudios científicos. En cuanto al “Valor Compartido” con las
+comunidades. Revisión de los argumentos técnicos que fundaron el rechazo del proyecto. De la
+supuesta insuficiencia de la línea de base del medio marino en las rutas de navegación. De la
+supuesta utilización parcial de fragmentos contenidos en los informes de los Servicios, con
+preguntas inductivas al efecto. Del supuesto tratamiento discriminatorio en lo relativo a la
+línea de base. De la supuesta suficiencia de los análisis de efectos sinérgicos. De la
+supuesta ausencia de desequilibrio entre impactos y medidas. De las Reclamaciones PAC. Del
+supuesto impacto en el recurso hídrico luego del cierre del Sistema de Captación y Devolución
+de aguas desde el Rajo Sur. De la supuesta claridad de la información para descartar impactos
+adversos en el mar. De la supuesta insignificancia de impactos por aporte de material
+particulado sedimentable (“MPS”). De la supuesta insuficiencia de la medida de compensación
+para el impacto en el proceso de nidificación de pingüino de Humboldt. De la supuesta
+ilegalidad en la posición sobre la evaluación del impacto de barreras eólicas en la avifauna.
+De la supuesta suficiencia de las áreas de exclusión. De la supuesta evaluación del impacto
+acústico de los buques en la fauna marina. Del supuesto plan de monitoreo de aves y cetáceos
+que no podría supuestamente ser medida.\n\nY el resumen es: El Primer Tribunal Ambiental de la
+República de Chile recibió una reclamación presentada por Andes Iron SpA contra la Resolución
+Exenta N° 1146/2017 del Servicio de Evaluación Ambiental y el Comité de Ministros. La
+reclamación se basa en el rechazo del Estudio de Impacto Ambiental del proyecto Dominga y la
+acogida parcial de los recursos de reclamación presentados en el marco de la participación
+ciudadana. El Tribunal admitió a trámite la reclamación y convocó a una audiencia de
+percepción documental. Además, se presentaron informes de Amicus Curiae y se aceptó la
+participación de terceros coadyuvantes e independientes. El proceso judicial continúa y se
+espera una sentencia definitiva.\nEl Primer Tribunal Ambiental de Chile ha emitido una
+sentencia en relación al proyecto minero-portuario Dominga. En la sentencia, se rechaza la
+excepción de extemporaneidad interpuesta por un tercero independiente y se acoge la
+reclamación presentada por Andes Iron SpA. Se anulan varias resoluciones relacionadas con el
+proyecto y se ordena retrotraer el procedimiento de evaluación ambiental a una etapa posterior
+al Informe Consolidado de Evaluación. La Corte Suprema ha anulado la sentencia y ha remitido
+el caso nuevamente al Primer Tribunal Ambiental para que se pronuncie sobre el fondo del
+asunto.\nEl documento revisado es una serie de antecedentes procesales de un caso relacionado
+con el proyecto minero Dominga en Chile. El caso involucra reclamaciones judiciales y recursos
+de casación presentados por diferentes partes. La Corte Suprema ha ordenado al Tribunal
+Ambiental que revise y decida sobre el fondo del asunto, incluyendo la evaluación ambiental
+del proyecto y la refutación de los antecedentes técnicos utilizados para rechazarlo. Los
+principales hechos controvertidos incluyen el carácter completo de los antecedentes del
+proyecto, la evaluación del mismo y los argumentos técnicos que fundamentaron su rechazo. El
+documento también menciona la suspensión de la vista de la causa y la fijación de una nueva
+fecha para la audiencia de alegatos.\nEl Tribunal Ambiental de Chile revisó una serie de
+alegaciones relacionadas con la evaluación ambiental del proyecto Dominga. En primer lugar, se
+discutió si el procedimiento de evaluación se terminó anticipadamente, concluyendo que no
+existió falta de información relevante. Además, se argumentó que el proyecto cumplió con todas
+las instancias formales de participación ciudadana. En segundo lugar, se analizó el criterio
+del Comité de Ministros respecto a la actividad de transporte marítimo del proyecto,
+concluyendo que el Comité consideró que la línea de base complementaria para las rutas de
+navegación no fue suficiente para evaluar los efectos del proyecto. Sin embargo, el Tribunal
+consideró que la línea de base del medio marino presentada por el titular del proyecto fue
+suficiente y adecuada. Por último, se discutió la propuesta de la Casa del Mar, concluyendo
+que el proyecto consideró compromisos voluntarios para cumplir con estándares más altos que
+los establecidos por la legislación ambiental. En resumen, el Tribunal acogió algunas
+alegaciones del reclamante y desestimó otras, concluyendo que el proyecto Dominga cumplió con
+los requisitos de evaluación ambiental.\nEl Tribunal Ambiental ha revisado los argumentos
+técnicos que fundamentaron el rechazo del proyecto Dominga. En cuanto a la medida propuesta de
+crear un Centro de Estudios Científicos, el tribunal considera que es interesante e
+innovadora, pero sugiere que debería ser más amplia en su alcance y concepción, abarcando
+también el estudio de los ecosistemas terrestres y el medio humano en la comuna de La Higuera.
+Además, se propone que el Centro de Estudios lleve a cabo un programa de investigación y
+estudios de las especies de interés en la zona, así como un protocolo de acción frente a
+impactos ambientales no previstos. También se plantea la necesidad de medir los posibles
+impactos socioeconómicos en las comunidades pesqueras, turísticas y productivas de Los Choros
+y Chungungo, y elaborar un plan de desarrollo en armonía con el plan de desarrollo regional.
+El tribunal destaca la importancia de establecer un mecanismo vinculante para las decisiones
+del Centro de Estudios y la participación de actores relevantes en su diseño y gobierno
+corporativo. En cuanto al "Valor Compartido" con las comunidades, el tribunal considera que es
+importante que los proyectos entreguen beneficios compartidos y reconoce la propuesta de
+Dominga en este sentido. Sin embargo, señala que esta materia no se encuentra discutida en el
+proceso de evaluación y que el compromiso de compartir el valor del negocio no puede sobreseer
+las causales por las cuales el proyecto fue rechazado. En relación a la supuesta insuficiencia
+de la línea de base del medio marino en las rutas de navegación, el tribunal considera que la
+información presentada por el proyecto es suficiente y que el Comité de Ministros no hizo un
+análisis adecuado al respecto. Se destaca que el compendio de conocimiento entregado por el
+proyecto es robusto y que la campaña de terreno realizada en las rutas de navegación
+complementa adecuadamente la línea de base del medio marino. En conclusión, el tribunal acoge
+los cuestionamientos del reclamante y mantiene el rechazo del proyecto Dominga.\nEl Tribunal
+Ambiental de Chile revisó una alegación presentada por el Titular del proyecto Dominga, en la
+que se argumentaba que el Comité de Ministros había aplicado criterios diferentes al evaluar
+los proyectos Dominga y Cruz Grande en relación a la actividad de navegación. El Titular
+sostenía que ambos proyectos eran similares y debían ser evaluados de manera análoga para
+respetar el principio de igualdad ante la ley. Sin embargo, el Tribunal determinó que los
+proyectos no se encontraban en la misma situación jurídica o material, por lo que era
+razonable aplicar criterios diferentes. Además, se señaló que el proyecto Dominga no había
+evaluado adecuadamente los impactos de la navegación, a pesar de haber identificado riesgos y
+presentado planes de contingencia. En conclusión, el Tribunal rechazó la alegación de trato
+discriminatorio y confirmó la decisión del Comité de Ministros.\nEl Tribunal Ambiental ha
+analizado los elementos de temporalidad, objetivos y ubicación de los proyectos Cruz Grande y
+Dominga. Ambos proyectos fueron presentados a través de Estudios de Impacto Ambiental y fueron
+tramitados en forma paralela durante tres años. Ambos proyectos se ubican en la comuna de La
+Higuera, Región de Coquimbo. Ambos proyectos tienen como objetivo la recepción, acopio y
+embarque de sustancias minerales, por lo que es necesario evaluar los impactos ambientales
+asociados a estas actividades. El Comité de Ministros adoptó un actuar distinto respecto al
+proyecto Dominga, argumentando la insuficiencia de información sobre las rutas de navegación y
+los impactos que podrían generar. Sin embargo, el Tribunal considera que el Comité de
+Ministros contaba con la información necesaria para evaluar adecuadamente el proyecto Dominga.
+En cuanto a los impactos sinérgicos, el Tribunal concluye que se realizó un análisis completo
+de estos impactos en el proyecto Dominga, considerando la existencia del proyecto Cruz Grande.
+El Tribunal considera que la información de línea base es suficiente para definir los impactos
+sinérgicos y que no existe un desequilibrio entre los impactos y las medidas propuestas.\nEl
+Tribunal Ambiental ha revisado las reclamaciones presentadas en relación al proyecto minero
+Dominga. En cuanto a la insuficiencia de la línea de base del medio marino en las rutas de
+navegación, el Tribunal concluye que no está debidamente acreditada y que las medidas
+asociadas son adecuadas. En relación al impacto en el recurso hídrico por el cierre del
+Sistema de Captación y Devolución de aguas desde el Rajo Sur, el Comité de Ministros consideró
+que la medida de mitigación era inadecuada, pero el SEA argumenta que la medida es idónea y
+que se puede financiar a través del Fondo para la Gestión de Faenas Mineras Cerradas. Respecto
+a los efectos en el mar, el Comité de Ministros concluyó que no se evaluaron adecuadamente los
+impactos de la planta desalinizadora, pero el SEA argumenta que sí se evaluaron y que no se
+evidencian cambios significativos en las condiciones físico-químicas ni en la biodiversidad
+asociada a las Áreas de Manejo y Explotación de Recursos Bentónicos. Además, se establece la
+necesidad de un monitoreo de la salinidad durante la operación del proyecto. En conclusión, el
+Tribunal rechaza las reclamaciones presentadas.\nEl Tribunal Ambiental concluye que las
+preocupaciones presentadas por la empresa Dominga en relación a las preocupaciones PAC
+(Programa de Adecuación y Compensación) fueron debidamente resueltas. Sin embargo, se
+determina que hubo una subestimación en la evaluación de los impactos por aporte de material
+particulado sedimentable (MPS) y se evidencia un desconocimiento de los antecedentes por parte
+del Comité de Ministros. Además, se señala que la normativa ambiental no se adecúa al contexto
+del proyecto. En cuanto a la medida de compensación para el impacto en el proceso de
+nidificación del Pingüino de Humboldt, se determina que la propuesta presentada por la empresa
+no logra un efecto positivo alternativo y equivalente, por lo que se acoge la reclamación. Se
+cuestiona la falta de fundamentos del Comité de Ministros y se sugiere la implementación de
+medidas de mitigación más innovadoras.\nEl Tribunal Ambiental advierte una debilidad en la
+forma en que se abordó la afectación del Pingüino de Humboldt en el islote Totoralillo Norte
+durante la evaluación ambiental del proyecto. Se señala que no se consideraron medidas de
+mitigación innovadoras ni propuestas alternativas de medidas compensatorias. Además, se
+cuestiona la medida de compensación propuesta, ya que no cumple con los requisitos de
+equivalencia y adicionalidad. En cuanto al impacto de las barreras eólicas en la avifauna, se
+argumenta que este tema no fue debidamente considerado ni evaluado durante la evaluación
+ambiental del proyecto. Se destaca la falta de congruencia y fundamentación en la resolución
+del Comité de Ministros. Por otro lado, se menciona la importancia de evaluar el efecto
+atrayente de las luminarias de las barreras eólicas y la infraestructura portuaria en la
+avifauna marina. Se hace referencia a la contaminación lumínica y sus efectos desorientadores
+en las aves costeras.\nLa revisión del expediente de evaluación ambiental no muestra estudios
+relacionados con la elaboración de una línea base de la avifauna en los sectores mencionados,
+lo que dificulta la identificación y abordaje de los impactos potenciales. El uso de
+luminarias durante la noche en zonas portuarias y la mortalidad de aves marinas, especialmente
+los petreles, son temas sensibles que deben ser considerados. Se advierte la oportunidad de
+complementar la información técnica para evaluar adecuadamente estos impactos. Además, se
+cuestiona la supuesta suficiencia de las áreas de exclusión y la falta de consideración de los
+impactos sinérgicos. Se destaca la falta de estudios sobre el impacto acústico de los buques
+en la fauna marina. En conclusión, se considera que no se evaluaron adecuadamente los impactos
+mencionados y se sugiere la realización de investigaciones científicas para incrementar el
+conocimiento de los ecosistemas marino costeros.\nEl Primer Tribunal Ambiental de Chile ha
+acogido la reclamación presentada por Andes Iron SpA en contra de la Resolución 1146 del
+Director Ejecutivo del SEA y el acuerdo Nº 08/2017 del Comité de Ministros. El tribunal ha
+ordenado retrotraer el procedimiento de evaluación ambiental a la etapa posterior al Informe
+Consolidado de Evaluación Ambiental y realizar una nueva votación ajustada a derecho por parte
+de la COEVA de la Región de Coquimbo. No se condena en costas a las partes.\nResumen:\n\nEl 16
+de abril de 2021, se notificó en Antofagasta la sentencia anterior a través del estado diario
+y correo electrónico. La sentencia se encuentra en las fojas 6156.',
+            metadata={
+                'caratula': 'Andes Iron SpA con SEA',
+                'competencia': 'Art. 17 N° 5 de Ley N° 20.600',
+                'componente_ambiental': 'Agua',
+                'decision_del_tribunal': 'Acoge',
+                'descriptores': 'Titular del proyecto; vicios formales; motivaciòn; nulidad;
+vicios de procedimiento; plazos; votación;debido proceso; garantías; contradictoriedad;
+congruencias; igualdad ante la ley; medio marino',
+                'fechaSentencia': '27-04-2018',
+                'nombreProyecto': 'Dominga',
+                'page': 0,
+                'rol': 'R-1-2017',
+                'source':
+'/home/sjvasconcello/usm-data/ds-senior/cmad-ai-sustentable-01/etl/load/../../data/clean/docs_
+with_summary/R-1-2017.txt',
+                'tribunal': '1TA',
+                'urlSentencia':
+'https://www.buscadorambiental.cl/buscador-api/file/view/jurisprudencia/S1TA Rol N°
+R-1-2017?id=1'
+            }
+        ),
+        Document(
+            page_content='El caso Caserones\n\nRol: "R-41-2021", Rol: "R-41-2021",Rol:
+"R-41-2021", fecha 31-08-2021 de Asociación de Productores y Exportadores Agrícolas del Valle
+de Copiapó y otros con Superintendencia de Medio Ambiente cuyo proyecto corresponde a Proyecto
+Caserones. Este caso tiene como principal materia Programa de cumplimiento SMA y su coponente
+ambiental es Agua\n\nThe integration ministers are: \n1. Mauricio Oviedo Gutiérrez\n2. Juan
+Opazo Lagos\n3. Marcelo Hernández Rojas\n\nSiendo sus descriptores: Procedimiento
+sancionatorio, programa de cumplimiento, SMA, desagregación de cargos, desviación del
+procedimiento, integridad del programa de cumplimiento, procedencia del PDC, infracciones que
+han causado daño ambiental, criterio de integridad, plan de reparación ambiental, incentivos
+al cumplimiento, falta de perjuicio, principio de confianza legitima, calidad de aguas,
+acuíferos, criterio de eficacia, razonabilidad y motivación de la resolución de la SMA,
+idoneidad de las medidas, Guía para la presentación de Programas de Cumplimiento por
+infracciones a instrumentos de carácter ambiental.\n\nEl First Environmental Court Rechaza la
+causa en esta ocacion. Los hechos controvertidos son: Procedencia del Programa de Cumplimiento
+para infracciones que han causado daño ambiental, Sobre el criterio de eficacia del Programa
+de Cumplimiento y la prohibición general de eludir a la responsabilidad.\n\nY el resumen es:
+En este documento se presenta una revisión de un caso judicial en el que la Asociación de
+Productores y Exportadores Agrícolas del Valle de Copiapó, la Comunidad de Aguas Subterráneas
+Sector N° 1 "Aguas Arriba del Embalse Lautaro", la Comunidad de Aguas Subterráneas Sector N°2
+"Embalse Lautaro - La Puerta" y la Comunidad de Aguas Subterráneas Sector N° 3 "La Puerta -
+Mal Paso" presentaron una reclamación contra la Resolución Exenta Nº 15/Rol D-018-2019 de la
+Superintendencia del Medio Ambiente. En la reclamación, solicitan la invalidación de la
+resolución y el rechazo del programa de cumplimiento presentado por SCM Minera Lumina Copper
+Chile S.A. El caso involucra cargos relacionados con el incumplimiento de condiciones
+ambientales establecidas para el proyecto Caserones. La Superintendencia del Medio Ambiente y
+SCM Minera Lumina Copper Chile S.A. presentaron sus argumentos en contra de la reclamación. El
+Tribunal admitió la reclamación a trámite y rechazó la solicitud de medida cautelar presentada
+por los reclamantes. El caso se encuentra en estado de relación y se llevó a cabo una vista el
+5 de mayo de 2021.\nLa reclamante argumenta que la resolución impugnada infringe la ley al
+desagregar dos de los cargos formulados en la Resolución Exenta N° 1/D-018-2019, lo cual
+atenta contra la finalidad de poner término al procedimiento administrativo sancionador a
+través del programa de cumplimiento. Además, sostiene que la desagregación de los cargos
+infringe el criterio de integridad y que la resolución reclamada carece de una causal legal
+que habilite la desagregación del procedimiento administrativo. Por otro lado, la reclamante
+acusa a la resolución de violar el principio de confianza legítima al desagregar el
+procedimiento sin causa legal alguna. En cuanto a los argumentos de la reclamada, esta
+sostiene que la resolución reclamada es legal y fue dictada conforme a la normativa vigente.
+Además, argumenta que la empresa ha acreditado la no generación de efectos negativos en
+relación al recurso hídrico y que las medidas propuestas en el programa de cumplimiento son
+eficaces para contener la pluma de contaminación. También señala que la empresa ha cumplido
+con las acciones de difusión y sociabilización del pueblo Colla, pese a no haber sido
+coordinadas con la CONADI. En relación al cargo N° 9, la reclamada sostiene que la empresa
+pudo acreditar la no generación de efectos negativos y que el caudal entregado de agua
+desalada permitió mejorar la calidad del agua entregada a la población. Por último, la
+reclamada argumenta que la improcedencia del programa de cumplimiento en casos de daño
+ambiental se debe a las características de las infracciones y al contexto regulatorio
+ambiental en que se inserten.\nEl Programa de Cumplimiento (PDC) no es un derecho del titular
+que deba operar en todo momento, ya que solo cumple su objetivo a través de medidas que
+permitan volver al cumplimiento de la normativa ambiental. La desagregación de los cargos 11 y
+12 por parte de la Superintendencia del Medio Ambiente (SMA) cumple con la finalidad del
+procedimiento sancionatorio de obtener la responsabilidad del infractor y proteger el medio
+ambiente. La improcedencia del PDC respecto a estos cargos no genera perjuicios a los
+reclamantes, ya que el derecho a presentar un PDC corresponde únicamente al presunto infractor
+y no a los interesados del procedimiento. La SMA argumenta que la desagregación de los cargos
+11 y 12 está en armonía con los intereses de los denunciantes. Además, la SMA se refiere a la
+Resolución Exenta N° 7/Rol D-011-2015 para justificar su actuar y sostiene que ha sido
+consistente con la práctica del Servicio. Por otro lado, las reclamantes argumentan que la
+desagregación de los cargos 11 y 12 vulnera el principio de integridad y que no existe una
+norma legal que justifique esta desagregación. También sostienen que el PDC y los Planes de
+Reparación Ambiental (PRA) son mecanismos compatibles y que el cumplimiento satisfactorio de
+un PDC constituye un equivalente procesal al procedimiento sancionatorio. La SMA argumenta que
+el PDC no es procedente para infracciones que han causado daño ambiental, ya que no existen
+acciones que puedan recomponer el medio ambiente dañado a través de este instrumento. Además,
+señala que el PDC no es un derecho que deba operar a todo evento y que la desagregación de los
+cargos 11 y 12 no genera perjuicios a los reclamantes. En cuanto al principio de confianza
+legítima, la SMA sostiene que su actuar ha sido consistente con sus propios precedentes. En
+resumen, las controversias se centran en la procedencia del PDC para infracciones que han
+causado daño ambiental y en la compatibilidad entre el PDC y los PRA. La SMA argumenta que el
+PDC no es procedente para este tipo de infracciones, mientras que las reclamantes sostienen lo
+contrario.\nEl documento revisa la aplicación de un Programa de Cumplimiento (PDC) y un Plan
+de Reparación Ambiental (PRA) en el contexto de un procedimiento administrativo sancionatorio
+por infracciones ambientales. Se destaca que el PDC es un instrumento voluntario de incentivo
+al cumplimiento normativo, mientras que el PRA se aplica en casos de infracciones con daño
+ambiental. Se argumenta que la desagregación de los cargos 11 y 12, que generó la aprobación
+de un PDC y la continuación del procedimiento para el PRA, no vulnera el criterio de
+integridad y no produce perjuicio a los reclamantes. Además, se señala que la decisión de
+desagregación se ajusta a la ley y no afecta el principio de confianza legítima.\nEl artículo
+revisa el principio de confianza legítima en la actuación de la administración como límite a
+la potestad invalidatoria. Se analiza la actuación de la Superintendencia del Medio Ambiente
+(SMA) en casos similares para determinar si se ha infringido este principio. Se destaca que la
+SMA ha establecido un criterio expreso para el caso de infracciones con daño ambiental y su
+incompatibilidad con el Programa de Cumplimiento (PdC). Se mencionan casos en los que la SMA
+ha aprobado o rechazado PdC de acuerdo a este criterio. Se discute la eficacia de las medidas
+incluidas en el PdC y se concluye que la SMA ha realizado un análisis razonable y motivado
+para descartar los efectos negativos de las infracciones. Se rechaza la reclamación presentada
+por las asociaciones agrícolas y de aguas subterráneas. Se hace un llamado a la SMA para
+agilizar la revisión de los cargos desagregados y tomar medidas oportunas en el procedimiento
+administrativo sancionador en trámite.\nEl Primer Tribunal Ambiental de Chile emitió una
+sentencia en el caso de la Quebrada La Brea y el Río Ramadillas. En la sentencia, se establece
+que la empresa LOSMA debe presentar un "Plan de Reparación" por los daños ambientales causados
+y, en caso de no ser posible, los antecedentes serán derivados al Consejo de Defensa del
+Estado para que ejerza la acción judicial correspondiente. El tribunal destaca la importancia
+de garantizar el derecho a vivir en un medio ambiente libre de contaminación y el deber del
+Estado de preservar los recursos hídricos. La sentencia fue redactada por el Ministro Mauricio
+Oviedo Gutiérrez y firmada por los Ministros Marcelo Hernández Rojas y Juan Opazo Lagos. El
+Secretario Abogado del Tribunal, Pablo Miranda Nigro, autorizó la notificación de la
+sentencia.',
+            metadata={
+                'caratula': 'Asociación de Productores y Exportadores Agrícolas del Valle de
+Copiapó y otros con Superintendencia de Medio Ambiente',
+                'competencia': 'Art. 17 N° 3 de Ley N° 20.600',
+                'componente_ambiental': 'Agua',
+                'decision_del_tribunal': 'Rechaza',
+                'descriptores': 'Procedimiento sancionatorio; programa de cumplimiento; SMA;
+desagregación de cargos; desviación del procedimiento; integridad del programa de
+cumplimiento; procedencia del PDC; infracciones que han causado daño ambiental; criterio de
+integridad; plan de reparación ambiental; incentivos al cumplimiento; falta de perjuicio;
+principio de confianza legitima; calidad de aguas; acuíferos; criterio de eficacia;
+razonabilidad y motivación de la resolución de la SMA; idoneidad de las medidas; Guía para la
+presentación de Programas de Cumplimiento por infracciones a instrumentos de carácter
+ambiental.',
+                'fechaSentencia': '31-08-2021',
+                'nombreProyecto': 'Proyecto Caserones',
+                'page': 0,
+                'rol': 'R-41-2021',
+                'source':
+'/home/sjvasconcello/usm-data/ds-senior/cmad-ai-sustentable-01/etl/load/../../data/clean/docs_
+with_summary/R-41-2021.txt',
+                'tribunal': '1TA',
+                'urlSentencia':
+'https://www.buscadorambiental.cl/buscador-api/file/view/jurisprudencia/S1TA Rol N°
+R-41-2021?id=28'
+            }
+        ),
+        Document(
+            page_content='El caso Escombrera Palguin bajo\n\nRol: "R-25-2019", Rol:
+"R-25-2019",Rol: "R-25-2019", fecha 24-03-2020 de Elsa Quirquitripay Antiman y Otros con
+SEREMI de Salud Región de la Araucanía cuyo proyecto corresponde a Escombrera, sitio de
+disposición de residuos no peligrosos. Este caso tiene como principal materia Invalidación
+administrativa y su coponente ambiental es Agua\n\nThe integration ministers are: \n1. Iván
+Hunter Ampuero\n2. Jorge Retamal Valenzuela\n3. Sibel Villalobos Volpi\n\nSiendo sus
+descriptores: Competencia absoluta, instrumento de gestión ambiental, legitimación activa,
+acción ,invalidación facultad,  invalidación impropia \n\nEl Third Environmental Court Rechaza
+la causa en esta ocacion. Los hechos controvertidos son: Si el Tribunal tendría competencia
+para pronunciarse sobre la reclamación judicial, considerando la naturaleza de las
+resoluciones impugnadas, Si los Reclamantes tendrían legitimación activa para ejercer
+legalmente la impugnación judicial\n\nY el resumen es: El abogado Marco Antonio Román Cordero,
+en representación de ACONSER RESIDUOS SPA, interpuso una reclamación contra la
+SUPERINTENDENCIA DEL MEDIO AMBIENTE (SMA) por la Resolución Ex. N° 427, que requería a la
+empresa el ingreso del proyecto "Vertedero Aconser Mocopulli" al Sistema de Evaluación de
+Impacto Ambiental (SEIA). La reclamante solicitó al tribunal acoger su reclamación y declarar
+la ilegalidad de la resolución reclamada. Por su parte, la SMA solicitó al tribunal rechazar
+la reclamación y declarar la legalidad de la resolución. En los antecedentes del acto
+administrativo reclamado, se mencionan diversos documentos y comunicaciones entre la SEREMI de
+Salud, la SMA y la Reclamante. En cuanto al procedimiento de reclamación, se detallan las
+alegaciones de ambas partes y los argumentos presentados. La Reclamante argumenta que el
+procedimiento de requerimiento de ingreso se inició de manera irregular y que se violaron
+plazos establecidos por la ley. Además, cuestiona la competencia de la SMA para dictar la
+resolución reclamada. La SMA, por su parte, argumenta que la documentación relevante está
+incluida en el expediente administrativo y que la Reclamante tuvo acceso a la información
+necesaria. También se menciona que el desconocimiento de ciertos documentos no supone
+indefensión, ya que la SMA constató los mismos hallazgos comunicados por la SEREMI de Salud.
+En conclusión, la Reclamante solicita la anulación o modificación de la resolución reclamada,
+mientras que la SMA pide que se declare su legalidad.\nLa reclamación presentada por ACONSER
+Residuos SpA no cuestiona el cumplimiento de los supuestos fácticos y jurídicos contenidos en
+la resolución impugnada. Sin embargo, se plantean controversias relacionadas con el
+procedimiento administrativo que precedió a la dictación del acto terminal de requerimiento de
+ingreso al SEIA. Estas controversias incluyen la falta de conocimiento de la denuncia que
+originó el requerimiento, la demora excesiva en resolver el procedimiento, la omisión en la
+aplicación del Instructivo para la Tramitación de Requerimientos de Ingreso al SEIA y la
+omisión en decretar diligencias probatorias solicitadas por la interesada. Respecto a la falta
+de conocimiento de la denuncia, se determina que el expediente administrativo físico contiene
+el procedimiento que justifica la dictación del acto, por lo que la tardanza en incorporar la
+denuncia al sistema electrónico no constituye un vicio de legalidad. En cuanto a la demora en
+resolver el procedimiento, se establece que el plazo de 6 meses establecido por la ley no se
+ha superado. Además, se señala que el incumplimiento de este plazo no afecta la validez del
+procedimiento, sino que compromete la responsabilidad funcionaria. En relación a la omisión en
+la aplicación del Instructivo, se argumenta que este no establece la obligatoriedad de seguir
+el orden de tramitación indicado. Por último, se concluye que las solicitudes de diligencias
+probatorias solicitadas por la interesada no son necesarias para confirmar o rechazar la
+verificación de los hechos que configuran la elusión atribuida en la resolución impugnada. En
+resumen, se determina que las controversias planteadas por la reclamante no afectan la
+legalidad del procedimiento administrativo.\nEn resumen, el caso trata sobre una reclamación
+presentada por un titular de un proyecto contra la Superintendencia del Medio Ambiente (SMA)
+en relación con el requerimiento de ingreso al Sistema de Evaluación de Impacto Ambiental
+(SEIA). El reclamante alega que la SMA infringió el Instructivo para la Tramitación de
+Requerimientos de Ingreso al SEIA al no solicitar previamente el informe del Servicio de
+Evaluación Ambiental (SEA) antes de iniciar el procedimiento. Sin embargo, la SMA argumenta
+que cumplió con lo establecido en la ley y que el Instructivo no es de carácter obligatorio.
+El tribunal concluye que la SMA actuó de acuerdo a la ley y que no se produjo indefensión para
+el reclamante. Además, se analiza la omisión de decretar las diligencias probatorias
+solicitadas por el interesado y se determina que no causaron indefensión y que eran
+innecesarias para el caso. En consecuencia, el tribunal considera que la resolución de ingreso
+al SEIA se ajusta a derecho.\nEl Tribunal Ambiental rechazó la reclamación presentada por la
+impugnante en contra de la Resolución Exenta N° 427 de la Superintendencia del Medio Ambiente
+(SMA). La impugnante solicitaba la realización de diligencias probatorias, pero no especificó
+de manera clara la conexión entre dichas diligencias y los hechos que deseaba probar. Además,
+no indicó las consecuencias jurídicas que se derivarían de la falta de pronunciamiento de la
+autoridad sectorial respecto a los recursos administrativos pendientes de resolución. Por lo
+tanto, el Tribunal consideró que la Resolución de la SMA se ajusta a derecho. No se condenó en
+costas a la impugnante por considerar que litigó con motivos plausibles.',
+            metadata={
+                'caratula': 'Asociación Indígena Aymara Salar de Coposa con SMA ',
+                'competencia': 'Art. 17 N° 3 de Ley N° 20.600',
+                'componente_ambiental': 'Agua',
+                'decision_del_tribunal': 'Acoge',
+                'descriptores': 'Procedimiento sancionatorio; programa de cumplimiento;
+consulta indígena; recurso hídrico; daño ambiental; acuíferos; criterios; integridad;
+eficacia; verificabilidad; derecho a los recursos naturales; principio de participación;
+motivación; reincidencia ',
+                'fechaSentencia': '30-12-2019',
+                'nombreProyecto': 'Collahuasi',
+                'page': 0,
+                'rol': 'R-25-2019',
+                'source':
+'/home/sjvasconcello/usm-data/ds-senior/cmad-ai-sustentable-01/etl/load/../../data/clean/docs_
+with_summary/R-25-2019.txt',
+                'tribunal': '1TA',
+                'urlSentencia':
+'https://www.buscadorambiental.cl/buscador-api/file/view/jurisprudencia/S1TA Rol N°
+R-25-2019?id=16'
+            }
+        ),
+        Document(
+            page_content='El caso Pascua Lama\n\nRol: "R-5-2018", Rol: "R-5-2018",Rol:
+"R-5-2018", fecha 17-09-2020 de Compañía Minera Nevada SpA con Superintendencia del Medio
+Ambiente cuyo proyecto corresponde a Pascua Lama. Este caso tiene como principal materia
+Sancionatorio ambiental y su coponente ambiental es Agua\n\nThe integration ministers are:
+\n1. Cristián Delpiano Lira\n2. Jasna Pavlich Núñez\n3. Fabrizio Queirolo Pellerano\n\nSiendo
+sus descriptores: Sancionatorio ambiental, estándar de motivación – proporcionalidad –
+principio de non bis in ídem – decaimiento – metodología de determinación de sanciones –
+legitimación activa – tasa de descuento – daño ambiental – impacto ambiental – clasificación
+de la infracción - circunstancias del art. 40 de la Ley N° 20.417\n\nEl First Environmental
+Court Acoge parcialmente la causa en esta ocacion. Los hechos controvertidos son: Ilegalidad
+transversal de las sanciones impuestas por la Res. Ex. N°72/2018. De las supuestas
+ilegalidades respecto de las sanciones de clausura definitiva aplicadas a cinco de los cargos
+formulados. De las supuestas ilegalidades cometidas en la Res. Ex. N°72/2018, respecto de las
+sanciones de multa aplicadas, al resto de los cargos formulados. Del supuesto exceso en las
+competencias que habría incurrido la SMA respecto de la manera en que pretende que se
+implemente la clausura. Respecto a la falta de legitimación activa alegada por la SMA en
+contra de Agrícola Dos Hermanos y Agrícola Santa Mónica Limitada. Respecto de la Resolución
+Exenta N°70. Respecto de la Res. Ex. N°72. Legitimación activa de los reclamantes de la
+Reclamación signada con el rol R-6-2018. Estándar de motivación exigido. Resolución Exenta
+N°70, de 2018, de la Superintendencia del Medio Ambiente. Decaimiento del procedimiento
+administrativo y la falta de oportunidad en el ejercicio de la potestad sancionatorio. De la
+supuesta infracción al principio non bis in ídem. En cuanto a la metodología para la
+determinación de sanciones ambientales, la tasa de descuento, y la proporcionalidad de las
+sanciones, de la Resolución Exenta N°72/2018.2.7 En cuanto al cálculo de la Tasa de Descuento
+descrita en las “Bases Metodológicas para Determinación de Sanciones Ambientales”. El estándar
+de proporcionalidad en el ejercicio de la potestad sancionatoria de la Superintendencia del
+Medio Ambiente. III. DEL ANÁLISIS DE LAS RECLAMACIONES EFECTUADAS PARA CADA CARGO EN
+PARTICULAR ALEGADO RESPECTO DE LA RESOLUCIÓN EXENTA N°72, REALIZADO EN CAUSA R-5-2018. 3.1 De
+las supuestas ilegalidades cometidas en la sanción de clausura definitiva aplicada al cargo
+23.2. 3.2 De las supuestas ilegalidades cometidas en la sanción de clausura definitiva
+aplicada al cargo 23.9. 3.3 De las supuestas ilegalidades cometidas en la sanción de clausura
+definitiva aplicada al cargo 23.11. 3.4 De las supuestas ilegalidades cometidas en la sanción
+de clausura definitiva aplicada al cargo 4. 3.5 De las supuestas ilegalidades cometidas en la
+sanción de clausura definitiva aplicada al cargo N°7. 3.6 De las supuestas ilegalidades
+cometidas en la sanción de multa aplicada al cargo 23.8. 3.7 De las supuestas ilegalidades
+cometidas en la sanción de multa aplicada al cargo 6. 3.8 De las supuestas ilegalidades
+cometidas en la definición de todas las sanciones de multa al establecer un criterio de tasa
+de descuento que es muy superior al de las empresas similares. 3.9 Del supuesto exceso en las
+competencias que habría incurrido la SMA respecto de la manera en que pretende que se
+implemente la clausura. IV. DEL ANÁLISIS DE LAS RECLAMACIONES EFECTUADAS PARA CADA CARGO EN
+PARTICULAR ALEGADO RESPECTO DE LA RESOLUCIÓN EXENTA N°72, REALIZADO EN CAUSA R-6-2018. 4.1
+Vicio N° 1: Respecto a la omisión de la resolución sancionatoria de ordenar a CMN SpA la
+construcción definitiva del Sistema de Manejo de Aguas. 4.2 Vicio N°2: Sobre la falta de
+contenido sancionatorio y disuasivo en la aplicación de 5 sanciones de clausura. 4.3 Vicio
+N°3: Respecto al descarte ilegal de daño ambiental en las aguas. 4.4 Vicio N°4: De la supuesta
+falta de fundamentación de la resolución reclamada en lo que dice relación con la causalidad
+en la contaminación de las aguas. 4.5 Vicio N°5. Respecto de la motivación de la SMA para
+recalificar y absolver a CMN SpA de los cargos 23.13, 24.2 y 25. 4.6 Vicio N°6: Sobre la
+eventual falta de proporcionalidad en la aplicación de las sanciones. 4.7 Vicio N°7: La
+resolución recurrida no pondera ni aplica en concreto las circunstancias que contempla el
+artículo 40 de la LOSMA para efectos de determinar la sanción a aplicar a cada infracción. 4.8
+Del supuesto problema del petitorio de la reclamación.',
+            metadata={
+                'caratula': 'Compañía Minera Nevada SpA con Superintendencia del Medio
+Ambiente',
+                'competencia': 'Art. 17 N° 3 de Ley N° 20.600',
+                'componente_ambiental': 'Agua',
+                'decision_del_tribunal': 'Acoge parcialmente',
+                'descriptores': 'Sancionatorio ambiental; estándar de motivación –
+proporcionalidad – principio de non bis in ídem – decaimiento – metodología de determinación
+de sanciones – legitimación activa – tasa de descuento – daño ambiental – impacto ambiental –
+clasificación de la infracción - circunstancias del art. 40 de la Ley N° 20.417',
+                'fechaSentencia': '17-09-2020',
+                'nombreProyecto': 'Pascua Lama',
+                'page': 0,
+                'rol': 'R-5-2018',
+                'source':
+'/home/sjvasconcello/usm-data/ds-senior/cmad-ai-sustentable-01/etl/load/../../data/clean/docs_
+with_summary/R-5-2018.txt',
+                'tribunal': '1TA',
+                'urlSentencia':
+'https://www.buscadorambiental.cl/buscador-api/file/view/jurisprudencia/S1TA Rol N°
+R-5-2018?id=20'
+            }
+        )
+    ]
+}
 \end{table}
 \end{Verbatim}
 
-\subsection{Tabla Rotada}
-
-\begin{Verbatim}[frame=lines, label=\autoref{tbl:example-sidewaystable} Ejemplo Tabla Rotada
-, fontsize=\footnotesize, numbers=left
-, baselinestretch=1
-, formatcom=\color{gray}]
-\begin{sidewaystable}
-    \centering
-    \caption[Ejemplo: Rotación de Tablas]{Rotación de Tablas}
-    \label{tbl:annex-table-rotated}
-    \begin{tabularx}{\columnwidth}{@{}XX@{}}
-        \toprule
-        \textbf{Column 1} & \textbf{Column 2}\\
-        \hline
-        \hline
-        Second First & Second Second\\
-        \blindtext & \blindtext\\
-        \bottomrule
-    \end{tabularx}
-\end{sidewaystable}
-\end{Verbatim}
-
-
-\subsection{Imágenes}
-
-\begin{Verbatim}[frame=lines, label=Incorporar \autoref{fig:logoind}
-				, fontsize=\footnotesize, numbers=left
-				, baselinestretch=1
-				, formatcom=\color{gray}]
-\begin{figure}[ht!]
-\centering
-\includegraphics[width=.3\textwidth]{figures/logoind.png}
-\caption[Logotipo Departamento de Industrias]{Logotipo Departamento de Industrias\\
-{\scriptsize (Fuente: Departamento de Industrias)}}
-\label{fig:annex-logoind}
-\end{figure}
-\end{Verbatim}
-
-\subsection{Imágenes Flotantes}
-\begin{Verbatim}[frame=lines, label=\autoref{fig:emblem-float}
-				, fontsize=\footnotesize, numbers=left
-				, baselinestretch=1
-				, formatcom=\color{gray}]
-\begin{wrapfigure}{o}{.4\textwidth}
-    \vspace{-20pt}
-    \begin{spacing}{1}
-        \begin{center}
-            \includegraphics[width=.35\columnwidth]{figures/escudo-utfsm.png}
-            \vspace{-10pt}
-            \caption{Escudo UTFSM (Flotante)}
-            \label{fig:annex-emblem-float}
-        \end{center}
-    \end{spacing}
-    \vspace{-10pt}
-\end{wrapfigure}
-\end{Verbatim}
 
