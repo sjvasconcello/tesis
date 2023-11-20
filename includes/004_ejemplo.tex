@@ -1,73 +1,90 @@
-\chapter{Ejemplo de Uso del Proyecto}
+\chapter{Resultados}
 
-Esta tesis se centra tanto en el riesgo como en el desarrollo de un Chatbot, este chatbot funciona 
-en base a la una arquitectura de RAG (Retriever-Augmented Generation) por lo que esta consiste en 
-la recuperación de contexto el cual es enviado junto con el prompt al LLM. El proceso comienza con 
-la obtención de un prompt específico del usuario, tal como ``Dame un resumen del documento Dominga'' 
-dentro de la barra de búsqueda del frontend. Este prompt actúa como entrada inicial para el sistema 
-de recuperación de información.
+Esta tesis, al presentar una solución a un problema basado en el lenguaje natural (NLP), enfrenta el desafío de cuantificar 
+los resultados entregados por el chatbot en respuesta a nuestras consultas. Debido a esta complicación, se propone utilizar 
+una escala para evaluar dichos resultados en los ejemplos de la siguiente manera:
 
-%\begin{figure}[ht!]
-%    \centering
-%    \includegraphics[width=.8\textwidth]{figures/website.png}
-%    \caption[]{\\
-%    {\scriptsize (Fuente: Elavoración propia)}}
-%    \label{fig:chatbot1}
-%\end{figure}
+\begin{enumerate}
+    \item \textbf{Satisfactorio}: La respuesta es acorde a lo que menciona el prompt.
+    \item \textbf{Medianamente Satisfactoria}: La respuesta es adecuada, pero incluye errores que, si bien no invalidan la respuesta, podrían generar confusión.
+    \item \textbf{Insatisfactorio}: La respuesta no es pertinente o incluye información inventada.
+\end{enumerate}
 
-El prompt se procesa mediante una función de Embedding, empleando para ello OpenAI, siendo esta  
-la función 'text-embedding-ada-002'. Esta función puede manejar hasta un máximo de 8191 tokens y 
-produce un vector de 1536 dimensiones en forma de lista \cite{openai1}. Para determinar la similitud entre el 
-vector del prompt y los vectores correspondientes a los documentos almacenados, se utiliza la función 
-de similitud coseno presente en la \autoref{eq:similitudcoseno}.Esta mide el coseno del ángulo entre dos vectores,
-Siendo estos $A$ y $B$ respectivamente, y este proporciona un valor que refleja su proximidad semántica entre el vector
-del prompt y los vectores de todos los documentos almacenados en la base de datos ChromaDB.
+Dada esta metodología para evaluar los casos, se presentarán ejemplos de prompts que un usuario podría emplear habitualmente 
+en el uso de la aplicación. Se analizarán tanto el contexto enviado por el chatbot a OpenAI, como son resultados obtenidos y se 
+realizara un contraste con la información de la que ya disponemos del periodo de desarrollo.
 
-\begin{equation}
-    \text{similitud\_coseno}(\mathbf{A}, \mathbf{B}) = \frac{\mathbf{A} \cdot \mathbf{B}}{\|\mathbf{A}\| \|\mathbf{B}\|}
-    \label{eq:similitudcoseno}
-\end{equation}
+\section{Caso 1: Consultar por resumen}
 
 
-El proceso de embedding como se menciono antes lo que realiza en otras palabras es la conversión de un texto a un vector, esto debido a que los modelos de LLM al ser basados 
-en redes neuronales necesitan un presentación grafica de estos texto a un formato el cual pueda ser legible por el modelo, por lo que se convierten en números como muestra la 
-\autoref{fig:caso1} a continuación.
-
-\begin{figure}[ht!]
+\begin{table}[ht!]
     \centering
-    \includegraphics[width=0.7\textwidth]{figures/embedding1.png}
-    \caption[Representación vectorial de un prompt luego de pasar por la funcion de embedding]{Representación de un prompt luego de pasar por la funcion de embedding 'text-embedding-ada-002'\\
-    {\scriptsize (Fuente: Elavoración propia)}}
-    \label{fig:caso1}
-\end{figure}
+    \caption[Ejemplo: Primer Prompt]{Primer ejemplo de resultado usando un prompt}
+    \begin{tabular}{p{3cm}p{12cm}}
+        \toprule
+        \textbf{Prompt} & \textbf{Respuesta} \\
+        \hline\hline
+        Dame un resumen del caso Dominga & El caso Dominga se refiere a una reclamación presentada por Andes Iron SpA contra la Resolución Exenta N° 1146/2017 del Servicio de Evaluación Ambiental y el Comité de Ministros. El reclamo se basa en el rechazo del Estudio de Impacto Ambiental del proyecto Dominga y la acogida parcial de los recursos de reclamación presentados en el marco de la participación ciudadana. El Primer Tribunal Ambiental de la República de Chile admitió la reclamación y convocó a una audiencia de percepción documental. Además, se presentaron informes de Amicus Curiae y se aceptó la participación de terceros coadyuvantes e independientes. El proceso judicial continúa y se espera una sentencia definitiva. En una sentencia anterior, el tribunal rechazó la excepción de extemporaneidad interpuesta por un tercero independiente y acogió la reclamación presentada por Andes Iron SpA. Sin embargo, la Corte Suprema anuló la sentencia y remitió el caso nuevamente al Primer Tribunal Ambiental para que se pronuncie sobre el fondo del asunto. El caso involucra diversos hechos controvertidos, como la evaluación del proyecto, la suficiencia de la información, los impactos ambientales, las medidas de compensación y la participación ciudadana.  \\
+        \bottomrule
+    \end{tabular}
+    \label{tb1:prompt1}
+\end{table}
 
-\newpage
+Una de las consultas más evidentes podría ser la solicitud de un resumen de alguna de las reclamaciones mandadas al Tribual; por lo tanto, 
+es esencial evaluar el desempeño de este proceso con dicho prompt.
 
-Una vez calculada la similitud coseno entre el vector asociado al prompt y los vectores que presentan los documentos que se encontraban en la 
-base de datos, se procede a elaborar un ranking de los documentos más relevantes, según la similaridad obtenida del cálculo de similitud de cosenos. 
-Esto se realiza seleccionando los 'n' documentos con los valores de similitud más altos, siendo en el ejemplo proporcionado un total de 3 
-presente en la \autoref{fig:caso2}.
+Como se puede observar en la respuesta proporcionada por el Chatbot, esta parece ser aceptable y lógica. Sin embargo, es necesario comprender 
+ciertos aspectos. En primer lugar, enviar el prompt con el nombre del proyecto en lugar del código mejora la calidad de búsqueda, ya que los 
+vectores de embedding reconocen más eficientemente las diferencias semánticas, proporcionando un contexto más adecuado. Además, es importante 
+considerar que el envío de un exceso de contexto puede generar ``alucinaciones'', resultando en resúmenes que no sean completamente precisos o que 
+contengan información falsa generada por el LLM. El contexto enviado a OpenAI por el chatbot en el ejemplo y que contiene más contexto del necesario
+ se encuentra en el \autoref{appx:contexto}. A pesar de los puntos anteriores, podemos decir que la respuesta entregada por el chatbot es \textbf{Satisfactoria}.
 
-\begin{figure}[ht!]
+\section{Caso 2: Consulta por listado}
+
+\begin{table}[ht!]
     \centering
-    \includegraphics[width=1\textwidth]{figures/embedding2.png}
-    \caption[Screenshot de un jupyter notebook representando el proceso interno de selección]{Screenshot de un jupyter notebook representando el proceso interno de selección\\
-    {\scriptsize (Fuente: Elavoración propia)}}
-    \label{fig:caso2}
-\end{figure}
-
-Todo este proceso funciona internamente usando Langchain que consulta estos ‘n’ documentos, siendo en este caso 3, a la base de datos 
-ChormaDB y son enviados como contexto dentro del prompt a OpenAI mediante el uso de su API, junto a la key de autorización, 
-para obtener el resultado del modelo.
-
-Finalmente, se obtiene el resultado por parte del modelo y es procesado por el frontend de la forma que se observa en la \autoref{fig:caso3}, 
-lo que da fin al proceso que realiza el Chatbot de principio a fin.
+    \caption[Ejemplo: Segundo Prompt]{Segundo ejemplo de un punteo o listado con todas la reclamaciones relacionadas con Humedales}
+    \begin{tabular}{p{3cm}p{12cm}}
+        \toprule
+        \textbf{Prompt} & \textbf{Respuesta} \\
+        \hline\hline
+        Dame un punteo o listado con todas la reclamaciones relacionadas con Humedales& A continuación se presenta un listado con todas las reclamaciones relacionadas con Humedales: 1. Caso Humedal La Marina: - Rol: ``R-25-2021'' - Fecha: 31-03-2022 - Reclamante: Inversiones F.K Limitada - Materia: Declaración humedal urbano - Resolución: Rechazada por el Third Environmental Court 2. Caso Humedal Urbano "Estero Agua Salada": - Rol: ``R-354-2022'' - Fecha: 19-07-2023 - Reclamante: Consorcio Punta Puyai S.A. - Materia: Declaración humedal urbano - Resolución: Rechazada por el Second Environmental Court 3. Caso Humedal Quilicura: - Rol: ``R-297-2021'' - Fecha: 24-10-2022 - Reclamante: Inversiones Butamalal S.A. y otros - Materia: Declaración humedal urbano - Resolución: Acogida parcialmente por el Second Environmental Court 4. Caso Humedal El Bosque-Miraflores-Las Multas-Guacamayo: - Rol: ``R-37-2021'' - Fecha: 10-03-2023 - Reclamante: Nicolás Reichert Haverbeck - Materia: Declaración humedal urbano - Resolución: Acogida por el Third Environmental Court Espero que esta información sea de utilidad.  \\
+        \bottomrule
+    \end{tabular}
+    \label{tb1:prompt1}
+\end{table}
 
 
-\begin{figure}[ht!]
+\section{Caso 3: Comparación entre reclamaciones}
+
+\begin{table}[ht!]
     \centering
-    \includegraphics[width=0.95\textwidth]{figures/website2.png}
-    \caption[Screenshot del funcionamiento del Chatbot]{Screenshot del funcionamiento del Chatbot\\
-    {\scriptsize (Fuente: Elavoración propia)}}
-    \label{fig:caso3}
-\end{figure}
+    \caption[Ejemplo: Tercero Prompt]{Tercer ejemplo comparación entre reclamaciones}
+    \begin{tabular}{p{3cm}p{12cm}}
+        \toprule
+        \textbf{Prompt} & \textbf{Respuesta} \\
+        \hline\hline
+        Compara la reclamación R-25-2021 con la reclamación R-1-2017& La reclamación R-25-2021 se refiere al caso del Humedal La Marina, mientras que la reclamación R-1-2017 se refiere al caso de Dominga. Ambas reclamaciones son presentadas por diferentes partes en contra del Ministerio del Medio Ambiente y se centran en la evaluación ambiental de los respectivos proyectos. En el caso del Humedal La Marina, la reclamante argumenta que la solicitud de reconocimiento del humedal no cuenta con el acuerdo del Concejo Municipal y que se violó el debido proceso por falta de emplazamiento. Además, cuestiona la forma de notificación de los actos administrativos y la falta de motivación en la resolución reclamada. También acusa que la resolución incurre en desviación de poder y solicita que se deje sin efecto. Por otro lado, en el caso de Dominga, la reclamación se basa en el rechazo del Estudio de Impacto Ambiental del proyecto minero-portuario. Los reclamantes argumentan que se aplicaron incorrectamente los criterios de evaluación y que se omitieron estudios relevantes. También cuestionan la forma de notificación de los actos administrativos y la falta de motivación en la resolución reclamada. En este caso, la reclamante solicita que se modifique la resolución para no afectar su derecho de propiedad. En resumen, ambas reclamaciones se centran en la evaluación ambiental de los proyectos y cuestionan aspectos como la falta de acuerdo del Concejo Municipal, la forma de notificación de los actos administrativos, la falta de motivación en las resoluciones y la posible desviación de poder. Sin embargo, cada reclamación se basa en circunstancias y argumentos específicos relacionados con los proyectos y los humedales involucrados.\\
+        \bottomrule
+    \end{tabular}
+    \label{tb1:prompt1}
+\end{table}
+
+\section{Caso 4: Consultar por }
+
+
+\begin{table}[ht!]
+    \centering
+    \caption[Ejemplo: Cuarto Prompt]{Cuarto ejemplo preguntando por un texto que no existia}
+    \begin{tabular}{p{3cm}p{12cm}}
+        \toprule
+        \textbf{Prompt} & \textbf{Respuesta} \\
+        \hline\hline
+        Dame un resumen de R-14-2023& El resumen de R-14-2023 es el siguiente: La Resolución R-14-2023 se refiere al proyecto denominado Centro de Cultivo de Salmónidos "Córdova 4". Esta resolución establece las regulaciones y requisitos para la operación y funcionamiento de dicho centro de cultivo. Entre las principales disposiciones de la resolución se encuentran: 1. Autorización para la construcción y operación del Centro de Cultivo de Salmónidos "Córdova 4" en la ubicación especificada. 2. Establecimiento de medidas de protección ambiental para garantizar la preservación de los recursos naturales y la biodiversidad en el área de influencia del centro de cultivo. 3. Requisitos técnicos y de seguridad que deben cumplir las instalaciones del centro de cultivo, incluyendo sistemas de tratamiento de aguas residuales, control de calidad del agua y medidas de prevención de escapes de peces. 4. Obligaciones y responsabilidades del titular del proyecto en cuanto a la gestión adecuada de los desechos generados por el centro de cultivo y la implementación de programas de monitoreo y seguimiento ambiental. 5. Procedimientos y plazos para la presentación de informes periódicos sobre el estado y desempeño del centro de cultivo, así como para la realización de inspecciones y auditorías por parte de las autoridades competentes. Es importante destacar que este resumen es una síntesis de la resolución y no reemplaza la lectura y comprensión completa del documento original. Se recomienda consultar la resolución R-14-2023 en su totalidad para obtener información detallada sobre todas las disposiciones y requisitos establecidos.\\
+        \bottomrule
+    \end{tabular}
+    \label{tb1:prompt1}
+\end{table}
+
+\section{Resumen}
