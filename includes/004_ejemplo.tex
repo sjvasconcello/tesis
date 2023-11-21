@@ -55,6 +55,16 @@ contengan información falsa generada por el LLM. El contexto enviado a OpenAI p
     \label{tb1:prompt1}
 \end{table}
 
+Otra consulta común es preguntar por listados a partir de la información del tribunal ambiental, este tiempo de preguntas resulta tener una dificultad engañosa para el Chatbot.
+Tras analizar la respuesta, se identifican aspectos tanto positivos como negativos. Entre los positivos, destaca que el Modelo de Lenguaje de Gran Escala (LLM) 
+comprende correctamente el concepto de listado, generando una lista de cuatro resultados pertinentes. No obstante, se observa una limitación significativa: 
+la base de datos vectorial incluye más de 20 documentos relacionados con humedales, pero debido a la restricción de enviar únicamente entre 3 a 5 
+documentos como contexto por parte del chatbot, no todos estos documentos pueden ser procesados para generar una respuesta correcta. Esta limitación 
+resulta en una respuesta que, si bien es veraz, no es completa. Por lo tanto, aunque la información sobre humedales es incompleta, la respuesta puede 
+calificarse como \textbf{Medianamente Satisfactoria}, basándose en la precisión de los datos proporcionados y la capacidad del sistema para entender y 
+organizar la información relevante en un formato de listado.
+
+\newpage
 
 \section{Caso 3: Comparación entre reclamaciones}
 
@@ -71,7 +81,19 @@ contengan información falsa generada por el LLM. El contexto enviado a OpenAI p
     \label{tb1:prompt1}
 \end{table}
 
-\section{Caso 4: Consultar por }
+La propuesta de utilizar un prompt que busca comparar la relación entre dos textos representa una aplicación práctica y avanzada de un Modelo de 
+Lenguaje de Gran Escala (LLM), más allá de su función como simple buscador. Esta metodología permite al LLM demostrar su habilidad para no solo 
+identificar, sino también para analizar y comparar de manera fluida y sencilla los contenidos de diferentes documentos. En el ejemplo proporcionado, 
+el LLM logra distinguir y describir cada texto antes de proceder a una comparación efectiva.
+
+Sin embargo, se presenta una limitación similar a la observada en el primer ejemplo. Al revisar los contextos enviados a OpenAI revela que documentos
+no relacionados fueron incluidos en dicho contexto, lo cual, aunque no generó información incorrecta en este caso, tiene el potencial de causar 
+alucinaciones. A pesar de este inconveniente, la capacidad del LLM para manejar adecuadamente los documentos relevantes y su eficacia en la 
+comparación de textos justifican calificar la respuesta como \textbf{Satisfactoria}.
+
+\newpage
+
+\section{Caso 4: Consultar por información falsa}
 
 
 \begin{table}[ht!]
@@ -81,10 +103,20 @@ contengan información falsa generada por el LLM. El contexto enviado a OpenAI p
         \toprule
         \textbf{Prompt} & \textbf{Respuesta} \\
         \hline\hline
-        Dame un resumen de R-14-2023& El resumen de R-14-2023 es el siguiente: La Resolución R-14-2023 se refiere al proyecto denominado Centro de Cultivo de Salmónidos "Córdova 4". Esta resolución establece las regulaciones y requisitos para la operación y funcionamiento de dicho centro de cultivo. Entre las principales disposiciones de la resolución se encuentran: 1. Autorización para la construcción y operación del Centro de Cultivo de Salmónidos "Córdova 4" en la ubicación especificada. 2. Establecimiento de medidas de protección ambiental para garantizar la preservación de los recursos naturales y la biodiversidad en el área de influencia del centro de cultivo. 3. Requisitos técnicos y de seguridad que deben cumplir las instalaciones del centro de cultivo, incluyendo sistemas de tratamiento de aguas residuales, control de calidad del agua y medidas de prevención de escapes de peces. 4. Obligaciones y responsabilidades del titular del proyecto en cuanto a la gestión adecuada de los desechos generados por el centro de cultivo y la implementación de programas de monitoreo y seguimiento ambiental. 5. Procedimientos y plazos para la presentación de informes periódicos sobre el estado y desempeño del centro de cultivo, así como para la realización de inspecciones y auditorías por parte de las autoridades competentes. Es importante destacar que este resumen es una síntesis de la resolución y no reemplaza la lectura y comprensión completa del documento original. Se recomienda consultar la resolución R-14-2023 en su totalidad para obtener información detallada sobre todas las disposiciones y requisitos establecidos.\\
+        Dame un resumen de R-14-2023 & El resumen de R-14-2023 es el siguiente: La Resolución R-14-2023 se refiere al proyecto denominado Centro de Cultivo de Salmónidos ``Córdova 4''. Esta resolución establece las regulaciones y requisitos para la operación y funcionamiento de dicho centro de cultivo. Entre las principales disposiciones de la resolución se encuentran: 1. Autorización para la construcción y operación del Centro de Cultivo de Salmónidos "Córdova 4" en la ubicación especificada. 2. Establecimiento de medidas de protección ambiental para garantizar la preservación de los recursos naturales y la biodiversidad en el área de influencia del centro de cultivo. 3. Requisitos técnicos y de seguridad que deben cumplir las instalaciones del centro de cultivo, incluyendo sistemas de tratamiento de aguas residuales, control de calidad del agua y medidas de prevención de escapes de peces. 4. Obligaciones y responsabilidades del titular del proyecto en cuanto a la gestión adecuada de los desechos generados por el centro de cultivo y la implementación de programas de monitoreo y seguimiento ambiental. 5. Procedimientos y plazos para la presentación de informes periódicos sobre el estado y desempeño del centro de cultivo, así como para la realización de inspecciones y auditorías por parte de las autoridades competentes. Es importante destacar que este resumen es una síntesis de la resolución y no reemplaza la lectura y comprensión completa del documento original. Se recomienda consultar la resolución R-14-2023 en su totalidad para obtener información detallada sobre todas las disposiciones y requisitos establecidos.\\
         \bottomrule
     \end{tabular}
     \label{tb1:prompt1}
 \end{table}
 
-\section{Resumen}
+Con el objetivo de ilustrar un aspecto crucial, se realizó una consulta al LLM utilizando información inexistente, específicamente la reclamación R-14-2023 
+que se inventó. Como era de esperarse, al solicitar información sobre un tema falso, el LLM generó una respuesta igualmente falsa. Este fenómeno se debe a 
+que el chatbot ejecuta un proceso de semejanza semántica entre el prompt y los documentos disponibles, mandando estos documentos como contexto a OpenAI, 
+esto pasa porque el chatbot no tiene como discernir si es necesario el proceso o no.
+
+Este experimento subraya una limitación significativa del LLM: su incapacidad para discernir la veracidad de los datos en la consulta inicial. 
+Dado que el modelo se basa en la información proporcionada, cualquier inexactitud en el prompt puede llevar a respuestas erróneas. 
+Esta característica del LLM plantea preocupaciones particulares en contextos donde la fiabilidad y precisión de la información son fundamentales. 
+En consecuencia, se considera que la respuesta obtenida en este caso es completamente insatisfactoria.
+
+
