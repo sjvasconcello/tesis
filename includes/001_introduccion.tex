@@ -28,23 +28,36 @@ generación de imágenes o audio. El enfoque principal de esta tesis se concentr
 
 \newpage
 
+
+\section{Problematica}
+
+\par En Chile, se desarrollan numerosos proyectos en muchos sectores como pueden ser: la minería, inmobiliario, agrícola, salmonero, etc. Sin embargo, se ha observado un incremento en las reclamaciones 
+sobre temas ambientales asociadas a estos proyectos, convirtiendo la ``Permisología ambiental'' en una problemática significativa para la generación de proyectos de toda índole dentro del país.
+
+\par Muchos proyectos de inversión están judicializados, con sus causas llevadas ante el tribunal ambiental, debido a ello es crucial para las empresas poder prever estas reclamaciones y demandas 
+potenciales con la mayor precisión posible \cite{p1}\cite{p2}\cite{p3}. Cada proyecto que se retrasa o cancela incrementa los costos y el riesgo, afectando no solo al proyecto en sí, sino también la percepción del país como 
+destino amistoso para inversiones extranjeras.
+
+\par Ademas es necesarrio brindar a los directivos o personal pertinente un acceso inmediato y comprensible a información relevante de estos tribunales ambientales, superando las 
+barreras del lenguaje legal que puede resultar complejo para quienes no son expertos en derecho. Esto les permitirá tener una visión general sobre posibles acciones, consecuencias y problemas que 
+podrían surgir al tomar cualquier tipo  dedecisiones.
+
 \section{Obejetivos}
 % Objetivos
 \subsection{Objetivo General}
-Esta tesis se enfocará principalmente en identificar los factores de riesgo asociados tanto con la creación como con el 
-uso de aplicaciones que implementan Grande Modelos de Lenguaje (LLM) en la industria usando como caso de 
-estudio el proyecto de búsqueda de jurisprudencia en tribunales ambientales.
+Reconocer los factores de riesgo asociados; tanto con la creación, como con el uso de aplicaciones que implementan Modelos 
+Grandes de Lenguaje (LLM) en la industria, usando como caso de estudio el proyecto de búsqueda de jurisprudencia en tribunales ambientales. 
 
-\subsection{Objetivo Específico}
+\subsection{Objetivos Específicos}
 
 \begin{enumerate}
-    \item Entregar contexto sobre inteligencia artificial y el area en específico que aborda esta Tesis.
-    \item Desarrollar el estado del arte en lo que refiere a Modelos Grandes del Lenguaje y sus conceptos asociados
-    \item Analizar un proceso de ETL pertinente a la creación de la aplicación
-    \item Explicar el desarrollo de la aplicación asociada al chatbot
-    \item Comentar los resultados obtenidos de este chatbot
-    \item Estudiar los riesgos que conlleva la creación y uso de aplicaciones que utilizan Modelos Grandes de Lenguaje
-    \item Concluir sobre como afrontar y el riesgo que tienen este tipo de tecnología
+    \item Estructurar u organizar (un o el) contexto sobre inteligencia artificial, en específico la inteligencia artificial generativa y el procesamiento de lenguaje natural, que aborda esta Tesis. 
+    \item Construir y desarrollar el estado del arte en lo que refiere a Modelos Grandes del Lenguaje y sus conceptos asociados.
+    \item Analizar un proceso de ETL pertinente a la creación de la aplicación.
+    \item Explicar el desarrollo de la aplicación asociada al chatbot, analizando los resultados obtenidos de este mismo.
+    \item Reflexionar sobre los resultados obtenidos por el chatbot
+    \item Analizar y explicar los riesgos que conlleva la creación y uso de aplicaciones que utilizan Modelos Grandes de Lenguaje. 
+    \item Analizar y concluir sobre cómo afrontar y el riesgo que tienen este tipo de tecnologías.
 \end{enumerate}
 
 
@@ -63,47 +76,43 @@ eficacia de ChatGPT y otros modelos similares, y se aborda el proceso de ``embed
 
 \subsection{Creación del Proyecto}
 
-
-\noindent Esta fase inicial comprende el desarrollo del proyecto basado en IA generativa. Incluye los siguientes pasos:
+Este capítulo aborda el desarrollo de un chatbot para consultar jurisprudencia en los Tribunales Ambientales de Chile, utilizando datos del 'Buscador Ambiental' y la tecnología GPT-4 de OpenAI.
+El cual incluye los siguientes pasos en su desarrollo:
 
 \begin{itemize}
-    \item \textbf{Definición de Objetivos y Alcance:} Establecimiento claro de los propósitos y límites del proyecto, identificando las metas a alcanzar.
-    \item \textbf{Selección de Tecnologías y Herramientas:} Evaluación y elección de las tecnologías y herramientas apropiadas para la implementación del proyecto.
-    \item \textbf{Diseño de la Arquitectura:} Desarrollo de la estructura y componentes del proyecto, considerando aspectos de escalabilidad y rendimiento.
-    \item \textbf{Implementación y Desarrollo:} Construcción efectiva del proyecto, incluyendo la programación y configuración de la inteligencia artificial generativa.
-\end{itemize}
-\subsection{Ejemplo de Uso del Proyecto}
+    \item \textbf{ETL - Extracción, Transformación y Carga:} Proceso clave para la preparación de datos.
+    \begin{itemize}
+        \item \textbf{Extracción:} Uso de Selenium y API para obtener datos del 'Buscador Ambiental'.
+        \item \textbf{Transformación:} Conversión de PDF a TXT, y aplicación de técnicas de map-reduce.
+        \item \textbf{Carga:} Almacenamiento de datos procesados en ChromaDB.
+    \end{itemize}
 
-Esta fase implica la aplicación práctica del proyecto en un contexto específico, demostrando su funcionalidad y utilidad. 
-En este caso nuestro interés mas que en el output que genere la aplicación, es como funciona internamente el proceso cosa 
-que para la siguiente etapa sea más fácil 
+    \item \textbf{Desarrollo del Chatbot:} Creación del chatbot utilizando Python, Flask y FastAPI.
+    \begin{itemize}
+        \item \textbf{Frontend:} Interfaz de usuario para realizar consultas.
+        \item \textbf{Backend:} Integración con LangChain, uso de estructura RAG ,OpenAI GPT-4 para procesamiento y respuesta.
+    \end{itemize}
+\end{itemize}
+
+\newpage
+
+\subsection{Resultados}
+
+En esta sección de la tesis, se evalúara el desempeño del chatbot creado previamente, se estudiara su funcionamiento y los resultados 
+observando si estos coinciden con las indicaciones que se les entrego de manera previa. Se presentaran cuatro 
+casos de estudio para analizar la calidad de respuestas segun los diferentes prompts que se entregaran, abordando desde resúmenes de casos judiciales 
+hasta solicitudes de información inexistente, lo cual revela tanto las fortalezas como las limitaciones del sistema, 
+especialmente en su capacidad para manejar la precisión y veracidad de la información.
 
 \subsection{Evaluación de Riesgos}
 
-Se trabajará la identificación y análisis de los riesgos potenciales en cada etapa del proceso, así como los riesgos derivados
-del caso de uso. Incluye:
+Para terminar, previamente, se trabajará en la identificación y análisis de los potenciales riesgos  en cada una de las etapa del proceso, así como los riesgos derivados
+los resultados obtenidos a cada uno de los tipos de consulta. Esta evaluación de riesgo se estructura de la siguiente manera:
 
 \begin{itemize}
-    \item \textbf{Riesgos en la Creación del Proyecto:} Identificación de posibles obstáculos y contratiempos durante la etapa de concepción y desarrollo.
-    \item \textbf{Riesgos en el Uso de la Aplicación:} Consideración de los riesgos asociados a la implementación práctica del proyecto en el contexto definido.
+    \item \textbf{Riesgos en la Creación del Proyecto:} Identificando los posibles obstáculos y contratiempos que pueden aparecer durante todas las etapas del desarrollo de una aplicacion o  herramienta que trabaje bajo los mismo topicos que el chatbot realizado en esta tesis.
+    \item \textbf{Riesgos en el Uso de la Aplicación:} Considerando de los riesgos asociados a la implementación práctica de proyectos con tecnologías parecias o relacionadas a la desarrolladas en esta tesis.
 \end{itemize}
 
-Esta metodología proporciona un enfoque integral para la creación y aplicación de un proyecto utilizando LLM, permitiendo una evaluación de los riesgos en cada etapa del proceso y en el caso de uso específico. Esto facilita la toma de decisiones informadas y la formulación de estrategias para mitigar posibles contratiempos.
-
-\subsection{Problematica}
-
-\par En Chile, se desarrollan numerosos proyectos en muchos sectores como pueden ser: la minería, inmobiliario, agrícola, salmonero, etc. Sin embargo, se ha observado un incremento en las reclamaciones 
-sobre temas ambientales asociadas a estos proyectos, convirtiendo la ``Permisología ambiental'' en una problemática significativa para la generación de proyectos de toda índole dentro del país.
-
-\par Muchos proyectos de inversión están judicializados, con sus causas llevadas ante el tribunal ambiental, debido a ello es crucial para las empresas poder prever estas reclamaciones y demandas 
-potenciales con la mayor precisión posible \cite{p1}\cite{p2}\cite{p3}. Cada proyecto que se retrasa o cancela incrementa los costos y el riesgo, afectando no solo al proyecto en sí, sino también la percepción del país como 
-destino amistoso para inversiones extranjeras.
-
-\par La propuesta presentada esta tesis es brindar a los directivos o personal pertinente un acceso inmediato y comprensible a información relevante de estos tribunales ambientales, superando las 
-barreras del lenguaje legal que puede resultar complejo para quienes no son expertos en derecho. Esto les permitirá tener una visión general sobre posibles acciones, consecuencias y problemas que 
-podrían surgir al tomar cualquier tipo  dedecisiones.
-
-\par En conclusión, esta tesis, que se enfoca en estudiar los riesgos asociados a los proyectos, junto con el desarrollo de un chatbot alimentado con datos de las reclamaciones del tribunal 
-ambiental, aborda de manera efectiva la problemática identificada.
-
+Esta metodología proporciona un enfoque integral para la creación y aplicación de un proyecto utilizando grandes modelos de lenguaje (LLM), permitiendo una evaluación de los riesgos en cada etapa del proceso y en el caso específico de uso del chatbot creado para esta tesis. Esto facilita la toma de decisiones informadas y la formulación de estrategias para mitigar posibles contratiempos y dificultades previamente no estudiadas.
 
