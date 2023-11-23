@@ -1,49 +1,68 @@
 
 \chapter{Introducción}
 La inteligencia artificial, también conocida como IA, ha experimentado un notable auge en la industria en los últimos tiempos
-de la mano de la llamada Industria 4.0 \cite{intro1}, 
-especialmente en el ámbito en areas algo reacias como la administración y finanzas\cite{intro2}. 
-Este incremento no se debe necesariamente a un aumento en la capacidad de cómputo, 
-ya que esta ha ido creciendo gradualmente a lo largo del tiempo (buscar respaldo). Anteriormente, aunque importante, no generaba tanto 
-interés como en la actualidad. No fue sino hasta que OpenAI lanzó ChatGPT el 30 de noviemnbre de 2022 que el público en general 
-pudo experimentar, 
-probar y comprender de manera más completa la gran revolución llamada inteligencia artificial generativa \cite{intro3}.
+de la mano de la llamada Industria 4.0 \cite{intro1} y dentro del imaginario colectivo gracias a sus aplicacióny y facil acceso, 
+especialmente en el ámbitos que durante mucho tiempo fueron algo reacias al cambio, como la administración y las finanzas \cite{intro2}. 
+Este incremento no se debe necesariamente a un aumento en la capacidad cómputo a la que tenemos acceso, 
+ya que esta capacidad ha ido creciendo gradualmente a lo largo del tiempo. Dicho lo anterior, aunque muy importante e investigado, 
+la inteligencia artificial no generaba tanto interés como en la actualidad, porque esta estaba recervada para investigadores e implamentaciones dentro de diversas indrustrías.
+No fue sino hasta que la empresa OpenAI lanzó la que es hasta hoy su producto estrella. El 30 de noviemnbre de 2022 fue  el dia que el público en general 
+pudo experimentar, probar y comprender de manera más completa la gran revolución llamada inteligencia artificial generativa generativa con la entrada a las masas de ChatGPT \cite{intro3},
+implantando en la población el concepto de inteligencia artificial generativa.
 
-De acuerdo con Google, "La inteligencia artificial generativa se refiere al uso de la IA para crear contenido, como texto, imágenes, 
-música, audio y videos"\cite{google1}. Gracias a su interfaz amigable, resultó sencillo para personas de diversas industrias descubrir que existía 
-una herramienta capaz de generar texto y responder preguntas de manera comprensible, incluso para aquellos que no eran expertos en 
-tecnología.
+De acuerdo con Google, ``La inteligencia artificial generativa se refiere al uso de la IA para crear contenido, como texto, imágenes, 
+música, audio y video'' \cite{google1}. Ahora gracias a una interfaz amigable para todo publico, resultó sencillo para personas de diversas industrias descubrir que existían 
+diversas herramientas capaces de generar texto y responder preguntas de manera comprensible, incluso para aquellos que no eran expertos en 
+en el uso de este tipo de tecnologías y con ello también dar paso a la popularización de otros tipos de aplicaciones en donde 
+la inteligencia artificial generativa tambien era prometedora, como podria ser la generación de imagenes.
 
-La génesis de esta tesis se basa en la experiencia de llevar a cabo un proyecto utilizando estas tecnologías 
-y los riesgos asociados a ellas. En este contexto, entendemos el riesgo como cualquier aspecto que pueda afectar 
-tanto al equipo involucrado en la creación del proyecto como a los resultados obtenidos. El proyecto se centró 
-en el uso de un modelo de lenguaje de gran envergadura, conocido como LLM por sus siglas en inglés, limitándose a la 
+La génesis de esta tesis se basa en la experiencia de llevar a cabo un proyecto utilizando las tecnologías descrita previamente,
+para que apartir de ella se pueda discutir sobre los riesgos asociados tanto de la creación como del uso de esatas tecnologías. 
+Bajo este contexto, entendemos el riesgo como la probabilidad de eventos adversos y su impacto debido al uso y desarrollo de sistemas de IA, 
+abarcando desde fallas técnicas, ataques maliciosos hasta desafíos éticos y efectos socioeconómicos imprevistos \cite{intro1}. Este 
+riesgo se consindera desde el desarrollo y el uso de la aplicacion creada.
+
+El proyecto se centró en el uso de uno de los grandes modelo de lenguaje, conocido como LLM por sus siglas en inglés, limitándose a la su capacidad de 
 generación de texto. Por lo tanto, no profundizaremos en otros tipos de inteligencia artificial generativa, como la 
-generación de imágenes o audio. El enfoque principal de este trabajo se concentra solo
-en el area del procesamiento del lenguaje natural aplicados a LLM.
+generación de imágenes o audio. El enfoque principal de esta tesis se concentra solo en el area del procesamiento del lenguaje natural aplicados a LLM.
 
 \newpage
 
 \section{Obejetivos}
 % Objetivos
 \subsection{Objetivo General}
-Determinar los factores de riesgo que pueden llegar a influir, tanto de la creación como del uso de aplicaciones que utilicen modelos grandes de lenguaje (LLM) aplicados a la industria, usando de base el proyecto de búsqueda de jurisprudencia de los tribunales ambientales. 
+Esta tesis se enfocará principalmente en identificar los factores de riesgo asociados tanto con la creación como con el 
+uso de aplicaciones que implementan Grande Modelos de Lenguaje (LLM) en la industria usando como caso de 
+estudio el proyecto de búsqueda de jurisprudencia en tribunales ambientales.
+
 \subsection{Objetivo Específico}
 
 \begin{enumerate}
-\item Determinar una posible estructura de una aplicación usando LLM
-\item Desarrollar los estados del Arte del uso de LLM y de los modelos generativo en si
-\item Desarrollar los problemas que conlleva el uso de información para alimentar dichos problemas
-\item Analizar un proceso de ETL de principio a fin para observar sus posibles riesgos
+    \item Entregar contexto sobre inteligencia artificial y el area en específico que aborda esta Tesis.
+    \item Desarrollar el estado del arte en lo que refiere a Modelos Grandes del Lenguaje y sus conceptos asociados
+    \item Analizar un proceso de ETL pertinente a la creación de la aplicación
+    \item Explicar el desarrollo de la aplicación asociada al chatbot
+    \item Comentar los resultados obtenidos de este chatbot
+    \item Estudiar los riesgos que conlleva la creación y uso de aplicaciones que utilizan Modelos Grandes de Lenguaje
+    \item Concluir sobre como afrontar y el riesgo que tienen este tipo de tecnología
 \end{enumerate}
 
 
 \section{Metodologia}
 
-La metodología empleada en esta tesis se estructura en torno a tres componentes esenciales: 
-la creación del proyecto, un ejemplo de uso concreto y la evaluación de los riesgos asociados 
-a cada etapa del proceso, tanto en la fase de desarrollo del proyecto como en su aplicación práctica.
+La metodología empleada en esta tesis se estructura en torno a cuatro componentes esenciales: 
+el desarrollo del estado del arte, la creación del proyecto, los resultados asociados al proyecto y la evaluación de los riesgos asociados 
+a cada etapa del proceso, tanto en la fase de desarrollo del proyecto como en su aplicación práctica del mismo.
+
+\subsection{Estado del arte}
+El Estado del Arte dará contexto sobre la inteligencia artificial, con un enfoque en los Modelos de Lenguaje de Gran Escala (LLM) 
+y aplicaciones como ChatGPT. Se discutira la evolución y el impacto de la inteligencia artificial, especialmente en el procesamiento 
+del lenguaje natural (NLP) y la generación de contenido. También se explora la arquitectura Transformer, clave para entender la 
+eficacia de ChatGPT y otros modelos similares, y se aborda el proceso de ``embedding'' en el contexto de los modelos de lenguaje, entre otros.
+
+
 \subsection{Creación del Proyecto}
+
 
 \noindent Esta fase inicial comprende el desarrollo del proyecto basado en IA generativa. Incluye los siguientes pasos:
 
