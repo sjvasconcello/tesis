@@ -211,50 +211,52 @@ en el almacenamiento estos documentos finales en la base de datos. Dejando todo 
 
 \subsection{Load}
 
-\par Al culminar el proceso de Extracción, Transformación y Carga (ETL), resulta fundamental llevar a cabo la fase de carga, 
+\par Al culminar el proceso de Extracción, Transformación y Carga (ETL), el siguiente y ultimo paso a llevar a cabo la fase de carga, 
 también conocida como ``load'' en inglés, en la cual se incorporan todos los documentos previamente descargados y transformados 
 en una base de datos. Para este proyecto, en el cual se utiliza LangChain, resulta de vital importancia fragmentar los documentos 
-en secciones más pequeñas, por lo que se deben dividir en chunks todos los documentos.
+en secciones más pequeñas cosa que el Chatbot tenga la facilidad de consultar dichos fragmentos en un futuro, por lo que se deben dividir en fragmentos
+mas pequeñoss todos los documentos los que llamaremos chunk.
 
-\par Esta necesidad surge debido a que los documentos deben ser sometidos a un proceso de Embeddings antes de ser 
+\par Esta necesidad de dividir estos documentos, surge debido a que los documentos deben ser sometidos a un proceso de Embeddings, proceso que
+previamente se explico en el estado del arte de esta tesis, antes de ser 
 introducidos en la base de datos. Esto se debe principalmente a que las funciones de Embeddings tienen un límite en la extensión 
-de grupos de caracteres, conocidos como ``tokens'', que pueden ser procesados. En el contexto del modelo de Embeddings 
-``text-embedding-ada-002'', este límite se establece en 8191 tokens \cite{openai1}, lo que constituye la longitud máxima de los fragmentos.
+de grupos de caracteres, conocidos como ``tokens'', que pueden ser procesados a la vez. En el contexto del modelo de Embeddings que funciona
+para el modelo de LLM ```gpt-4''' que utlizamos en este proyecto, se usa la función
+``text-embedding-ada-002'' que cuenta con un límite que se establece en 8191 tokens \cite{openai1}, lo que constituye la longitud máxima de los fragmentos, o chunks, que
+formaremos en el proceso de ``load''.
 
-\subsubsection{Embeddings}
-
-
-
-\par Por lo tanto, cuando se trabaja con documentos extensos, es imperativo dividirlos en fragmentos más pequeños antes de proceder 
-con su incorporación. Según la información proporcionada en el Blog de OpenAI, los embeddings son ``representaciones numéricas 
+\par Por lo tanto, cuando se trabaja con documentos extensos, es indispensable dividirlos en fragmentos más pequeños antes de proceder 
+con su incorporación, debido a las limitaciones de entrada en la ventana de contexto de los LLM, pues en este proyecto estos fragmentos despues seran enviados como contexto y este contexto no puede exceder dicha ventana. Según la información proporcionada en el Blog de OpenAI, los embeddings son ``representaciones numéricas 
 de conceptos convertidos en secuencias numéricas, lo que facilita que las computadoras comprendan las relaciones entre los 
-conceptos''\cite{openai1}. En términos sencillos, los embeddings son representaciones vectoriales de texto que permiten su comprensión por 
-parte del Modelo de Lenguaje de Gran Tamaño (LLM). Dado que los LLM son redes neuronales, el proceso de Embedding resulta 
-esencial para traducir el texto en números, que es el formato comprensible para esta red neuronal.
+conceptos'' \cite{openai1}. En términos sencillos, los embeddings son representaciones vectoriales de texto que permiten su comprensión por 
+parte de los Modelo de Grandes de Lenguaje (LLM). Dado que los LLM son redes neuronales, el proceso de Embedding resulta 
+esencial para traducir el texto en números, que es el formato comprensible para esta red neuronal y permitir que el Chatbot funcione 
+correctamente.
 
-\begin{figure}[ht!]
-    \centering
-    \includegraphics[width=.7\textwidth]{figures/huemul4.png}
-    \caption[Diagrama del funcionamiento de un Embedding]{Diagrama del funcionamiento de un Embedding,\\
-    {\scriptsize (Fuente: OpenAI\cite{openai1})}}
-    \label{fig:chatbot1}
-\end{figure}
-
-\par Los embeddings resultantes se almacenan posteriormente en una base de datos vectorial denominada ChromaDB. Esta base de 
-datos ha sido diseñada para ser compacta, escalable y eficiente, con el propósito de almacenar y recuperar vectores de manera 
+\par Langchain internamente, para llevar a cabo el proceso de carga de datos a la base de datos, toma todos los documentos finales proveniente del proceso de Transform en formato .txt y los divide en chunks que no superen la extensión máxima que puede procesar la función de embbedding de OpenAI, para luego enviar uno por uno dichos chunk mediante llamadas a la API de OpenAI, cosa de obtener los vectores asociados a cada uno de los textos enviados. 
+Los vectores resultantes de enviar los chunks de documetos a la funcion de embeddings, se almacenan posteriormente en una base de datos vectorial llamada ChromaDB. Esta base de 
+datos vectorial, también llamada vecto-store en ingles, ha sido diseñada para ser compacta, escalable y eficiente, con el propósito de almacenar y recuperar vectores de manera 
 efectiva. ChromaDB genera índices que permiten una recuperación rápida y eficiente de los embeddings en función de las 
-consultas realizadas por los usuarios \cite{langchain1}.
+consultas realizadas por los usuarios \cite{langchain1}. Con ello, esta base de datos guarda los vectores asociados a el chunk de un documento, 
+el texto del chunk del documento y su metada asociada.
+
+\newpage
+
+\par Con este último procedimiento se concluye el proceso de ETL para los datos del tribunal ambiental, procediendo de esa manera 
+a la programación e implementación del Chatbot que usara estos datos para entregar respuesta sobre estos datos con el uso de 
+lenguaje natural y con ellos dejando el proceso de ``load'' como se muestra en la \autoref{fig:load_diagram}.\\
 
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=0.65\textwidth]{figures/load_diagram.png}
+    \includegraphics[width=0.8\textwidth]{figures/load_diagram.png}
     \caption[Diagrama de secuencia para el proceso de carga (Load) de datos]{Diagrama de secuencia para el proceso de carga (Load)  de datos\\
     {\scriptsize (Fuente: Elavoración propia)}}
-    \label{fig:chatbot1}
+    \label{fig:load_diagram}
 \end{figure}
 
 \newpage
+
 \section{Chatbot}
 
    
