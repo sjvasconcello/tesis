@@ -233,14 +233,23 @@ parte de los Modelo de Grandes de Lenguaje (LLM). Dado que los LLM son redes neu
 esencial para traducir el texto en números, que es el formato comprensible para esta red neuronal y permitir que el Chatbot funcione 
 correctamente.
 
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/chorma.png}
+    \caption[Diagrama de funcionamiento de ChormaDB]{Diagrama de funcionamiento de ChormaDB\\
+    {\scriptsize (Fuente: www.trychorma.com \cite{trychromaAInativeOpensource})}}
+    \label{fig:chorma}
+\end{figure}
+
+\newpage
+
 \par Langchain internamente, para llevar a cabo el proceso de carga de datos a la base de datos, toma todos los documentos finales proveniente del proceso de Transform en formato .txt y los divide en chunks que no superen la extensión máxima que puede procesar la función de embbedding de OpenAI, para luego enviar uno por uno dichos chunk mediante llamadas a la API de OpenAI, cosa de obtener los vectores asociados a cada uno de los textos enviados. 
 Los vectores resultantes de enviar los chunks de documetos a la funcion de embeddings, se almacenan posteriormente en una base de datos vectorial llamada ChromaDB. Esta base de 
 datos vectorial, también llamada vecto-store en ingles, ha sido diseñada para ser compacta, escalable y eficiente, con el propósito de almacenar y recuperar vectores de manera 
 efectiva. ChromaDB genera índices que permiten una recuperación rápida y eficiente de los embeddings en función de las 
 consultas realizadas por los usuarios \cite{langchain1}. Con ello, esta base de datos guarda los vectores asociados a el chunk de un documento, 
-el texto del chunk del documento y su metada asociada.
+el texto del chunk del documento y su metada asociada, tal como se muestra en la \autoref{fig:chorma}.
 
-\newpage
 
 \par Con este último procedimiento se concluye el proceso de ETL para los datos del tribunal ambiental, procediendo de esa manera 
 a la programación e implementación del Chatbot que usara estos datos para entregar respuesta sobre estos datos con el uso de 
