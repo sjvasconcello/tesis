@@ -70,74 +70,83 @@ los datos transformados al sistema de destino, donde se pueden almacenar y utili
 Iniciando la extracción de los datos, la información requerida para el desarrollo del Chatbot se obtuvo del ``Buscador ambienta'' del Tribunal de Protección Ambiental 
 de Chile a través de su sitio web \cite{BuscadorAmbiental}. Este portal aloja todos los documentos públicos disponibles para su consulta en cualquiera 
 de los tres tribunales ambientales. Para acceder a la base de datos necesaria y extraer el contenido necesario, se llevó a cabo la creación de 
-un bot capaz de recopilar las entradas de este buscador de manera análoga a un usuario convencional.
+un bot, definiendo un bot como un programa de software automatico, repetitivo y con tareas predefinidas \cite{Kaspersky_2023}, capaz de recopilar
+de manera automatica cada una de las entradas de este buscador, de manera análoga a cualquier usuario convencional
+que consultaria una jurisprudencia en el buscador.
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=.8\textwidth]{figures/huemul2.png}
+    \includegraphics[width=.75\textwidth]{figures/huemul2.png}
     \caption[Screenshot del Buscador de la pagina del Primer Tribunal Ambiental]{Buscador de la pagina del Primer Tribunal Ambiental\\
     {\scriptsize (Fuente: Pagina del Primer Tribunal Ambiental)}}
     \label{fig:extract1}
 \end{figure}
     
-Para esta tarea, se empleó Selenium, una herramienta originalmente diseñada para generar pruebas, pero que, debido a la naturaleza 
-reactiva y dinámica de los sitios web, así como a la detección de bots por parte de algunas páginas, resultó ser la elección 
-más apropiada. Este bot, después de explorar todas las páginas del buscador ambiental, como se ilustra en la \autoref{fig:extract1},
-logró recuperar cada uno de los enlaces individuales que conducen a las páginas específicas de cada caso, tal como se 
-muestra en la \autoref{fig:extract2}.
+Para esta tarea, se empleó Selenium \cite{seleniumSelenium}, una herramienta originalmente diseñada para generar pruebas unitarias en software, pero que, debido a la naturaleza 
+reactiva y dinámica de los sitios web, así como la activa detección de bots por parte de algunas páginas, resulta ser la elección 
+más apropiada para la extracción de datos del buscador. Este bot, después de explorar cada una las páginas del buscador ambiental, como se ilustra en la \autoref{fig:extract1},
+logro recolectar cada uno de los enlaces individuales que conducen a las páginas específicas de cada caso, tal como se 
+muestra en la \autoref{fig:extract2}, para de ellas luego extraer más información.
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=.8\textwidth]{figures/huemul2.png}
+    \includegraphics[width=.75\textwidth]{figures/huemul3.png}
     \caption[Screenshot de una sola reclamación en la pagina web del buscador ambiental]{Screenshot de una sola reclamación en la pagina web del buscador ambiental\\
     {\scriptsize (Fuente: Pagina del Primer Tribunal Ambiental)}}
     \label{fig:extract2}
 \end{figure}
-    
-Posteriormente, se contemplaba la posibilidad de obtener tanto los enlaces a cada documento en formato PDF como la información 
-detallada de cada uno de estos documentos mediante la creación de un nuevo bot. Sin embargo, durante el proceso de desarrollo 
-de este bot, se logró acceder a la API que permitía obtener directamente todos los datos mencionados anteriormente. Esto suprimió 
-la necesidad de crear otro tipo de bot utilizando Selenium, ya que bastaba con realizar una solicitud a la mencionada API.
 
-Para completar la fase de extracción de datos (Extract), una vez que se había obtenido toda la información mediante las solicitudes 
-a la API, el último paso consistió en generar nuevas solicitudes con el objetivo de descargar todos los archivos PDF de cada una 
-de las entradas. Estos archivos ahora están descargados y listos para la próxima etapa del proyecto, que implica la transformación 
-de los datos con el fin de obtener la información necesaria para construir la base de datos a partir de los documentos.
+\newpage
+
+Posteriormente, se contemplo la posibilidad de obtener tanto los enlaces a cada documento en formato PDF como la información 
+detallada de cada uno de estos documentos, pudiendo llamar a esta información metadata, mediante la creación de un nuevo bot. 
+Sin embargo, durante el proceso de desarrollo de este bot, se logró utilizar el mismo bot anteriormente usado, pero modificandolo,
+por lo que al hacerlo permitía obtener todos los datos mencionados anteriormente. Esto suprimió 
+la necesidad de crear otro tipo de bot utilizando Selenium, ya que esta modificacion logro obtener dichos resultados.
+
+Para completar la fase de extracción de datos (Extract), una vez que se había obtenido toda la información mediante este bot con Selenium, 
+el último paso consistió en generar un script, definiendo script como una serie de intrucciones de son interpretas por un programa \cite{techtargetWhatScript}, que generara nuevas solicitudes con el objetivo de descargar todos los archivos PDF de cada una 
+de las entradas del buscador. 
+Como una limitación a la extracción de datos se decidió solo descargar las reclamaciones e ignorar el resto de los documentos que recibe el tribunal ambiental, cosa de acotar el proyecto en si y a limitaciones de parte del poder computacional que se dispuso a la hora de escribir esta tesis.
+Estos archivos luego de ser descargados, estan listos para la próxima etapa del proyecto, que implica la transformación 
+de los datos con el fin de procesar esta información, que luego sera necesaria para construir la base de datos a partir de los documentos descargados.
+Dejando todo el proceso de ``Extract'' como se muestra en la \autoref{fig:extract_diagram}. 
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=0.7\textwidth]{figures/extract_diagram.png}
-    \caption[Diagrama de secuencia para el proceso de extracción rmación (Extract) de datos]{Diagrama de secuencia para el proceso de extracción rmación (Extract) de datos\\
+    \includegraphics[width=0.9\textwidth]{figures/extract_diagram.png}
+    \caption[Diagrama de secuencia para el proceso de extracción (Extract) de datos del proyecto]{Diagrama de secuencia para el proceso de extracción (Extract) de datos del proyecto\\
     {\scriptsize (Fuente: Elavoración propia)}}
-    \label{fig:chatbot1}
+    \label{fig:extract_diagram}
 \end{figure}
 
 
+\newpage
 
 \subsection{Transform}
 
 % CHAGO: Ojo lo de semejanza semantica
-\par En la continuación en el proceso de ETL (Extracción, Transformación y Carga), los PDFs que previamente han sido descargados 
-requieren ser sometidos a modificaciones con el objetivo de convertir la información que inicialmente se presenta en un 
-estado ``sucio'' en datos ``limpios'' que puedan ser adecuadamente utilizados en el proyecto. Este proceso se denomina 
-``transformación'', o ``transform,'' en inglés.
+\par Continuando con el proceso de ETL, los PDFs que previamente habian sido descargados en el proceso de Extract,
+ahora requieren ser sometidos a modificaciones en la estructura y formato de sus datos, con el objetivo de convertir la información que inicialmente se presenta en un 
+estado ``sucio'' a uno  ``limpios'' cosa que puedan ser usados adecuadamente dentro posteriores tareas del proyecto. A esta serie de actividades de modificaciones a los datos lo denominamos
+``Transformación'', o ``Transform,'' en inglés.
 
-\par Entre los datos descargados, nos encontramos con un extenso número de PDFs que presentan dificultades significativas para su 
-manipulación. Esto se debe a que el Tribunal Ambiental no sigue un formato estándar en la estructura de las reclamaciones 
+\par Entre los datos descargados, nos encontramos con un extenso número de PDFs que presentan una serie de dificultades significativas para su 
+manipulación dentro del programa. Esto se debe a que el Tribunal Ambiental no sigue un formato estándar en la estructura de las reclamaciones 
 presentadas. En consecuencia, cada uno de los textos posee un formato propio, lo que complica en gran medida la extracción 
 eficiente de las diversas secciones contenidas en dichos textos. Sin embargo, gracias al funcionamiento del proceso de semejanza 
-semántica, esta diversidad de formatos no representa un problema insuperable para el proyecto.
+semántica que se empleara por el chatbot, esta diversidad de formatos no representa un problema insuperable para el proyecto.
 
 \par No obstante, surgen dificultades adicionales cuando se trata de las reclamaciones que son presentadas a los tribunales ambientales 
 en formato digital o, en su defecto, en forma de fotocopias. Esto implica que no todos los documentos están habilitados para su 
-procesamiento. En consecuencia, el primer paso en el proceso de transformación involucra la discriminación de qué PDFs son 
+procesamiento y con ello la extracción de su información. En consecuencia, el primer paso en el proceso de transformación involucra la discriminación de qué PDFs son 
 susceptibles de ser procesados y cuáles no. Para llevar a cabo esta tarea, se ha desarrollado un script capaz de detectar 
-texto dentro de un archivo PDF. Si el texto es legible, se almacena; de lo contrario, se elimina.
+texto dentro de un archivo PDF. Si el texto es legible, se almacena; de lo contrario, se elimina de los archivos descargados.
 
-\par Una vez separados los PDFs legibles y adecuados para el trabajo posterior, se procede con la transformación de estos documentos 
-al formato TXT (texto plano). Esta etapa se lleva a cabo considerando la conveniencia de trabajar con archivos en formato de 
+\par Una vez separados los PDFs legibles y adecuados para el trabajo posterior, se procedio con la transformación de estos documentos 
+al formato TXT (texto plano). Esta etapa se realizo, considerando la conveniencia de trabajar con archivos en formato de 
 texto en comparación con los archivos en formato PDF puro, dado que el próximo método de transformación, que implica el uso de
- map-reduce en Langchain, requiere que los datos estén en formato de texto.
+map-reduce utilizados por Langchain, requiere que los datos estén en formato que sea interpretable por el framework.
 
  \begin{figure}[ht!]
     \centering
@@ -147,51 +156,58 @@ texto en comparación con los archivos en formato PDF puro, dado que el próximo
     \label{fig:chatbot1}
 \end{figure}
 
-\subsubsection{Map-Reduce}
+\newpage
+
+\par El funcionamiento interno de tanto el proceso de ETL como el futuro Chatbot, se basa en el framework Langchain para la interacción con el Modelo de Lenguaje Grande (LLM). 
+LangChain es un framework poderoso que simplifica el desarrollo de aplicaciones utilizando modelos de lenguaje grandes (LLM). Proporciona 
+una interfaz única y personalizable capaz de gestionar diferentes LLM, incluida la gestión rápida, el procesamiento, el aumento de datos, 
+la orquestación de agentes, el almacenamiento y la evaluación. Este marco versátil permite a los desarrolladores integrar perfectamente 
+los LLM con sus flujos de trabajo del mundo real y datos con el mínimo esfuerzo \cite{langchain1}.
 
 
-\par El proceso de Map-Reduce es un modelo de programación diseñado para procesar grandes cantidades de datos de manera eficiente, 
-escalable y distribuida a través de clústeres de servidores. En el contexto de un archivo PDF muy grande, por ejemplo, si se quisiera resumir 
-el contenido o analizar la frecuencia de ciertas palabras, Map-Reduce podría ser utilizado para dividir la tarea en partes más pequeñas y manejables. 
-Primero, la función de map tomaría el texto del PDF y lo dividiría en elementos más pequeños, como párrafos o líneas, 
-asignando a cada uno un resumen intermedio \cite{mapreduce}. Luego, la función de reduce recogería todos los resumenes intermedios asociados con el documento 
+
+\par El proceso de Map-Reduce llebado a cabo por Langchain, es un modelo de programación diseñado para procesar grandes cantidades de datos de manera eficiente, 
+escalable y distribuida a través de clústeres de servidores. En el contexto de un archivo PDF muy extenso, por ejemplo, si se requiere resumir 
+el contenido o analizar la frecuencia de ciertas palabras, Map-Reduce podría ser utilizado para dividir la tarea en partes más pequeñas y manejables. Siguiendo con el ejemplo del PDF extenso
+en primera instancia, la función de map tomaría el texto del PDF y lo dividiría en elementos más pequeños, como párrafos o líneas, 
+asignando a cada uno un resumen intermedio \cite{mapreduce}. Luego, la función reduce recogería todos los resumenes intermedios asociados con el documento extenso
 y los combinaría para producir un resultado agregado, con un resumen de todo el documento. 
-
-% \par Dentro del contexto del uso de Langchain, el proceso de map-reduce implica, en primer lugar, la aplicación de una separación en chunks y genera un resumen 
-%a cada chunk del documento de manera individual, considerándolos de manera independiente 
-%(la fase de "Map"). Posteriormente, todos los 
-%nuevos documentos resumidos se combinan en un documento (la fase de "Reduce"). 
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=.9\textwidth]{figures/huemul_mapreduce.jpg}
+    \includegraphics[width=1\textwidth]{figures/huemul_mapreduce.jpg}
     \caption[Diagrama de funcionamiento de la función mapreduce en un documento]{Diagrama de funcionamiento de la función mapreduce en un documento\\
     {\scriptsize (Fuente: Langchain \cite{framework1})}}
     \label{fig:chatbot1}
 \end{figure}
 
-\par Sin embargo, es importante destacar que un archivo .txt puede contener un número de tokens demasiado elevado como para ser 
-reducido de manera inmediata. En situaciones de este tipo, es necesario recurrir a un proceso de subdivisión que fragmente los 
-textos en segmentos con un número de tokens inferior al límite impuesto por la API de OpenAI.
-Cada archivo .txt puede ser dividido, 
-resumido y exportado a un nuevo archivo .txt una vez que ha sido fragmentado previamente en segmentos.
+\par Continuando el con el proceso de transform y entrando a un proceso de map-reduce, es importante destacar que un archivo .txt obtenido del proceso anterior, 
+puede contener una extensión demasiado grande, lo que conlleva a que tenga número de tokens muy elevado como para ser reducido de manera inmediata. 
+En situaciones de este tipo, es necesario recurrir a un proceso de subdivisión que fragmenten los textos en segmentos con un número de tokens inferior al límite impuesto por 
+la API OpenAI a los modelos de LLM de la empresa, siendo en este caso el modelo ``gpt-4'' que tiene un limite de 8,192 tokens por llamada a la API \cite{openaimodels}.
+Cada archivo .txt puede ser dividido, resumido y exportado a un nuevo archivo .txt una vez que ha sido fragmentado previamente en segmentos.
 
-\par Los documentos procesados son combinados utilizando otro proceso de Langchain para obtener un resultado final consolidado. 
+\newpage
+
+\par Los documentos procesados son combinados utilizando otro proceso por parte de Langchain, cosa obtener un resultado final con toda la datos de los documentos consolidados. 
 Para concluir el proceso de transformación, los resúmenes generados después de haber pasado por el procedimiento de map-reduce 
-se someten a un último paso antes de ser incorporados en la base de datos. Este paso implica la fusión de los resúmenes con la 
-información obtenida a través de la información Extraida por Selenium previamente, presentada en formato de texto. Este proceso 
-resulta en la creación de un único documento que engloba toda la información, al cual nos referiremos como ``documentos finales''. 
+se someten a una última tarea, antes de ser incorporados en la base de datos mediante el el proceso de ``load''. Este paso implica la fusión de los resúmenes con la 
+información obtenida a través de la información extraida por Selenium previamente y que es especifica de cada texto llamada metadata, la cual es añadida a cada documento final en forma de texto. Este proceso 
+resulta en la creación de un único documento para cada reclamación que engloba toda la información pertinete a ella, a los cuales nos referiremos como ``documentos finales''. 
 Con esto, se concluye la fase de transformación y se procede al último procedimiento, conocido como ``carga'' (Load), que consiste 
-en el almacenamiento estos documentos finales en la base de datos.
+en el almacenamiento estos documentos finales en la base de datos. Dejando todo el proceso de ``Transform'' como se muestra en la \autoref{fig:transform_diagram}. \\
 
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=0.6\textwidth]{figures/transfrom_diagram.png}
+    \includegraphics[width=0.8\textwidth]{figures/transfrom_diagram.png}
     \caption[Diagrama de secuencia para el proceso de transformación (Trasform) de datos]{Diagrama de secuencia para el proceso de transformación (Trasform) de datos\\
     {\scriptsize (Fuente: Elavoración propia)}}
-    \label{fig:chatbot1}
+    \label{fig:transform_diagram}
 \end{figure}
+
+
+\newpage
 
 \subsection{Load}
 
@@ -261,11 +277,13 @@ para la prueba y generación automática de documentación.
     \label{fig:chatbot1}
 \end{figure}
 
+% ELIMINAR
 El funcionamiento interno de la aplicación se basa en el framework Langchain para la interacción con el Modelo de Lenguaje Grande (LLM). 
 LangChain es un framework poderoso que simplifica el desarrollo de aplicaciones utilizando modelos de lenguaje grandes (LLM). Proporciona 
 una interfaz única y personalizable capaz de gestionar diferentes LLM, incluida la gestión rápida, el procesamiento, el aumento de datos, 
 la orquestación de agentes, el almacenamiento y la evaluación. Este marco versátil permite a los desarrolladores integrar perfectamente 
 los LLM con sus flujos de trabajo del mundo real y datos con el mínimo esfuerzo \cite{langchain1}.
+% ELIMINAR
 
 Para la base de datos se utilizó ChromaDB. ChromaDB es una base de datos vectorial sin esquemas diseñada específicamente para 
 su uso en aplicaciones de inteligencia artificial. Es liviano y muy potente, lo que permite el almacenamiento, la recuperación 
