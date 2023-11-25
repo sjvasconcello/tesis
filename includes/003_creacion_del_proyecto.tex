@@ -164,8 +164,6 @@ una interfaz única y personalizable capaz de gestionar diferentes LLM, incluida
 la orquestación de agentes, el almacenamiento y la evaluación. Este marco versátil permite a los desarrolladores integrar perfectamente 
 los LLM con sus flujos de trabajo del mundo real y datos con el mínimo esfuerzo \cite{langchain1}.
 
-
-
 \par El proceso de Map-Reduce llebado a cabo por Langchain, es un modelo de programación diseñado para procesar grandes cantidades de datos de manera eficiente, 
 escalable y distribuida a través de clústeres de servidores. En el contexto de un archivo PDF muy extenso, por ejemplo, si se requiere resumir 
 el contenido o analizar la frecuencia de ciertas palabras, Map-Reduce podría ser utilizado para dividir la tarea en partes más pequeñas y manejables. Siguiendo con el ejemplo del PDF extenso
@@ -266,19 +264,24 @@ lenguaje natural y con ellos dejando el proceso de ``load'' como se muestra en l
 
 \newpage
 
+
+% ================================== Chatbot =============================================================
+
 \section{Chatbot}
 
    
-La estructura del chatbot se desarrolló en su totalidad utilizando el lenguaje de programación Python. Esta elección se debió a la 
-experiencia del equipo en Python, lo que facilitó tanto la creación del frontend como del backend de la aplicación.
+Para la creación del Chatbot que utilizara los datos generados por el proceso de ETL anteriormene descrito, se utilizo
+una estructura de desarrolló formada en su totalidad por el lenguaje de programación Python \cite{pythonWelcomePythonorg}, cosa que cada elemento fuera escrito en dicho lenguaje. 
+La elección de este lenguaje de programación se debió a la experiencia del equipo en Python, facilitando tanto la creación del frontend como del backend de la aplicación.
 
-Para la parte de la interacción del usuario (frontend), se empleó Python junto con el framework Flask para la presentación 
-de contenido en pantalla, incluyendo tanto la estructura de HTML como las hojas de estilo CSS. Además, se aprovechó la potencia del 
-framework Bootstrap para agilizar el proceso de maquetación.
+Para la seccion de la interacción del usuario (frontend), se empleó el uso Python junto con el framework Flask \cite{flask1} para la presentación  
+de contenido en pantalla, incluyendo tanto la estructura de HTML como las hojas de estilo CSS. Además, se aprovechó potencio el uso de Flask con el  
+framework Bootstrap para agilizar el proceso de maquetación, ahorrando tiempo en el proceso de creación del Chatbot.
 
-En cuanto al backend, se implementó una API con el objetivo de facilitar la interacción entre el frontend y el backend. Para este 
-propósito, se utilizó FastAPI, un framework que permite la creación rápida de APIs y que ofrece la ventaja de contar con Swagger 
-para la prueba y generación automática de documentación.
+En cuanto a la creación del backend, se desarrollo una API con el objetivo de facilitar la interacción entre el frontend y el backend, aumentando así la velocidad
+de desarrollado a la vez que con ellos se aislaban posibles errores al desarrollar. Para este 
+propósito, se utilizó FastAPI \cite{tiangoloFastAPI}, un framework que permite el rapido desarrollo de APIs y que ofrece la ventaja de contar con Swagger \cite{swaggerAPIDocumentation}
+para la prueba y generación automática de documentación para la API.
 
 \begin{figure}[ht!]
     \centering
@@ -288,38 +291,39 @@ para la prueba y generación automática de documentación.
     \label{fig:chatbot1}
 \end{figure}
 
-% ELIMINAR
-El funcionamiento interno de la aplicación se basa en el framework Langchain para la interacción con el Modelo de Lenguaje Grande (LLM). 
-LangChain es un framework poderoso que simplifica el desarrollo de aplicaciones utilizando modelos de lenguaje grandes (LLM). Proporciona 
-una interfaz única y personalizable capaz de gestionar diferentes LLM, incluida la gestión rápida, el procesamiento, el aumento de datos, 
-la orquestación de agentes, el almacenamiento y la evaluación. Este marco versátil permite a los desarrolladores integrar perfectamente 
-los LLM con sus flujos de trabajo del mundo real y datos con el mínimo esfuerzo \cite{langchain1}.
-% ELIMINAR
+Para el funcionamiento interno de la aplicación, de la misma manera que se utilizo para el proceso de ETL, 
+este también funciona en base a el framework Langchain, esto debido a que este framework al ser diseñado para el 
+uso de LLMs y tareas asociadas a ellos, por lo que no solo funciona para el tratamiento de datos, sino que tambien para la interacción 
+de los prompt con dichos LLM, dando también la posibilidad de integrar nuevas funciones como interacción con 
+bases de datos, uso de código, etc \cite{langchain1}. Provocando que las aplicaciones realizadas con este framework se les 
+llame LLM con ``super poderes'' gracias al abanico de funciones extras que aportan a los LLM.
 
-Para la base de datos se utilizó ChromaDB. ChromaDB es una base de datos vectorial sin esquemas diseñada específicamente para 
+Para la base de datos se utilizó ChromaDB, tal como se uso en el proceso de ``load''. ChromaDB es una base de datos vectorial sin esquemas diseñada específicamente para 
 su uso en aplicaciones de inteligencia artificial. Es liviano y muy potente, lo que permite el almacenamiento, la recuperación 
 y la gestión eficiente de datos vectoriales (Embeddings), lo cual es esencial para las aplicaciones de chat de documentos 
 basadas en LangChain y OpenAI \cite{langchain1}. Para que finalmente estas trabajaran en conjunto con los modelos de OpenAI, 
-específicamente el modelo gpt-4 que actualmente es el más potente del mercado.
+específicamente el modelo gpt-4 que actualmente es el más potente del mercado y que se utilizo para este Chatbot.
+
+\newpage
+
+
+La función principal de este chatbot en espesifico es generar respuestas utilizando la técnica ``Retriever-Augmented Generation'' (RAG), 
+que implica proporcionar contexto adicional en el prompt enviado a OpenAI. Mientras que una consulta simple suele 
+constar de una instrucciones y una consulta, tal como se muestra en la \autoref{fig:simple}, en el uso RAG se agrega contexto dentro del prompt con el propósito de reducir la 
+probabilidad de alucinaciones y mejorar la calidad de las respuestas. 
 
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=.4\textwidth]{figures/huemul6.png}
     \caption[Diagrama en consulta simple]{Diagrama en consulta simple\\
     {\scriptsize (Fuente: Elavoración propia)}}
-    \label{fig:chatbot1}
+    \label{fig:simple}
 \end{figure}
 
 
-La función principal del chatbot es generar respuestas utilizando la técnica "Retriever-Augmented Generation" (RAG), 
-que implica proporcionar contexto adicional en el prompt enviado a OpenAI. Mientras que una generación simple suele 
-constar de instrucciones y una consulta, en RAG se agrega contexto dentro del prompt con el propósito de reducir la 
-probabilidad de alucinaciones y mejorar la calidad de las respuestas. 
-
-
-En cambio, mediante ``Retriever-Augmented Generation'' 
-consiste al igual que el proceso anterior en entregar las instrucciones y una consulta, pero junto ello se agrega un contexto 
-de este, cosa de que el modelo largo de lenguaje tenga menor capacidad de alucinar y generar una mejor respuesta. Podemos decir
+El uso de ``Retriever-Augmented Generation'' (RAG)
+consiste consulta simple que al preguntar a un LLM se le hace entrega de las instrucciones y una consulta, pero que junto ello se agrega un contexto 
+de este, cosa de que el modelo largo de lenguaje tenga menor capacidad de alucinar y generar una mejor respuesta, tal como se muesta en la \autoref{fig:rag}. Podemos decir
 que ``Retriever-Augmented Generatio'' (RAG) se refiere a un modelo de generación de lenguaje que se mejora por la capacidad 
 de recuperar información de una base de datos, como un índice de vectores que representan los documentos del buscador ambiental, 
 además de la memoria que ya posee. Este enfoque se utiliza para mejorar la generación de respuestas en tareas de procesamiento 
@@ -330,36 +334,38 @@ de lenguaje natural (NLP) que requieren conocimiento intensivo \cite{raq}.
     \includegraphics[width=.4\textwidth]{figures/huemul5.png}
     \caption[Diagrama en consulta mediante Retriver augmented generation]{Diagrama en consulta mediante Retriver augmented generation\\
     {\scriptsize (Fuente: Elavoración propia)}}
-    \label{fig:chatbot1}
+    \label{fig:rag}
 \end{figure}
 
-Finalmente, este chatbot envía el prompt con las instrucciones y el contexto obtenido mediante el RAG realizado con 
+Finalmente, este chatbot envía el prompt con las instrucciones y el contexto obtenido mediante el proceso de RAG, realizado con 
 Langchain a el LLM, siendo en este caso gpt-4 de OpenAI, luego de pasar por una función de Embedding, cosa de que 
 pueda ser leído por el modelo. Por lo que se realiza un request con la información a la API de OpenAI, para que se 
-obtenga el output con la respuesta.
+obtenga el output con la respuesta, que postulamente sera procesada y mostrada por el frontend.
 
+\newpage
 
-Esta tesis se centra tanto en el riesgo\autoref{appx:contexto}. como en el desarrollo de un Chatbot, este chatbot funciona 
+\section{Funcionamiento basico}
+
+Esta tesis se centra tanto en el riesgo asociado al desarrollado y uso, como en el desarrollo de un Chatbot, este chatbot funciona 
 en base a la una arquitectura de RAG (Retriever-Augmented Generation) por lo que esta consiste en 
-la recuperación de contexto el cual es enviado junto con el prompt al LLM. El proceso comienza con 
-la obtención de un prompt específico del usuario, tal como ``Dame un resumen del documento Dominga'' 
-dentro de la barra de búsqueda del frontend. Este prompt actúa como entrada inicial para el sistema 
-de recuperación de información.
+la recuperación de contexto el cual es enviado junto con el prompt al LLM, por lo que se procede a dar un ejemplo del funcionamiento basico del chatbot. El proceso comienza con 
+la obtención de un prompt específico del usuario por medio de la interfaz del frontend, como ejemplo usaremos el prompt: ``Dame un resumen del documento Dominga'' 
+dentro de la barra de búsqueda del frontend, tal como se muestra en la \autoref{fig:frontend}. Este prompt actúa como entrada inicial para el sistema de recuperación de información.
 
-%\begin{figure}[ht!]
-%    \centering
-%    \includegraphics[width=.8\textwidth]{figures/website.png}
-%    \caption[]{\\
-%    {\scriptsize (Fuente: Elavoración propia)}}
-%    \label{fig:chatbot1}
-%\end{figure}
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=.9\textwidth]{figures/website.png}
+    \caption[Screenshot del Chatbot desarrollado]{Screenshot del Chatbot desarrollado\\
+    {\scriptsize (Fuente: Elavoración propia)}}
+    \label{fig:frontend}
+\end{figure}
 
 El prompt se procesa mediante una función de Embedding, empleando para ello OpenAI, siendo esta  
 la función 'text-embedding-ada-002'. Esta función puede manejar hasta un máximo de 8191 tokens y 
 produce un vector de 1536 dimensiones en forma de lista \cite{openai1}. Para determinar la similitud entre el 
 vector del prompt y los vectores correspondientes a los documentos almacenados, se utiliza la función 
-de similitud coseno presente en la \autoref{eq:similitudcoseno}.Esta mide el coseno del ángulo entre dos vectores,
-Siendo estos $A$ y $B$ respectivamente, y este proporciona un valor que refleja su proximidad semántica entre el vector
+de similitud coseno presente en la \autoref{eq:similitudcoseno}. Esta mide el coseno del ángulo entre dos vectores,
+siendo estos $A$ y $B$ respectivamente, y este proporciona un valor que refleja su proximidad semántica entre el vector
 del prompt y los vectores de todos los documentos almacenados en la base de datos ChromaDB.
 
 \begin{equation}
@@ -368,18 +374,29 @@ del prompt y los vectores de todos los documentos almacenados en la base de dato
 \end{equation}
 
 
-El proceso de embedding como se menciono antes lo que realiza en otras palabras es la conversión de un texto a un vector, esto debido a que los modelos de LLM al ser basados 
+\newpage
+
+El proceso de embedding como se menciono anteriormente, lo que realiza en otras palabras es la conversión de un texto a un vector, esto debido a que los modelos de LLM al ser basados 
 en redes neuronales necesitan un presentación grafica de estos texto a un formato el cual pueda ser legible por el modelo, por lo que se convierten en números como muestra la 
-\autoref{fig:caso1} a continuación.
+\autoref{fig:caso1} a continuación. 
 
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=0.7\textwidth]{figures/embedding1.png}
-    \caption[Representación vectorial de un prompt luego de pasar por la funcion de embedding]{Representación de un prompt luego de pasar por la funcion de embedding 'text-embedding-ada-002'\\
+    \caption[Representación vectorial de un prompt luego de pasar por la funcion de embedding]{Representación de un prompt luego de pasar por la funcion de embedding 'text-embedding-ada-002'en un archivo de Jupyter Notebook\\
     {\scriptsize (Fuente: Elavoración propia)}}
     \label{fig:caso1}
 \end{figure}
 
+
+Luego del proceso anterior, el vector multinacional que representa al prompt debe ser comparado individualmente con cada uno de los 
+vectores de embedding generados durante el proceso de ETL y que han sido previamente almacenados en la base de datos vectorial Chroma. 
+Es crucial asegurarse de que tanto el vector asociado al prompt como los vectores asociados a los documentos almacenados hayan 
+sido generados utilizando la misma función de embedding. Esta uniformidad es necesaria porque garantiza que ambos ocupen el mismo 
+espacio vectorial y posean la misma dimensionalidad. Si los vectores no son del mismo tamaño, su comparación resulta inviable. 
+Además, al haber sido generados bajo los mismos parámetros de la función de embedding, la evaluación de su semejanza se vuelve 
+metodológicamente sólida. Como ejemplo podría darse una función de embedding que fue realizada solo con texto en ingles y una con 
+varios idiomas, por lo que ambas tienen un carácter distintos y no sería útil comprar entre ellos.
 
 Una vez calculada la similitud coseno entre el vector asociado al prompt y los vectores que presentan los documentos que se encontraban en la 
 base de datos, se procede a elaborar un ranking de los documentos más relevantes, según la similaridad obtenida del cálculo de similitud de cosenos. 
@@ -396,12 +413,11 @@ presente en la \autoref{fig:caso2}.
 
 \newpage
 
-Todo este proceso funciona internamente usando Langchain que consulta estos ‘n’ documentos, siendo en este caso 3, a la base de datos 
+Todo este proceso es orquestado internamente por Langchain que consulta estos ``n'' documentos, siendo en este caso 3 aunque pueden 
+más dependiendo de la preferencia y objetivo, a la base de datos vectorial
 ChormaDB y son enviados como contexto dentro del prompt a OpenAI mediante el uso de su API, junto a la key de autorización, 
-para obtener el resultado del modelo.
+para obtener el resultado del modelo y con ello una respuesta a la consuta en lenguaje natural.
 
-Finalmente, se obtiene el resultado por parte del modelo y es procesado por el frontend de la forma que se observa en la \autoref{fig:caso3}, 
-lo que da fin al proceso que realiza el Chatbot de principio a fin.
 
 
 \begin{figure}[ht!]
@@ -411,3 +427,7 @@ lo que da fin al proceso que realiza el Chatbot de principio a fin.
     {\scriptsize (Fuente: Elavoración propia)}}
     \label{fig:caso3}
 \end{figure}
+
+Finalmente, se obtiene el resultado enviado por parte del modelo, el cual llega en formato json tal como sale en el \autoref{appx:contexto},
+este procesado por el frontend para que sea consumida de forma más amigable, de la forma que se observa en la \autoref{fig:caso3}.
+Con el visto bueno del funcionamiento de la aplicación da fin al proceso de creación del Chatbot de principio a fin.
