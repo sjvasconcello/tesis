@@ -3,44 +3,51 @@
 \chapter{Creación del Proyecto}
 
 
-Los Tribunales Ambientales son órganos jurisdiccionales especiales, sujetos a la 
+En Chile, los Tribunales Ambientales son órganos jurisdiccionales especiales, sujetos a la 
 superintendencia directiva, correccional y económica de la Corte Suprema, cuya función 
 es resolver las controversias medioambientales de su competencia y ocuparse de los 
-demás asuntos que la ley somete a su conocimiento \cite{Ley20600}. Estos tribunales generan una cantidad 
-de jurisprudencia que puede ser encontrada en su portal de consulta llamado buscador ambiental \cite{BuscadorAmbiental}. 
+demás asuntos que la ley somete a su conocimiento \cite{Ley20600}. Estos tribunales generan una gran cantidad 
+de jurisprudencia debido a los procesos como demandas, reclamaciones, etc. Que ellos atienden continuamente 
+y que a su vez pueden ser encontrada en su portal de consulta llamado buscador ambiental \cite{BuscadorAmbiental}. 
 
-El proyecto consiste en la generación de un chatbot en donde se pueda preguntar sobre 
-la jurisprudencia de estos tribunales, aunque por razones de capacidad el chatbot se 
-vea acotado solamente a las reclamaciones recibidas por el tribunal, con una estructura representada a \autoref{fig:estructura}.
+Esta tesis contempla un proyecto consistente en la generación de un chatbot, donde se pueda preguntar sobre 
+la jurisprudencia de los tribunales anteriormente descritos, por parte de cualquier persona sin necesidad de 
+contar con una mucha expertiz en el ambito legal. Sin embargo, por razones de capacidad de computo y limitaciones 
+de la tecnología el chatbot se 
+vera acotado en sus capacidades a solamente procesar las reclamaciones recibidas por el tribunal y no otro tipo d
+e litigios que pueda antender dicho tribunal. Para este chatbot, se considero una estructura como 
+la representada en la \autoref{fig:estructura}.
 
-Por lo que, este proyecto consiste en un proceso de extracción de datos 
-desde el buscador ambiental, transformación de estos datos para su utilización, generación 
-de vectores de estos datos para que puedan interaccionar con la aplicación, carga de estos 
-en una base de datos, para que después la aplicación pueda interactuar con ellos y mandando 
-esa información a el LLM, siendo en este caso gpt-4 perteneciente a OpenAI.
-
+El proyecto esta contruido por diferentes etapas que consisten en: un proceso de extracción de datos 
+desde el buscador ambiental, otro de transformación de estos datos para su utilización, la generación 
+de vectores de los datos transformados para que puedan interactuar con la aplicación, un carga de estos vectores 
+en una base de datos, para que después el chatbot que se creara, pueda interactuar con ellos y mandandar 
+esa información a el gran modelo de lenguaje (LLM), siendo en este caso el modelo ``gpt-4'' perteneciente a OpenAI,
+ siendo la estrutura basica del proyecto la de \autoref{fig:estructura}.
 % Inclusión de Figuras
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=.5\textwidth]{figures/huemul1.png}
+    \includegraphics[width=.47\textwidth]{figures/huemul1.png}
     \caption[Estructura basica de la aplicación]{Estructura basica de la aplicación\\
     {\scriptsize (Fuente: Elaboración propia)}}
     \label{fig:estructura}
 \end{figure}
     
 
-A partir de esta estructura mientras se avance en el desarrollo, se explicará parte por parte el proceso y con ello los riesgos de cada uno de ellos.
+A partir de esta estructura basica anteriormente mencionada en la \autoref{fig:estructura}, se explicará parte 
+por parte el proceso con mucha mas profundidad cosa de entender tanto el funcionamiento como el proceso de creación, 
+por lo que para empezar se iniciara con el proceso de ETL.
 
 
 
 \section{ETL}
 
 
-Para realizar el proyecto fue necesario realizar un proceso de ETL. El término ETL se refiere a las técnicas de "Extracción, 
+Para realizar la realizacipon del proyecto, fue necesario realizar un proceso de ETL. El término ETL se refiere a las técnicas de "Extracción, 
 Transformación y Carga" (Extract, Transform, Load), que constituyen un proceso clave para los datos necesarios para el proyecto. 
 Este proceso implica la extracción de datos de fuentes heterogéneas, su transformación para ajustarse a las necesidades del 
 negocio y su posterior carga en un destino que, por lo general, es un almacén de datos diseñado para el análisis y la generación 
-de informes\cite{ETL1}. Siendo en este proyecto un estrutura como la \autoref{fig:etl1}.
+de informes o aplicaciones \cite{ETL1}. Siendo en este proyecto el proceso como el que se muestra en la \autoref{fig:etl1}.
 
 % Inclusión de Figuras
 \begin{figure}[ht!]
@@ -52,19 +59,17 @@ de informes\cite{ETL1}. Siendo en este proyecto un estrutura como la \autoref{fi
 \end{figure}
     
 
-La fase de extracción implica la recolección de datos de múltiples fuentes, que pueden variar desde bases de datos 
-estructuradas hasta información no estructurada en la web. La transformación se refiere al proceso de limpieza, conversión, 
-y consolidación de estos datos en un formato adecuado para el análisis. Finalmente, la carga es el proceso de transferir 
+Para la fase de extracción de los datos, esta implica la recolección de datos de múltiples fuentes, que pueden variar desde bases de datos 
+estructuradas hasta información no estructurada en la web u otra fuente. La transformación se refiere al proceso de limpieza, conversión, 
+y consolidación de estos datos en un formato adecuado para el análisis o entendimiento de la aplicación que se usara. Finalmente, la carga es el proceso de transferir 
 los datos transformados al sistema de destino, donde se pueden almacenar y utilizar para la toma de decisiones estratégicas 
 \cite{ETL1}.
 
 \subsection{Extract}
 
-%\autoref{fig:logoind}
-
-La información requerida para el desarrollo del Chatbot se obtuvo del "Buscador ambiental" del Tribunal de Protección Ambiental 
-de Chile a través de su sitio web\cite{BuscadorAmbiental}. Este portal aloja todos los documentos públicos disponibles para su consulta en cualquiera 
-de los tres tribunales ambientales. Para acceder a la base de datos necesaria, se llevó a cabo la creación de 
+Iniciando la extracción de los datos, la información requerida para el desarrollo del Chatbot se obtuvo del ``Buscador ambienta'' del Tribunal de Protección Ambiental 
+de Chile a través de su sitio web \cite{BuscadorAmbiental}. Este portal aloja todos los documentos públicos disponibles para su consulta en cualquiera 
+de los tres tribunales ambientales. Para acceder a la base de datos necesaria y extraer el contenido necesario, se llevó a cabo la creación de 
 un bot capaz de recopilar las entradas de este buscador de manera análoga a un usuario convencional.
 
 \begin{figure}[ht!]
