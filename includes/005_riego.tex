@@ -1,167 +1,177 @@
 
 \chapter{Evaluación de Riesgos}
 
+En el dinámico campo de la Inteligencia Artificial, particularmente en el ámbito de los Modelos de Grande de Lenguaje (LLM), 
+la evaluación de riesgos es un elemento crucial para el éxito y la viabilidad de cualquier proyecto. Este sección se dedica 
+a explorar los desafíos y consideraciones esenciales en el desarrollo y aplicación de proyectos basados en LLM, ofreciendo 
+una perspectiva integral sobre cómo mitigar riesgos y optimizar el rendimiento de estos modelos.
+
+Al abordar la Evaluación de Riesgos en proyectos que involucran LLM, es indispensable considerar varios factores críticos 
+que pueden influir directamente en el resultado del proyecto. Estos factores pueden aparecer tanto en el periodo de creación
+del proyecto, como mientras aplicamos la tecnología. A continuacion, se presetaran una serie de riegos que hay que tener en 
+consideracion para cualquier proyecto que utilice como base los LLM.
+
 \section{Creación del Proyecto}
 
 \subsection{No tener un análisis previo de que se busca lograr}
 
-La realización de un análisis previo resulta crucial para el inicio de cualquier proyecto basado en datos además del contexto de este. 
-La mayoría de las personas que tienen acceso a herramientas analíticas realmente no entienden lo que sucede dentro de esas herramientas \cite{datos1}, 
-dado ello es crucial que al empezar un proyecto se entienda a la perfección donde se quiere llegar y que realmente necesita. 
+La realización de un análisis previo, tanto de una aplicación como un proyecto, resulta crucial para el inicio de cualquier 
+proyecto basado en datos, independiente de la rama en donde se esté aplicando, donde el NLP no es la excepción. 
+La mayoría de los usuarios que tienen acceso a herramientas analíticas, realmente no entienden el funcionamiento interno de dichas herramientas \cite{datos1}, 
+por consiguiente, es crucial que al empezar un proyecto se entienda a la perfección donde se quiere llegar, realmente necesita y cuáles son los objetivos. 
 
-Además, suele pasar que, en un conjunto de datos muy grandes, cualquier efecto que desee probar aparecerá como significativo \cite{datos1}, de ahí la 
-importancia de un análisis previo. Esto es tan importante porque existen casos en donde un problema que puede resultar complejo en 
-primera instancia puede sugerir el uso de un modelo complejo. Sin embargo, usando un modelo mas simple se llegan a resultados mejores 
-que con el uso de complejo \cite{datos2}, siendo este un ejemplo claro de que un análisis previo adecuado puede mejorar tanto los resultados como la 
-experiencia de trabajo. 
+Además, es común que suceda, que en un conjunto de datos muy extenso, cualquier efecto que desee probar aparecerá como significativo \cite{datos1}, de ahí la 
+importancia de un análisis previo de objetivos y problemáticas. Este proceso es tan importante, debido a que existen casos en donde un problema que puede resultar complejo en 
+primera instancia, puede sugerir el uso de modelos muy complejo. Sin embargo, usando un modelo más simple se llegan a resultados mejores 
+que con el uso de complejo \cite{datos2}, siendo este tipo de escenarios, un ejemplo claro de que un análisis previo adecuado puede mejorar tanto los resultados como la 
+experiencia de desarrollo al trabajar. 
+
+\newpage
 
 \subsection{Calidad de los datos}
 
-Para cualquier tipo de trabajo, aplicación o estudio la calidad de los datos es en extremo importante esto debido a que, la calidad de los datos 
+Para cualquier tipo de trabajo, aplicación o estudio, la calidad de los datos es en extremo importante esto debido a que, la calidad de los datos 
 es crítica para un sistema de Machine Learning, porque los datos deficientes podrían causar problemas graves como predicciones erróneas o baja 
-precisión de clasificación \cite{calidad1}. Ahora si hablamos de LLM que entra en el terreno del Deep learning, simplificamos los atributos de calidad de datos 
-en los tres más importantes para el Deep Learning: la fidelidad, la variedad y la veracidad de un conjunto de datos \cite{calidad1}.
+precisión de clasificación \cite{calidad1}. Ahora si hablamos del uso de LLM, que forma parte del procesamiento del lenguaje natural, además del Deep learning, 
+simplificamos los atributos de calidad de datos en los tres más importantes para el Deep Learning: la fidelidad, la variedad y la veracidad de un conjunto de datos \cite{calidad1}.
 
-Como ejemplo dentro usando el proyecto que acompaña a este análisis de riesgo, se tuvo problemas en ciertas reclamaciones tratadas en el proceso 
-de ETL, debido principalmente a que no existe un estándar para subir las reclamaciones en el buscador ambiental, existían pdf que eran legibles y otros 
-que eran solo fotocopias, lo que imposibilitaba la extracción de información. Incluso dentro de la calidad de los datos, se puede extrapolar a la 
-calidad de la metadata que era anexa en la base de datos.
+Como ejemplo, un caso que sucedió dentro del proyecto que acompaña a este análisis de riesgo, se tuvo problemas en una ciertas cantidad reclamaciones tratadas en el proceso 
+de ETL, esto debido principalmente a que el Tribunal ambiental no cuenta con un estándar para entregar las reclamaciones que luego aparecerán en el buscador ambiental, existían tanto pdf que eran legibles, como otros 
+que eran solo fotocopias, lo que imposibilitaba la extracción de información por problemas de formatos. El problema la calidad de los datos a su vez, se puede extrapolar a la 
+calidad de la metadata que era anexa en la base de datos dentro del proyecto.
 
 \subsection{Sesgos} %sesgo2
 
-Los Modelos de Lenguaje Grande (LLM), al ser entrenados con una masiva cantidad de datos, pueden manifestar sesgos debido a 
-la procedencia de los datos utilizados en su entrenamiento. Estos sesgos pueden dar lugar a desafíos cuando se aplican en 
+Los Modelos de Lenguaje Grande (LLM), al ser entrenados con una masiva cantidad de datos, pueden manifestar sesgos debido al origen y procedencia de los datos utilizados en su entrenamiento. Estos sesgos pueden dar lugar a desafíos en desarrollos cuando se aplican en 
 contextos distintos, ya que las respuestas generadas por el modelo pueden no ser adecuadas ni ajustarse a la realidad de 
-esos nuevos escenarios.
+esos nuevos escenarios, llevando así a respuesta erróneas, inexactas e incluso a respuestas discriminadoras.
 
-Los modelos preentrenados con corupus generados por humanos contien sesgos sociales hacia ciertos grupos demograficos, estos
-sesgos son preocupantes, debido a que pueden ser propagados o incluso amplificados en las tareas que estos modelos realizan \cite{sesgo2}.
+Dentro de los muchos problemas que estos sesgos pueden generar algunos ejemplos son: 
+Estereotipos de género en elección de ocupaciones, inexactitud ante las ambigüedades de una frase, dificultad de entender dinámicas complejas de género, sesgos culturales, discrepancia en las explicaciones de los modelos, etc. \cite{bias1}
+Esto sucede porque los modelos preentrenados con corupus generados por humanos contienen sesgos sociales hacia ciertos grupos demográficos, porque el humano es un ser lleno de sesgos y con ello también los textos que produce. Estos sesgos son preocupantes, debido a que pueden ser propagados o incluso amplificados en las tareas que estos modelos realizan \cite{sesgo2}, pudiendo llegar a malas repuestas o en el peor de los casos problemas legales.
 
-Como ejemplo podemos citar el dicho por Bill Gates en su entrevista ``Can AI Save the World? Expert Insights with Bill Gates''  en donde menciono que: 
+Como ejemplo podemos citar el dicho por Bill Gates en su entrevista ``Can AI Save the World? Expert Insights with Bill Gates'' en donde menciono que: 
 ``Los sesgos en los modelos de IA pueden llevar a diagnósticos incorrectos, como se vio en el ejemplo donde Chat GPT diagnosticó erróneamente la 
-tuberculosis como gripe debido a las bajas tasas de tuberculosis en los EE. UU.'' \cite{billgates1}. Con lo que podemos dimensional el efecto real de estos sesgos 
-en lo correcto que puede llegar a ser una respuesta por parte de estos modelos.
+tuberculosis como gripe debido a las bajas tasas de tuberculosis en los EE. UU.'' \cite{billgates1}. Con este ejemplo, es que podemos dimensionar el efecto real de estos sesgos y
+en lo correcto o incorrecto que puede llegar a ser una respuesta por parte de estos modelos.
 
 \subsection{Elección correcta del modelo}
-Actualmente la oferta de grandes modelos de lenguaje es muy amplia, desde los privados como: ChatGPT, PaLM, Bloom, etc. 
-Como también modelos de código abierto como: Llama 2, OpenLLaMA, Falcon, Dolly, etc. \cite{modelos2} Con sus respectivas variantes, debido a que existen 
-variables del modelo como por ejemplo Llama 2 que se puede encontrar en versión de 7, 13 y 70 billones de parámetros \cite{modelos3}. 
+Actualmente la oferta de grandes modelos de lenguaje tanto para investigación (research) como desarrollo comercial es muy amplia, podemos encontrar desde los privados como: ChatGPT, PaLM, Bloom, etc. 
+Como también modelos de código abierto y libres para su uso comercial como: Llama 2, OpenLLaMA, Falcon, Dolly, etc. \cite{modelos2} Cada uno con sus respectivas variantes, debido a que existen 
+variantes del modelo siendo unos más potentes que otros, a pesar de ser de la misma familia. Como por ejemplo tenemos a Llama 2 que se puede encontrar en versión de 7, 13 y 70 billones de parámetros \cite{modelos3}. 
 
-Elegir un modelo para trabajar es sumamente importante debido a que: la diversidad y calidad de los datos de preentrenamiento influyen 
-sustancialmente en la capacidad del modelo de lenguaje para comprender y proporcionar respuestas precisas, que el tamaño puede tener una 
-gran influencia en el rendimiento, que el soporte lingüistico podría ser crucial dependiendo la necesidad \cite{modelos1}.
+La elección de un modelo correcto para trabajar es sumamente importante parar el desarrollo, esto debido a que tanto la diversidad y calidad de los datos de preentrenamiento influyen 
+sustancialmente en la capacidad del modelo de lenguaje para comprender y proporcionar respuestas precisas, el tamaño puede tener una 
+gran influencia en el rendimiento, además cada modelo tiene su el soporte lingüístico \cite{modelos1}, lo que dependiendo del tipo de proyecto podría ser crucial y determinante para el éxito de este.  
 
 
 \subsection{Costos Monetarios}
-Los costos relacionados con la creación o el uso de un modelo LLM pueden aumentar de manera exponencial. Por lo tanto, es fundamental tener en 
-cuenta los costos asociados al utilizar un servidor externo, así como el costo de operar un servidor local, incluyendo el consumo de energía eléctrica.
-Por ejemplo, hay estudios en donde realizando un ajuste al modelo, fine tunning, es consumo de energía es comparable al de pequeñas ciudades y el dióxido 
-de carbono emitido es equivalente a 500 veces la de un vuelo de ida y vuelta entre Nueva York y San Francisco \cite{ft1}. 
+Los costos relacionados con la puesta en producción, en caso de usar un modelo open source, o el uso de un modelo LLM, considerando el uso de un LLM privado, pueden aumentar de manera exponencial si es que no se planea con antelación el costo monetario de ellos o no se predice la demanda de manera adecuada. Por lo tanto, es fundamental tener en 
+cuenta los costos asociados al utilizar un servicio de tercero, así como el costo de operar un servidor local, que pueden incluir el consumo de energía eléctrica, como la compra de tarjetas gráficas (GPU) para el funcionamiento correcto y optimo de los modelos.
+Por ejemplo, existen estudios en donde al realizar ajustes al modelo, también llamado fine tunning, es consumo de energía es comparable al de pequeñas ciudades y el dióxido 
+de carbono emitido es equivalente a 500 veces la de un vuelo de ida y vuelta entre Nueva York y San Francisco \cite{ft1}, por lo cual es un factor que hay que tener en cuenta. 
 
 
 \subsection{Funciones de Embedding}
 
-Las funciones de Embedding son específicas para cada modelo de lenguaje y no son intercambiables entre modelos. Esto se debe a que los embeddings son 
-representaciones de alto nivel provenientes de los pesos y parámetros de cada modelo, por lo que están diseñadas para captar y almacenar las relaciones 
-semánticas específicas de cada modelo \cite{microsoft1}. Por lo que si quieres usar un modelo es necesario contar con su función de Embedding adema de la 
-apacidad de contar con la posibilidad de usar dicha función. 
+Como se mencionó anteriormente en esta tesis, las funciones de Embedding son específicas para cada gran modelo de lenguaje y no son intercambiables entre modelos. Esto se debe a que los embeddings son 
+representaciones de alto nivel provenientes de los pesos y parámetros de cada modelo, por lo que están diseñadas para captar y almacenar las relaciones semánticas específicas de cada modelo \cite{microsoft1}. Por lo que, si se desea usar un modelo grande de lenguaje, es necesario contar con su función de Embedding correspondiente, además de la capacidad computacional para hacer funcionar dicha función, porque de lo contrario el modelo no podrá obtener el vector necesario de entrada para generar la predicción y con ello no podrá generar una respuesta. 
 
 
 \subsection{Conocimiento de Framework}
-Cuando se desarrolla una aplicación, es esencial comprender el funcionamiento interno de los frameworks o herramientas que se están utilizando. 
-Esta comprensión no solo es valiosa para comprender el proceso en su conjunto, sino que también es necesaria para tener un control los costos asociados al 
-proyecto en caso de llevarse a producción. 	
+Cuando se desarrolla una aplicación, es esencial comprender el funcionamiento interno de los frameworks o herramientas que se utilizaran a lo largo del proyecto. 
+Esta comprensión no solo es valiosa para entender el cómo funciona proceso en su conjunto, sino que también es necesaria para tener un control los costos asociados al 
+proyecto en caso de llevarse a producción.  
 
-Por ejemplo, en el contexto del proyecto, es importante saber que Langchain realiza múltiples llamadas a los modelos \cite{framework1}. Si no se cuantifican de manera adecuada 
-la cantidad de llamadas y la extensión de ellos, esto puede dar lugar a problemas de cuantificación de costos. Por lo tanto, la capacidad de comprender y 
-medir con precisión el uso de recursos, como las llamadas a los modelos, es esencial para gestionar eficazmente los costos y asegurar el éxito del proyecto 
-si es que quise ser llevado a producción.
+Por ejemplo, en el contexto del proyecto de esta tesis, es importante saber que el framework Langchain, suele realizar múltiples llamadas a los modelos \cite{framework1}. Si no se tiene conocimiento de esta situación o no se cuantifican de manera adecuada 
+la cantidad de llamadas y la extensión de estas, esto debido a que los modelos como los entregados por OpenAI tiene un costo por lo tokens que se reciben y por los que se envían \cite{openaimodels}, esto puede dar lugar a problemas en la cuantificación de costos. Por lo tanto, la capacidad de comprender y 
+medir con precisión el uso de recursos, como las llamadas a los modelos, es esencial para gestionar eficazmente los costos y asegurar el éxito del proyecto para cuando este sea enviado a producción.
 
 
 \subsection{Volatilidad del Mercado}
 
-Hasta la fecha actual, el 06 de noviembre de 2023, la creación de Chatbots utilizando el método RAG se perfilaba como 
-una de las tendencias más destacadas en el mercado, siendo posiblemente una de las aplicaciones más prometedoras de los LLM. 
-No obstante, en este mismo día, durante la OpenAI DevDay Keynote, se anunciaron novedades significativas, como la entrada en 
+Considerando a la fecha actual en donde se está escribiendo esta sección de la tesis, el 06 de noviembre de 2023, la creación de Chatbots utilizando la metodología RAG se perfilaba como 
+una de las tendencias más destacadas en el mercado, siendo posiblemente una de las aplicaciones más prometedoras que los LLM tendría hasta la fecha. 
+No obstante, en este mismo día, se llevó a cabo la OpenAI DevDay Keynote, donde se anunciaron novedades significativas en la oferta de productos por parte de la empresa OpenAI, como por ejemplo la entrada en 
 escena de los GPTs, que permite personalizar versiones de ChatGPT con instrucciones, conocimiento extra y cualquier otra combinación 
-de habilidades \cite{openai2}. Además, se introdujeron otros modelos como gpt-4 turbo, un playground de desarrollo para la herramienta, 
+de habilidades \cite{openai2}. Junto con ello a su vez, se introdujeron nuevos modelos al catálogo de su API como gpt-4-turbo, un playground de desarrollo más completo para el desarrollo con herramientas de la empresa, 
 text-to-speech (TTS), entre otros \cite{openai3}.
 
-En este contexto, comprometerse con cualquier tecnología conlleva riesgos, especialmente en este período caracterizado por una 
+Con este contexto, es comprensible que comprometerse con cualquier tecnología conlleva riesgos, especialmente en este período caracterizado por una 
 volatilidad extrema y una inversión extremadamente agresiva en inteligencia artificial. La Inteligencia Artificial Generativa 
-continúa evolucionando de manera acelerada, lo que la hace cada vez más disruptiva y más eficiente. Por lo tanto, la investigación 
+continúa evolucionando de manera acelerada, lo que la hace cada vez más disruptiva y eficiente. Por lo tanto, la investigación 
 y la implementación de soluciones de inteligencia artificial centradas en asistentes o chatbots representan un compromiso de alto 
-riesgo en este entorno en constante cambio.
+riesgo en este entorno en constante cambio a la espera de nuevos servicios y competidores.
+
 
 \newpage
 
 \section{Uso de la Aplicación}
 
+\subsection{Alucinaciones}
+
+En un contexto de uso de grandes modelos de lenguaje, el termino ``alucinación'' se refiere a la generación de textos o respuestas que exhiben corrección gramatical, fluidez y autenticidad,
+pero se desvían de las entradas de fuente proporcionadas (fidelidad) o no se alinean con la precisión factual (factualidad) \cite{alucionacion1}.
+Explicando lo anteriormente dicho en términos más simples, decimos que un LLM alucina cuando las respuestas del modelo son coherentes y cohesiva, pero que sin embargo presenta información errónea o una lógica errada, también de una manera más coloquial podríamos decir que el modelo entrega información inventada a las preguntas que se le hacen.   
+
+Dicho lo anterior, podemos decir que este es un gran factor de riesgo para el uso de una aplicación, sobre todo si de su respuesta depende la toma de decisiones sensibles, porque a pesar de estar usando una 
+metodología RAG, que dificulta la posibilidad de generar alucinaciones, sigue estando la posibilidad de que estas sucedan lo que puede 
+entregar una respuesta con información errónea o inventada. Si es que las respuestas entregadas por un LLM no se revisa con criterio, se podría a llevar a cometer graves errores al hacer uso de información que es directamente falsa.
+
+
 \subsection{Entrega de contexto adecuado}
 
-Los LLM a menudo presentan alucinaciones, por lo que es esencial reducir la frecuencia de este fenómeno. 
-Para lograrlo, la provisión de contexto dentro del prompt no es simplemente precisa, sino que resulta 
-absolutamente indispensable. De hecho, la entrega de contexto adecuado dentro del prompt ha demostrado 
+Los LLM a menudo suelen presentan alucinaciones, por lo que es esencial trabajar en reducir la frecuencia de este fenómeno. 
+Para lograrlo dicho cometido, la provisión de contexto dentro del prompt para guiar la respuesta no es simplemente un capricho, sino que resulta 
+absolutamente indispensable para la exactitud de la respuesta. De hecho, la entrega de contexto adecuado dentro del prompt ha demostrado 
 ser una medida altamente efectiva para reducir las alucinaciones, logrando una disminución de hasta un 
-99.88 porciento \cite{riego1}.
+99.88 porciento en algunos casos \cite{riego1}.
 
 Por consiguiente, la correcta entrega de contexto dentro del prompt desempeña un papel fundamental en 
-la generación de respuestas precisas a las consultas. Esto se debe a que, ya sea que el contexto 
+la generación de respuestas precisas a las consultas. Esto sucede principalmente porque, ya sea que el contexto 
 proporcionado sea correcto, incorrecto o incluso irrelevante, el modelo de lenguaje lo utilizará como base 
 para generar sus respuestas.
 
-En el contexto del proyecto, la generación de respuestas se basa por completo en la entrega de contexto 
-dentro del prompt, lo que a veces puede dar lugar a la transmisión de más información de la necesaria 
+En el proyecto realizado en esta tesis, la generación de respuestas se basa por completo en la entrega de contexto 
+dentro del prompt usando la metodología RAG, lo que a veces puede dar lugar a la transmisión de más información de la necesaria en el prompt 
 debido al funcionamiento del framework de Langchain. Esto puede llevar a situaciones en las que el modelo, 
-influenciado por la información incorrecta o adicional proporcionada, genere respuestas que no reflejan 
-un output con una respuesta en su totalidad correcta.
+influenciado por la información incorrecta o adicional proporcionada, genere respuestas que no reflejan una respuesta en su totalidad correcta.
+
 
 \subsection{Limitaciones de la similitud de cosenos}
 
-La similitud del coseno, siendo este método más usado en modelos RAG para la extracción de contexto en la base de datos, 
-como medida de similitud semántica en los embeddings, particularmente para palabras de alta frecuencia en tareas de 
+La similitud del coseno, siendo este el método más usado por modelos RAG para la extracción de contexto en una base de datos vectorial, 
+como medida de similitud semántica entre los vectores multidimensionales generados por una función de embeddings, particularmente para palabras de alta frecuencia en tareas de 
 procesamiento de lenguaje natural (NLP) como preguntas y respuestas (QA), recuperación de información (IR) y traducción 
 automática (MT) presenta limitaciones en su uso, esto principalmente sucede debido a que la frecuencia de las palabras en los 
 datos de entrenamiento afecta la geometría representacional de los embeddings contextualizados, siendo las palabras de baja 
-frecuencia más concentradas geométricamente \cite{coseno}.
+frecuencias más concentradas geométricamente \cite{coseno}.
 
-Por lo tanto, este problema se extrapola a que, en el momento de querer recuperar contexto pertinente de la base de datos, 
-cuando se realiza el proceso de semejanza semántica entre el prompt y los vectores de la base de datos, este pueda recibir 
-información no relacionada con el prompt, por lo que se enviar como contexto y puede dar oportunidad a alucinaciones.
-
+Por lo tanto, este problema se extrapola a que, en el momento de querer recuperar contexto pertinente de la base de datos vectorial, 
+cuando se realiza el proceso de semejanza semántica por parte del RAG entre el prompt y los vectores de la base de datos, este pueda recibir 
+información no relacionada con el prompt, debido a que los vectores que se solicitan siempre son un número fijo y siempre se extrae esa información eligiendo los valores de similitud más altos, por lo que se puede enviar más como contexto del necesario y puede dar oportunidad a alucinaciones.
 
 \subsection{Uso de información privada}
 
-Actualmente las empresas que entregan servicios de LLM son muy herméticos con la manera en que entrenan sus modelos, por lo tanto, no sabemos 
-con qué información han sido entrenados la cual no necesariamente es solamente publica, además toda la información que preguntamos por ejemplo a 
-OpenAI va a los servidores y sirve para reentrenar a los modelos.
+Actualmente las empresas que entregan servicios de LLM son muy herméticos con la manera en que entrenan sus modelos, por lo tanto, no sabemos no sabemos en un 100 por ciento
+con qué información han sido entrenados, la cual podría no necesariamente ser solamente información pública. Además, como ejemplo, todas las consultas relizadas en ChatGPT van directamente a los servidores de OpenAI y servirán posteriormente para reentrenar a los modelos de la compañia para mejorar su calidad y performance.
 
-Se ha probado que los ataques de reconstrucción de datos son posibles, se ha propuesto un ataque de reconstrucción dirigido de caja negra donde el 
+Este tema es ha vuelto tan delicado, que se ha probado que los ataques de reconstrucción de datos son posibles, en ellos se ha propuesto un ataque de reconstrucción dirigido de caja negra donde el 
 adversario conoce parte de un ejemplo de entrenamiento (es decir, un indicio de texto) e infiere el resto (por ejemplo, un número de tarjeta de crédito), 
-con lo que la posibilidad de extraer datos de entrenamiento de los modelos puede representar un riesgo serio para la privacidad \cite{privacidad1}. 
+con lo que la posibilidad de extraer datos de entrenamiento de los modelos, lo que representa un riesgo serio para la privacidad \cite{privacidad1}. 
 
-Actualmente OpenAI esta siendo demandada tanto por violar los derechos de autor \cite{privacidad3} como por robo sistemático \cite{privacidad2}, debido a que quienes 
-demandas alegan que sus obras han sido usadas para entrenar a sus modelos de LLM, por lo que hasta que no tengamos total transparencia del proceso, 
-a pesar de que existen servicios donde tus inputs supuestamente no son usados para reentrenar el modelo \cite{openai4}, es preferible ser cautelosos con la 
-información que se manda a los LLM si estos no están corriendo de manera local.
+Ante la duda de con que información los modelos son entrenados, actualmente suceden casos como OpenAI que está siendo demandada tanto por violar los derechos de autor \cite{privacidad3} como por robo sistemático \cite{privacidad2} de información, quienes 
+demandan alegan que sus obras han sido usadas para entrenar a sus modelos de LLM sin permiso ello y sin pago de regalías. Por lo que, hasta que no tengamos total transparencia del proceso de entrenamiento de estos modelos, 
+a pesar de que existen servicios donde la información entregada ``supuestamente'' no es utilizada para reentrenar los modelos de la empresa \cite{openai4}, es preferible ser cautelosos con la 
+información que se entrega estos LLM, siempre y cuando estos no estén corriendo de manera local, ya que eso asegura la privacidad de las consultas.
 
 
-\subsection{Alucinaciones}
-
-El termino alucinación se refiere a la generación de textos o respuestas que exhiben corrección gramatical, fluidez y autenticidad,
-pero se desvían de las entradas de fuente proporcionadas (fidelidad) o no se alinean con la precisión factual (factualidad) \cite{alucionacion1}.
-Siendo en palabras más simples la entrega de información invetada por el modelo.
-
-Dicho lo anterior, podemos decir que este es un gran factor de riesgo para el uso de una aplicación, porque a pesar de estar usando un 
-sistema RAG, que dificulta la posibilidad de generar alucinaciones, sigue estando la posibilidad de que estas sucedan lo que puede 
-entregar un output con información errónea y si es que no se revisa con criterio, se podría a llevar a cometer graves errores debido 
-al uso de información que es directamente falsa.
 
 \subsection{Aprendizaje por Refuerzo con Retroalimentación Humana (RLHF)}
 
-Los modelos grandes de lenguaje suelen dar respuestas que a veces tanto política como moralmente no son correctas, por lo que 
+
+Los modelos grandes de lenguaje suelen dar respuestas que a veces, tanto política como moralmente no son correctas, posiblemente debido a la información con sesgos que fue utilizada para su entrenamiento, por lo que 
 las empresas tienen por objetivo alinear los valores humanos con los sistemas de aprendizaje automático y dirigir los algoritmos 
-de aprendizaje hacia los objetivos e intereses de los humanos \cite{RLHF}. A esto se le llama Aprendizaje por Refuerzo con 
-Retroalimentación Humana (RLHF), esto puede llegar a ser un problema si es que se busca realizar una aplicación en un usuario con una 
-cultura diferente al proveedor del modelo o que si el usuario al no expresarse bien el modelo se confunda y no entregue una respuesta 
-satisfactoria.
+de aprendizaje hacia los objetivos e intereses de los humanos \cite{RLHF}. A este proceso se le llama Aprendizaje por Refuerzo con 
+Retroalimentación Humana (RLHF). 
+Esta intervención de los resultados arrojados por los LLM, puede llegar a ser un problema si mismo, sí se busca realizar una aplicación que tenga por usuario uno con una cultura diferente al proveedor del modelo, este podría generar respuestas no satisfactorias, incluso en caso de que un usuario no pudiera expresase de manera correcta, podría hacer que el modelo se confunda y entregue resultados que podrían ser incompletos o incorrectos.
