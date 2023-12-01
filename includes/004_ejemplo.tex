@@ -117,6 +117,27 @@ esto pasa porque el chatbot no tiene como discernir si es necesario el proceso o
 Este experimento subraya una limitación significativa del LLM: su incapacidad para discernir la veracidad de los datos en la consulta inicial. 
 Dado que el modelo se basa en la información proporcionada, cualquier inexactitud en el prompt puede llevar a respuestas erróneas. 
 Esta característica del LLM plantea preocupaciones particulares en contextos donde la fiabilidad y precisión de la información son fundamentales. 
-En consecuencia, se considera que la respuesta obtenida en este caso es completamente insatisfactoria.
+En consecuencia, se considera que la respuesta obtenida en este caso es completamente \textbf{Insatisfactoria}.
 
+\newpage
+
+\section{Reflexiones generales de los resultados}
+
+\par Los resultados de los casos analizados, junto con el anexo presente en esta tesis, evidencian claramente las limitaciones 
+del sistema RAG usado en este chatbot. Se considera que la gestión de la cantidad de información es problemática. Por un 
+lado, proporcionar más información puede resultar en un contexto innecesariamente amplio y con eso dar paso a alucinaciones, 
+mientras que ofrecer información insuficiente conduce a respuestas incompletas.
+
+\par Tras una cuidadosa reflexión sobre estos resultados y el mecanismo de entrega de información, se identifican posibles 
+mejoras para optimizar el rendimiento del chatbot. Una de las mejoras podría ser implementar un método que descarte 
+contextos que no alcancen un cierto grado de similitud, aunque esto requeriría pruebas para determinar el umbral 
+adecuado que diferencie los casos relevantes de los irrelevantes.
+
+\par Otra mejora potencial sería analizar las respuestas insatisfactorias del chatbot y agregar documentos específicos a 
+la base de datos. Por ejemplo, tomando el caso 2, se podría crear un documento que agrupe todos los casos relacionados 
+con humedales, y de manera similar, generar documentos para cada tipo de elemento relevante. Sin embargo, esta 
+solución presenta complejidades, como la identificación de elementos relevantes y el riesgo de saturar la base de datos.
+
+\par Dando fin a los resultados, aunque este chatbot demuestra un desempeño prometedor y eficiente en la mayoría de los 
+casos, existe un amplio margen para su mejora y optimización, con el fin de obtener resultados más precisos y de mayor calidad.
 
