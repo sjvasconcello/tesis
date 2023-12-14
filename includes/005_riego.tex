@@ -35,7 +35,7 @@ es crítica para un sistema de Machine Learning, porque los datos deficientes po
 precisión de clasificación \cite{calidad1}. Ahora si hablamos del uso de LLM, que forman parte del procesamiento del lenguaje natural, además del Deep learning, 
 simplificamos los atributos de calidad de datos en los tres más importantes para el Deep Learning: la fidelidad, la variedad y la veracidad de un conjunto de datos \cite{calidad1}.
 
-Como ejemplo, un caso que sucedió dentro del proyecto que acompaña a este análisis de riesgo, se encontaron problemas en una ciertas cantidad de reclamaciones tratadas en el proceso 
+Como ejemplo, un caso que sucedió dentro del proyecto que acompaña a este análisis de riesgo, se encontaron problemas en una cierta cantidad de reclamaciones tratadas en el proceso 
 de ETL, esto debido principalmente a que el Tribunal ambiental no cuenta con un estándar para entregar las reclamaciones que luego aparecerán en el buscador ambiental, existían tanto pdf que eran legibles, como otros 
 que eran solo fotocopias, lo que imposibilitaba la extracción de información por problemas de formatos. El problema de la calidad de los datos a su vez, se puede extrapolar a la 
 calidad de la metadata que era anexa en la base de datos dentro del proyecto.
@@ -48,7 +48,7 @@ esos nuevos escenarios, llevando así a respuesta erróneas, inexactas e incluso
 
 Dentro de los muchos problemas que estos sesgos pueden generar algunos ejemplos son: 
 Estereotipos de género en elección de ocupaciones, inexactitud ante las ambigüedades de una frase, dificultad de entender dinámicas complejas de género, sesgos culturales, discrepancia en las explicaciones de los modelos, etc. \cite{bias1}
-Esto sucede porque los modelos preentrenados con corupus generados por humanos contienen sesgos sociales hacia ciertos grupos demográficos, porque el humano es un ser lleno de sesgos y con ello también los textos que produce. Estos sesgos son preocupantes, debido a que pueden ser propagados o incluso amplificados en las tareas que estos modelos realizan \cite{sesgo2}, pudiendo llegar a malas repuestas o en el peor de los casos a problemas legales.
+Esto sucede porque los modelos preentrenados con corpus generados por humanos contienen sesgos sociales hacia ciertos grupos demográficos, porque el humano es un ser lleno de sesgos y con ello también los textos que produce. Estos sesgos son preocupantes, debido a que pueden ser propagados o incluso amplificados en las tareas que estos modelos realizan \cite{sesgo2}, pudiendo llegar a malas repuestas o en el peor de los casos a problemas legales.
 
 Como ejemplo podemos citar lo dicho por Bill Gates en su entrevista ``Can AI Save the World? Expert Insights with Bill Gates'' en donde menciono que: 
 ``Los sesgos en los modelos de IA pueden llevar a diagnósticos incorrectos, como se vio en el ejemplo donde Chat GPT diagnosticó erróneamente la 
@@ -69,7 +69,7 @@ gran influencia en el rendimiento, además cada modelo tiene su soporte lingüí
 \subsection{Costos Monetarios}
 Los costos relacionados con la puesta en producción, en caso de usar un modelo open source, o el uso de un modelo LLM, considerando el uso de un LLM privado, pueden aumentar de manera exponencial si es que no se planea con antelación el costo monetario de ellos o no se predice la demanda de manera adecuada. Por lo tanto, es fundamental tener en 
 cuenta los costos asociados al utilizar un servicio de tercero, así como el costo de operar un servidor local, que pueden incluir el consumo de energía eléctrica, como la compra de tarjetas gráficas (GPU) para el funcionamiento correcto y óptimo de los modelos.
-Por ejemplo, existen estudios en donde al realizar ajustes al modelo, también llamado fine tunning, es consumo de energía es comparable al de pequeñas ciudades y el dióxido 
+Por ejemplo, existen estudios en donde al realizar ajustes al modelo, también llamado fine tunning, donde el consumo de energía es comparable al de pequeñas ciudades y el dióxido 
 de carbono emitido es equivalente a 500 veces la de un vuelo de ida y vuelta entre Nueva York y San Francisco \cite{ft1}, por lo cual es un factor que hay que tener en cuenta. 
 
 

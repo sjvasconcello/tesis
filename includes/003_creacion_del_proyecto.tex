@@ -21,9 +21,9 @@ la representada en la \autoref{fig:estructura}.
 El proyecto esta contruido por diferentes etapas que consisten en: un proceso de extracción de datos 
 desde el buscador ambiental, otro de transformación de estos datos para su utilización, la generación 
 de vectores de los datos transformados para que puedan interactuar con la aplicación, una carga de estos vectores 
-en una base de datos,  para que después el chatbot que se creará pueda interactuar con ellos y mandandara 
-esa información a el gran modelo de lenguaje (LLM), siendo en este caso el modelo ``gpt-4'' perteneciente a OpenAI,
- siendo la estrutura basica del proyecto la de \autoref{fig:estructura}.
+en una base de datos,  para que después el chatbot que se creará pueda interactuar con ellos y mandara 
+esa información al gran modelo de lenguaje (LLM), siendo en este caso el modelo ``gpt-4'' perteneciente a OpenAI,
+siendo la estrutura basica del proyecto la de \autoref{fig:estructura}.
 % Inclusión de Figuras
 \begin{figure}[ht!]
     \centering
@@ -105,9 +105,9 @@ por lo que al hacerlo permitía obtener todos los datos mencionados anteriorment
 la necesidad de crear otro tipo de bot utilizando Selenium, ya que esta modificacion logró obtener dichos resultados.
 
 Para completar la fase de extracción de datos (Extract), una vez que se había obtenido toda la información mediante este bot con Selenium, 
-el último paso consistió en generar un script, definiendo script como una serie de intrucciones de son interpretas por un programa \cite{techtargetWhatScript}, que generará nuevas solicitudes con el objetivo de descargar todos los archivos PDF de cada una 
+el último paso consistió en generar un script, definiendo script como una serie de intrucciones que son interpretadas por un programa \cite{techtargetWhatScript}, que generará nuevas solicitudes con el objetivo de descargar todos los archivos PDF de cada una 
 de las entradas del buscador. 
-Como una limitación a la extracción de datos se decidió solo descargar las reclamaciones e ignorar el resto de los documentos que recibe el tribunal ambiental, cosa de acotar el proyecto en si y a limitaciones de parte del poder computacional que se dispuso a la hora de escribir esta tesis.
+Como una limitación a la extracción de datos se decidió solo descargar las reclamaciones e ignorar el resto de los documentos que recibe el tribunal ambiental, cosa de acotar el proyecto en si y a limitaciones de capacidad de computo que se disponía.
 Estos archivos luego de ser descargados, estan listos para la próxima etapa del proyecto, que implica la transformación 
 de los datos con el fin de procesar esta información, que luego será necesaria para construir la base de datos a partir de los documentos descargados.
 Dejando todo el proceso de ``Extract'' como se muestra en la \autoref{fig:extract_diagram}. 
@@ -128,7 +128,7 @@ Dejando todo el proceso de ``Extract'' como se muestra en la \autoref{fig:extrac
 % CHAGO: Ojo lo de semejanza semantica
 \par Continuando con el proceso de ETL, los PDFs que previamente habían sido descargados en el proceso de Extract,
 ahora requieren ser sometidos a modificaciones en la estructura y formato de sus datos, con el objetivo de convertir la información que inicialmente se presenta en un 
-estado ``sucio'' a uno  ``limpios'' cosa que puedan ser usados adecuadamente dentro posteriores tareas del proyecto. A esta serie de actividades de modificaciones a los datos lo denominamos
+estado ``sucio'' a uno  ``limpios'' cosa que puedan ser usados adecuadamente dentro de las posteriores tareas del proyecto. A esta serie de actividades de modificaciones a los datos lo denominamos
 ``Transformación'', o ``Transform,'' en inglés.
 
 \par Entre los datos descargados, nos encontramos con un extenso número de PDFs que presentan una serie de dificultades significativas para su 
@@ -187,11 +187,11 @@ Cada archivo .txt puede ser dividido, resumido y exportado a un nuevo archivo .t
 
 \newpage
 
-\par Los documentos procesados son combinados utilizando otro proceso por parte de Langchain, con el fin de obtener un resultado final con toda la datos de los documentos consolidados. 
+\par Los documentos procesados son combinados utilizando otro proceso por parte de Langchain, con el fin de obtener un resultado final con todos los datos de los documentos consolidados. 
 Para concluir el proceso de transformación, los resúmenes generados después de haber pasado por el procedimiento de map-reduce 
 se someten a una última tarea, antes de ser incorporados en la base de datos mediante el proceso de ``load''. Este paso implica la fusión de los resúmenes con la 
 información obtenida a través de la información extraída por Selenium previamente y que es específica de cada texto llamada metadata, la cual es añadida a cada documento final en forma de texto. Este proceso 
-resulta en la creación de un único documento para cada reclamación que engloba toda la información pertinete a ella, a los cuales nos referiremos como ``documentos finales''. 
+resulta en la creación de un único documento para cada reclamación que engloba toda la información pertinente a ella, a los cuales nos referiremos como ``documentos finales''. 
 Con esto, se concluye la fase de transformación y se procede al último procedimiento, conocido como ``carga'' (Load), que consiste 
 en el almacenamiento estos documentos finales en la base de datos. Dejando todo el proceso de ``Transform'' como se muestra en la \autoref{fig:transform_diagram}. \\
 
@@ -241,11 +241,11 @@ correctamente.
 
 \newpage
 
-\par Langchain internamente, para llevar a cabo el proceso de carga de datos a la base de datos, toma todos los documentos finales proveniente del proceso de Transform en formato .txt y los divide en chunks que no superen la extensión máxima que puede procesar la función de embbedding de OpenAI, para luego enviar uno por uno dichos chunk mediante llamadas a la API de OpenAI, cosa de obtener los vectores asociados a cada uno de los textos enviados. 
+\par Langchain internamente, para llevar a cabo el proceso de carga de datos a la base de datos, toma todos los documentos finales proveniente del proceso de Transform en formato .txt y los divide en chunks que no superen la extensión máxima que puede procesar la función de embbedding de OpenAI, para luego enviar uno por uno dichos chunk mediante llamadas a la API de OpenAI, de tal forma de obtener los vectores asociados a cada uno de los textos enviados. 
 Los vectores resultantes de enviar los chunks de documetos a la función de embeddings, se almacenan posteriormente en una base de datos vectorial llamada ChromaDB. Esta base de 
 datos vectorial, también llamada vecto-store en inglés, ha sido diseñada para ser compacta, escalable y eficiente, con el propósito de almacenar y recuperar vectores de manera 
 efectiva. ChromaDB genera índices que permiten una recuperación rápida y eficiente de los embeddings en función de las 
-consultas realizadas por los usuarios \cite{langchain1}. Con ello, esta base de datos guarda los vectores asociados a el chunk de un documento, 
+consultas realizadas por los usuarios \cite{langchain1}. Con ello, esta base de datos guarda los vectores asociados al chunk de un documento, 
 el texto del chunk del documento y su metada asociada, tal como se muestra en la \autoref{fig:chorma}.
 
 
@@ -272,7 +272,7 @@ lenguaje natural y con ellos dejando el proceso de ``load'' como se muestra en l
    
 Para la creación del Chatbot que utilizará los datos generados por el proceso de ETL anteriormene descrito, se utilizó
 una estructura de desarrollo formada en su totalidad por el lenguaje de programación Python \cite{pythonWelcomePythonorg}, cosa que cada elemento fuera escrito en dicho lenguaje. 
-La elección de este lenguaje de programación se debió a la experiencia por parte equipo en Python, facilitando tanto la creación del frontend como del backend de la aplicación.
+La elección de este lenguaje de programación se debió a la experiencia por parte del equipo en Python, facilitando tanto la creación del frontend como del backend de la aplicación.
 
 Para la sección de la interacción del usuario (frontend), se empleó el uso Python junto con el framework Flask \cite{flask1} para la presentación  
 de contenido en pantalla, incluyendo tanto la estructura de HTML como las hojas de estilo CSS. Además, se aprovechó y potenció el uso de Flask con el  
@@ -292,8 +292,8 @@ para la prueba y generación automática de documentación de la API.
 \end{figure}
 
 Para el funcionamiento interno de la aplicación, de la misma manera que se utilizó en el proceso de ETL, 
-que este también funciona en base a el framework Langchain, esto debido a que este framework al ser diseñado para el 
-uso de LLMs y tareas asociadas a ellos, por lo que no solo funciona para el tratamiento de datos, sino que también para la interacción 
+que este también funciona en base al framework Langchain, esto debido a que este framework al ser diseñado para el 
+uso de LLMs y tareas asociadas a ellos, no solo funciona para el tratamiento de datos, sino que también para la interacción 
 de los prompt con dichos LLM, dando también la posibilidad de integrar nuevas funciones como interacción con 
 bases de datos, uso de código, etc \cite{langchain1}. Provocando que las aplicaciones realizadas con este framework se les 
 llame LLM con ``super poderes'' gracias al abanico de funciones extras que aportan a los LLM.
@@ -338,7 +338,7 @@ de lenguaje natural (NLP) que requieren conocimiento intensivo \cite{raq}.
 \end{figure}
 
 Finalmente, este chatbot envía el prompt con las instrucciones y el contexto obtenido mediante el proceso de RAG, realizado con 
-Langchain a el LLM, siendo en este caso gpt-4 de OpenAI, luego de pasar por una función de Embedding, cosa de que 
+Langchain al LLM, siendo en este caso gpt-4 de OpenAI, luego de pasar por una función de Embedding, cosa de que 
 pueda ser leído por el modelo. Por lo que se realiza un request con la información a la API de OpenAI, para que se 
 obtenga el output con la respuesta, que postulamente será procesada y mostrada por el frontend.
 
@@ -346,9 +346,9 @@ obtenga el output con la respuesta, que postulamente será procesada y mostrada 
 
 \section{Funcionamiento básico}
 
-Esta tesis se centra tanto en el riesgo asociado al desarrollado y uso, como en el desarrollo de un Chatbot, este chatbot funciona 
-en base a la una arquitectura de RAG (Retriever-Augmented Generation) por lo que esta consiste en 
-la recuperación de contexto el cual es enviado junto con el prompt al LLM, por lo que se procede a dar un ejemplo del funcionamiento básico del chatbot. El proceso comienza con 
+Esta tesis se centra; tanto en el riesgo asociado al desarrollado y uso, como en el desarrollo de un Chatbot. Este chatbot funciona 
+en base a la una arquitectura de RAG, Retriever-Augmented Generation en ingles, por lo que esta consiste en 
+la recuperación de contexto, el cual es enviado junto con el prompt al LLM, por lo que se procede a dar un ejemplo del funcionamiento básico del chatbot. El proceso comienza con 
 la obtención de un prompt específico del usuario por medio de la interfaz del frontend, como ejemplo usaremos el prompt: ``Dame un resumen del documento Dominga'' 
 dentro de la barra de búsqueda del frontend, tal como se muestra en la \autoref{fig:frontend}. Este prompt actúa como entrada inicial para el sistema de recuperación de información.
 
@@ -413,8 +413,8 @@ presente en la \autoref{fig:caso2}.
 
 \newpage
 
-Todo este proceso es orquestado internamente por Langchain que consulta estos ``n'' documentos, siendo en este caso 3 aunque pueden 
-más dependiendo de la preferencia y objetivo, a la base de datos vectorial
+Todo este proceso es orquestado internamente por Langchain, que consulta estos ``n'' documentos (siendo en este caso 3, aunque podrian ser 
+más dependiendo de la preferencia y objetivo), a la base de datos vectorial
 ChormaDB y son enviados como contexto dentro del prompt a OpenAI mediante el uso de su API, junto a la key de autorización, 
 para obtener el resultado del modelo y con ello una respuesta a la consuta en lenguaje natural.
 
