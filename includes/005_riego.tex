@@ -22,7 +22,7 @@ por consiguiente, es crucial que al empezar un proyecto se entienda a la perfecc
 
 Además, es común que suceda, que en un conjunto de datos muy extenso, cualquier efecto que desee probar aparecerá como significativo \cite{datos1}, de ahí la 
 importancia de un análisis previo de objetivos y problemáticas. Este proceso es tan importante, debido a que existen casos en donde un problema que puede resultar complejo en 
-primera instancia, puede sugerir el uso de modelos muy complejos. Sin embargo, usando un modelo más simple se llegan a resultados mejores 
+primera instancia, puede sugerir el uso de modelos muy complejos. Sin embargo, a veces el uso de un modelo más simple, se llegan a resultados mejores 
 que con el uso de modelos complejos \cite{datos2}, siendo este tipo de escenarios, un ejemplo claro de que un análisis previo adecuado puede mejorar tanto los resultados como la 
 experiencia de desarrollo al trabajar. 
 
@@ -67,7 +67,7 @@ gran influencia en el rendimiento, además cada modelo tiene su soporte lingüí
 
 
 \subsection{Costos Monetarios}
-Los costos relacionados con la puesta en producción, en caso de usar un modelo open source, o el uso de un modelo LLM, considerando el uso de un LLM privado, pueden aumentar de manera exponencial si es que no se planea con antelación el costo monetario de ellos o no se predice la demanda de manera adecuada. Por lo tanto, es fundamental tener en 
+Los costos relacionados con la puesta en producción, en caso de usar un modelo open source, o el uso de un modelo LLM, considerando el uso de un LLM privado, pueden aumentar de manera exponencial si es que no se planea con antelación el costo monetario de ellos o no se predice la demanda de manera adecuada \cite{cost4}. Por lo tanto, es fundamental tener en 
 cuenta los costos asociados al utilizar un servicio de tercero, así como el costo de operar un servidor local, que pueden incluir el consumo de energía eléctrica, como la compra de tarjetas gráficas (GPU) para el funcionamiento correcto y óptimo de los modelos.
 Por ejemplo, existen estudios en donde al realizar ajustes al modelo, también llamado fine tunning, donde el consumo de energía es comparable al de pequeñas ciudades y el dióxido 
 de carbono emitido es equivalente a 500 veces la de un vuelo de ida y vuelta entre Nueva York y San Francisco \cite{ft1}, por lo cual es un factor que hay que tener en cuenta. 
@@ -85,7 +85,7 @@ Esta comprensión no solo es valiosa para entender cómo funciona el proceso en 
 proyecto en caso de llevarse a producción.  
 
 Por ejemplo, en el contexto del proyecto de esta tesis, es importante saber que el framework Langchain, suele realizar múltiples llamadas a los modelos \cite{framework1}. Si no se tiene conocimiento de esta situación o no se cuantifican de manera adecuada 
-la cantidad de llamadas y la extensión de estas, esto debido a que los modelos como los entregados por OpenAI tiene un costo por lo tokens que se reciben y por los que se envían \cite{openaimodels}, esto puede dar lugar a problemas en la cuantificación de costos. Por lo tanto, la capacidad de comprender y 
+la cantidad de llamadas y la extensión de estas, esto debido a que los modelos como los entregados por OpenAI tiene un costo por los tokens que se reciben y por los que se envían \cite{openaimodels}, esto puede dar lugar a problemas en la cuantificación de costos. Por lo tanto, la capacidad de comprender y 
 medir con precisión el uso de recursos, como las llamadas a los modelos, es esencial para gestionar eficazmente los costos y asegurar el éxito del proyecto para cuando este sea enviado a producción.
 
 
@@ -154,7 +154,7 @@ información no relacionada con el prompt, debido a que los vectores que se soli
 
 \subsection{Uso de información privada}
 
-Actualmente las empresas que entregan servicios de LLM son muy herméticos con la manera en que entrenan sus modelos, por lo tanto, no sabemos en un 100 por ciento
+Actualmente las empresas que entregan servicios de LLM son muy herméticas con la manera en que entrenan sus modelos, por lo tanto, no sabemos en un 100 por ciento
 con qué información han sido entrenados, la cual podría no necesariamente ser solamente información pública. Además, como ejemplo, todas las consultas relizadas en ChatGPT van directamente a los servidores de OpenAI y servirán posteriormente para reentrenar a los modelos de la compañia para mejorar su calidad y performance.
 
 Este tema se ha vuelto tan delicado, que se ha probado que los ataques de reconstrucción de datos son posibles, en ellos se ha propuesto un ataque de reconstrucción dirigido de caja negra donde el 
