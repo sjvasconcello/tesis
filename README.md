@@ -1,59 +1,35 @@
-# Plantilla LaTeX para memorias y tesis UTFSM
+# Tesis de Pregrado
 
-Plantilla básica en LaTeX para las Memorias y Tesis del [Departamento de Industrias](http://www.industrias.usm.cl) de la [Universidad Técnica Federico Santa María](http://www.usm.cl), Chile.
+## Título:
+Riesgos Asociados A La Creación Y Uso De Aplicaciones Utilizando Modelos Grandes De Lenguaje (LLM)
 
-También podría interesarle:
+## Autor:
+Santiago Jesús Vasconcello Acuña
 
-- [Plantilla Latex (beamer) para Presentaciones](https://github.com/jaimercz/utfsm-beamer): Plantilla para presentaciones basada en `beamer` y que sigue los lineamientos de uso de imagen corporativa de la UTFSM.
-- [Plantilla Latex (exam) para Certámenes](https://github.com/jaimercz/utfsm-exam): Plantilla (basada en `exam`) con formatos para la UTFSM.
+## Profesores:
+**Profesor guía**: Sr. Pablo Isla
+**Profesor correferente**: Sr. Thierry de Saint Pierre
 
-## Uso de la Plantilla
+## Resumen:
+Este trabajo investiga los riesgos inherentes a la creación y uso de aplicaciones basadas en Modelos Grandes de Lenguaje (LLM) en la industria. Su foco es en Procesamiento del Lenguaje Natural (NLP) especíﬁcamente la generación de texto, excluyendo otras formas de inteligencia artiﬁcial generativa. El proyecto se basa en la experiencia de desarrollar una aplicación utilizando LLM y analiza los riesgos que pueden afectar tanto al equipo de desarrollo como a los resultados obtenidos. Se determinan los factores de riesgo en la creación y uso de estas aplicaciones, utilizando como caso de estudio un proyecto de búsqueda de jurisprudencia en tribunales ambientales. La metodología empleada incluye la creación del proyecto, un ejemplo práctico de uso y la evaluación de riesgos en cada etapa del proceso. El objetivo es proporcionar una estructura para aplicaciones que usen LLM, analizar los problemas y riesgos asociados con el uso de información para alimentar estos modelos, incluyendo un proceso completo de ETL (Extract, Transform, Load).
 
-Para usar esta plantilla tan sólo debe:
+**Palabras Clave**: Modelos Grandes de Lenguaje (LLM), Generación de Texto, Riesgo, Inteligencia Artiﬁcial, Proceso de ETL, Jurisprudencia Ambiental
 
-* cambiar parámetros básicos como autor y fecha en el documento de configuración (`config.tex`),
-* modificar los archivos de apoyo (portada, resumen, capítulos, etc.) que desee, y
-* compilar el documento maestro `memoria.tex` (usando una consola LaTeX o su editor favorito):
+## Abstract
+This work investigates the inherent risks in the creation and use of applications based on Large Language Models (LLM) in the industry. Its focus is on Natural Language Processing (NLP), specifically text generation, excluding other forms of generative artificial intelligence. The project is based on the experience of developing an application using LLM and analyzes the risks that can affect both the development team and the obtained results. The risk factors in the creation and use of these applications are determined, using as a case study a jurisprudence search project in environmental courts. The methodology employed includes the creation of the project, a practical example of use, and the evaluation of risks at each stage of the process. The goal is to provide a structure for applications that use LLM, analyze the problems and risks associated with the use of information to feed these models, including a complete ETL (Extract, Transform, Load) process.
 
-		$ pdflatex memoria.tex
-		$ biber memoria
-		$ pdflatex memoria.tex
-		$ pdflatex memoria.tex
+**Keywords**: Large Language Models (LLM), Text Generation, Risk, Artificial Intelligence, ETL Process, Environmental Jurisprudence
 
-**NOTA:** `pdflatex` debe ejecutarse (en consola) tres veces, como se indica y en   el orden mostrado para que latex pueda construir las Tablas de Contenidos y las referencias cruzadas de la Bibliografía.
+## Estructura del Repositorio:
+- **includes/**: Carpeta que contiene los archivos LaTeX de la tesis.
+- **figures/**: Carpeta que contiene las figuras utilizadas en la tesis.
+- **README.md**: Este archivo que proporciona una descripción general del proyecto.
 
-O, puede ocupar el editor de su preferencia (recuerde configurarlo para usar `biber`y no `bibtex`).
+## Contribución:
+Actualmente, no se aceptan contribuciones externas, ya que la tesis es un trabajo individual.
 
-### Documentación
+## Licencia:
+Todos los derechos reservados © Santiago Jesús Vasconcello Acuña.
 
-Toda la documentación está contenida en el archivo de salida (`memoria.pdf`), incluyendo información sobre las normas UTFSM empleadas para su confección.
-
-[Descargar archivo `memoria.pdf`](https://github.com/jaimercz/utfsm-thesis/blob/master/memoria.pdf)
-
-### Acerca de la Bibliografía
-La bibliografía está contenida en el archivo `bibliography.bib`. Esta versión ocupa `biber` en lugar de `bibtex/natbib`. Biber es moderno y maneja además distintos idiomas para la presentación y ordenamiento de la bibliografía.
-
-## Plataformas Soportadas
-
-Esta plantilla es independiente de la plataforma empleada (Windows, Mac o Linux), sin embargo, debe tener cuidado con la codificación de caracteres por defecto.
-
-### Codificación de caracteres (UTF-8)
-La plantilla en LaTeX (`memoria.tex`) fue escrita usando una codificación de caracteres UTF-8 o *unicode*. MS Windows (y en ocasiones MAC OSX) ocupan por defecto otro tipo de codificación. Por esto, asegúrese que el editor LaTeX que esté ocupando esté configurado para usar UTF-8; o, puede cambiar la codificación de la plantilla de UTF-8 a Windows-1252 (o Mac Roman).
-
-**NOTA:** No mezcle archivos con codificaciones diferentes o los resultados no serán los esperados.
-
-### Compatibilidad con Overleaf (y otros editores en línea)
-
-Esta versión es compatible con procesadores de texto en línea como [Overleaf](https://overleaf.com), Papeeria, o Authorea.
-
-## Contribuciones
-
-Puede hacerlas directamente en [Issues](https://github.com/jaimercz/utfsm-thesis/issues).
-
-## Licencia
-
-> The MIT License (MIT), 2016-2023
-
-(Básicamente puede usarlo siempre que se mantenga la referencia al autor original en el código fuente).
-
-**Nota:** Las imágenes (asociadas a la UTFSM) son propiedad intelectual de la [Universidad Técnica Federico Santa María](https://www.usm.cl).
+## Contacto:
+Para cualquier pregunta o comentario, por favor contáctame por correo electrónico a santiago.vasconcello@usm.cl.
