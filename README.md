@@ -1,5 +1,7 @@
 # Tesis de Pregrado
 
+Descargar [aquí](memoria.pdf)
+
 ![alt text](image.png)
 
 ## Título:
