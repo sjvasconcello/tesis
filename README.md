@@ -7,8 +7,8 @@ Riesgos Asociados A La Creación Y Uso De Aplicaciones Utilizando Modelos Grande
 Santiago Jesús Vasconcello Acuña
 
 ## Profesores:
-**Profesor guía**: Sr. Pablo Isla
-**Profesor correferente**: Sr. Thierry de Saint Pierre
+- **Profesor guía**: Sr. Pablo Isla
+- **Profesor correferente**: Sr. Thierry de Saint Pierre
 
 ## Resumen:
 Este trabajo investiga los riesgos inherentes a la creación y uso de aplicaciones basadas en Modelos Grandes de Lenguaje (LLM) en la industria. Su foco es en Procesamiento del Lenguaje Natural (NLP) especíﬁcamente la generación de texto, excluyendo otras formas de inteligencia artiﬁcial generativa. El proyecto se basa en la experiencia de desarrollar una aplicación utilizando LLM y analiza los riesgos que pueden afectar tanto al equipo de desarrollo como a los resultados obtenidos. Se determinan los factores de riesgo en la creación y uso de estas aplicaciones, utilizando como caso de estudio un proyecto de búsqueda de jurisprudencia en tribunales ambientales. La metodología empleada incluye la creación del proyecto, un ejemplo práctico de uso y la evaluación de riesgos en cada etapa del proceso. El objetivo es proporcionar una estructura para aplicaciones que usen LLM, analizar los problemas y riesgos asociados con el uso de información para alimentar estos modelos, incluyendo un proceso completo de ETL (Extract, Transform, Load).
