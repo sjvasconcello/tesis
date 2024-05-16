@@ -1,5 +1,7 @@
 # Tesis de Pregrado
 
+![alt text](image.png)
+
 ## Título:
 Riesgos Asociados A La Creación Y Uso De Aplicaciones Utilizando Modelos Grandes De Lenguaje (LLM)
 
